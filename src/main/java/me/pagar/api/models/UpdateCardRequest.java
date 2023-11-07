@@ -59,8 +59,16 @@ public class UpdateCardRequest {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  holderName  String value for holderName.
+     * @param  expMonth  int value for expMonth.
+     * @param  expYear  int value for expYear.
+     * @param  billingAddress  CreateAddressRequest value for billingAddress.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  label  String value for label.
+     * @param  billingAddressId  String value for billingAddressId.
      */
+
     protected UpdateCardRequest(String holderName, int expMonth, int expYear,
             CreateAddressRequest billingAddress, Map<String, String> metadata, String label,
             OptionalNullable<String> billingAddressId) {

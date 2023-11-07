@@ -42,8 +42,12 @@ public class GetTransferSettingsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  transferEnabled  Boolean value for transferEnabled.
+     * @param  transferInterval  String value for transferInterval.
+     * @param  transferDay  Integer value for transferDay.
      */
+
     protected GetTransferSettingsResponse(OptionalNullable<Boolean> transferEnabled,
             OptionalNullable<String> transferInterval, OptionalNullable<Integer> transferDay) {
         this.transferEnabled = transferEnabled;

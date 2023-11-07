@@ -46,8 +46,13 @@ public class GetSetupResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  description  String value for description.
+     * @param  amount  Integer value for amount.
+     * @param  status  String value for status.
      */
+
     protected GetSetupResponse(OptionalNullable<String> id, OptionalNullable<String> description,
             OptionalNullable<Integer> amount, OptionalNullable<String> status) {
         this.id = id;

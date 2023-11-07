@@ -39,8 +39,11 @@ public class ListBalanceOperationResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetBalanceOperationResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListBalanceOperationResponse(OptionalNullable<List<GetBalanceOperationResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

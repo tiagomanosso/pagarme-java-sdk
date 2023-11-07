@@ -42,8 +42,12 @@ public class GetSplitOptionsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  liable  Boolean value for liable.
+     * @param  chargeProcessingFee  Boolean value for chargeProcessingFee.
+     * @param  chargeRemainderFee  String value for chargeRemainderFee.
      */
+
     protected GetSplitOptionsResponse(OptionalNullable<Boolean> liable,
             OptionalNullable<Boolean> chargeProcessingFee,
             OptionalNullable<String> chargeRemainderFee) {

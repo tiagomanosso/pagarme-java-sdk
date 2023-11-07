@@ -118,8 +118,30 @@ public class GetChargeResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  code  String value for code.
+     * @param  gatewayId  String value for gatewayId.
+     * @param  amount  Integer value for amount.
+     * @param  status  String value for status.
+     * @param  currency  String value for currency.
+     * @param  paymentMethod  String value for paymentMethod.
+     * @param  dueAt  LocalDateTime value for dueAt.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  lastTransaction  GetTransactionResponse value for lastTransaction.
+     * @param  invoice  GetInvoiceResponse value for invoice.
+     * @param  order  GetOrderResponse value for order.
+     * @param  customer  GetCustomerResponse value for customer.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  paidAt  LocalDateTime value for paidAt.
+     * @param  canceledAt  LocalDateTime value for canceledAt.
+     * @param  canceledAmount  Integer value for canceledAmount.
+     * @param  paidAmount  Integer value for paidAmount.
+     * @param  interestAndFinePaid  Integer value for interestAndFinePaid.
+     * @param  recurrencyCycle  String value for recurrencyCycle.
      */
+
     protected GetChargeResponse(OptionalNullable<String> id, OptionalNullable<String> code,
             OptionalNullable<String> gatewayId, OptionalNullable<Integer> amount,
             OptionalNullable<String> status, OptionalNullable<String> currency,

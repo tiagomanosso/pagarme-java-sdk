@@ -46,8 +46,13 @@ public class GetPixBankAccountResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  bankName  String value for bankName.
+     * @param  ispb  String value for ispb.
+     * @param  branchCode  String value for branchCode.
+     * @param  accountNumber  String value for accountNumber.
      */
+
     protected GetPixBankAccountResponse(OptionalNullable<String> bankName,
             OptionalNullable<String> ispb, OptionalNullable<String> branchCode,
             OptionalNullable<String> accountNumber) {

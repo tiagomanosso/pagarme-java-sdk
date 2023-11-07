@@ -53,8 +53,14 @@ public class GetTokenResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  type  String value for type.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  expiresAt  String value for expiresAt.
+     * @param  card  GetCardTokenResponse value for card.
      */
+
     protected GetTokenResponse(OptionalNullable<String> id, OptionalNullable<String> type,
             OptionalNullable<LocalDateTime> createdAt, OptionalNullable<String> expiresAt,
             OptionalNullable<GetCardTokenResponse> card) {

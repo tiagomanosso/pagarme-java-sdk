@@ -119,8 +119,32 @@ public class GetMovementObjectPayableResponse
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  anticipationFee  String value for anticipationFee.
+     * @param  fraudCoverageFee  String value for fraudCoverageFee.
+     * @param  installment  String value for installment.
+     * @param  splitId  String value for splitId.
+     * @param  bulkAnticipationId  String value for bulkAnticipationId.
+     * @param  anticipationId  String value for anticipationId.
+     * @param  recipientId  String value for recipientId.
+     * @param  originatorModel  String value for originatorModel.
+     * @param  originatorModelId  String value for originatorModelId.
+     * @param  paymentDate  String value for paymentDate.
+     * @param  originalPaymentDate  String value for originalPaymentDate.
+     * @param  paymentMethod  String value for paymentMethod.
+     * @param  accrualAt  String value for accrualAt.
+     * @param  liquidationArrangementId  String value for liquidationArrangementId.
+     * @param  object  String value for object.
+     * @param  id  String value for id.
+     * @param  status  String value for status.
+     * @param  amount  String value for amount.
+     * @param  createdAt  String value for createdAt.
+     * @param  type  String value for type.
+     * @param  chargeId  String value for chargeId.
+     * @param  gatewayId  String value for gatewayId.
+     * @param  fee  String value for fee.
      */
+
     protected GetMovementObjectPayableResponse(String anticipationFee, String fraudCoverageFee,
             String installment, String splitId, String bulkAnticipationId, String anticipationId,
             String recipientId, String originatorModel, String originatorModelId,

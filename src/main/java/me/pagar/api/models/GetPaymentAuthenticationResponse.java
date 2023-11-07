@@ -38,8 +38,11 @@ public class GetPaymentAuthenticationResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  type  String value for type.
+     * @param  threedSecure  GetThreeDSecureResponse value for threedSecure.
      */
+
     protected GetPaymentAuthenticationResponse(OptionalNullable<String> type,
             OptionalNullable<GetThreeDSecureResponse> threedSecure) {
         this.type = type;

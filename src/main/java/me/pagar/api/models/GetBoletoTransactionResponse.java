@@ -156,8 +156,45 @@ public class GetBoletoTransactionResponse
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  gatewayId  String value for gatewayId.
+     * @param  amount  Integer value for amount.
+     * @param  status  String value for status.
+     * @param  success  Boolean value for success.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  attemptCount  Integer value for attemptCount.
+     * @param  maxAttempts  Integer value for maxAttempts.
+     * @param  splits  List of GetSplitResponse value for splits.
+     * @param  nextAttempt  LocalDateTime value for nextAttempt.
+     * @param  transactionType  String value for transactionType.
+     * @param  id  String value for id.
+     * @param  gatewayResponse  GetGatewayResponseResponse value for gatewayResponse.
+     * @param  antifraudResponse  GetAntifraudResponse value for antifraudResponse.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  split  List of GetSplitResponse value for split.
+     * @param  interest  GetInterestResponse value for interest.
+     * @param  fine  GetFineResponse value for fine.
+     * @param  maxDaysToPayPastDue  Integer value for maxDaysToPayPastDue.
+     * @param  url  String value for url.
+     * @param  barcode  String value for barcode.
+     * @param  nossoNumero  String value for nossoNumero.
+     * @param  bank  String value for bank.
+     * @param  documentNumber  String value for documentNumber.
+     * @param  instructions  String value for instructions.
+     * @param  billingAddress  GetBillingAddressResponse value for billingAddress.
+     * @param  dueAt  LocalDateTime value for dueAt.
+     * @param  qrCode  String value for qrCode.
+     * @param  line  String value for line.
+     * @param  pdfPassword  String value for pdfPassword.
+     * @param  pdf  String value for pdf.
+     * @param  paidAt  LocalDateTime value for paidAt.
+     * @param  paidAmount  String value for paidAmount.
+     * @param  type  String value for type.
+     * @param  creditAt  LocalDateTime value for creditAt.
+     * @param  statementDescriptor  String value for statementDescriptor.
      */
+
     protected GetBoletoTransactionResponse(OptionalNullable<String> gatewayId,
             OptionalNullable<Integer> amount, OptionalNullable<String> status,
             OptionalNullable<Boolean> success, OptionalNullable<LocalDateTime> createdAt,

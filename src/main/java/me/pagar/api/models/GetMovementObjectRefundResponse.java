@@ -79,8 +79,22 @@ public class GetMovementObjectRefundResponse
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  object  String value for object.
+     * @param  id  String value for id.
+     * @param  status  String value for status.
+     * @param  amount  String value for amount.
+     * @param  createdAt  String value for createdAt.
+     * @param  type  String value for type.
+     * @param  chargeId  String value for chargeId.
+     * @param  gatewayId  String value for gatewayId.
+     * @param  fraudCoverageFee  String value for fraudCoverageFee.
+     * @param  chargeFeeRecipientId  String value for chargeFeeRecipientId.
+     * @param  bankAccountId  String value for bankAccountId.
+     * @param  localTransactionId  String value for localTransactionId.
+     * @param  updatedAt  String value for updatedAt.
      */
+
     protected GetMovementObjectRefundResponse(String object, OptionalNullable<String> id,
             OptionalNullable<String> status, OptionalNullable<String> amount,
             OptionalNullable<String> createdAt, OptionalNullable<String> type,

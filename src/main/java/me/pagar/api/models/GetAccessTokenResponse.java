@@ -53,8 +53,14 @@ public class GetAccessTokenResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  code  String value for code.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  customer  GetCustomerResponse value for customer.
      */
+
     protected GetAccessTokenResponse(OptionalNullable<String> id, OptionalNullable<String> code,
             OptionalNullable<String> status, OptionalNullable<LocalDateTime> createdAt,
             OptionalNullable<GetCustomerResponse> customer) {

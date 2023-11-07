@@ -39,8 +39,11 @@ public class ListIncrementsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetIncrementResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListIncrementsResponse(OptionalNullable<List<GetIncrementResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

@@ -97,8 +97,25 @@ public class CreateOrderRequest {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  items  List of CreateOrderItemRequest value for items.
+     * @param  customer  CreateCustomerRequest value for customer.
+     * @param  payments  List of CreatePaymentRequest value for payments.
+     * @param  code  String value for code.
+     * @param  closed  boolean value for closed.
+     * @param  customerId  String value for customerId.
+     * @param  shipping  CreateShippingRequest value for shipping.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  antifraudEnabled  Boolean value for antifraudEnabled.
+     * @param  ip  String value for ip.
+     * @param  sessionId  String value for sessionId.
+     * @param  location  CreateLocationRequest value for location.
+     * @param  device  CreateDeviceRequest value for device.
+     * @param  currency  String value for currency.
+     * @param  antifraud  CreateAntifraudRequest value for antifraud.
+     * @param  submerchant  CreateSubMerchantRequest value for submerchant.
      */
+
     protected CreateOrderRequest(List<CreateOrderItemRequest> items, CreateCustomerRequest customer,
             List<CreatePaymentRequest> payments, String code, boolean closed,
             OptionalNullable<String> customerId, CreateShippingRequest shipping,

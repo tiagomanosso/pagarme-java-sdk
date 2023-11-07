@@ -54,8 +54,15 @@ public class GetSplitResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  type  String value for type.
+     * @param  amount  Integer value for amount.
+     * @param  recipient  GetRecipientResponse value for recipient.
+     * @param  gatewayId  String value for gatewayId.
+     * @param  options  GetSplitOptionsResponse value for options.
+     * @param  id  String value for id.
      */
+
     protected GetSplitResponse(OptionalNullable<String> type, OptionalNullable<Integer> amount,
             OptionalNullable<GetRecipientResponse> recipient, OptionalNullable<String> gatewayId,
             OptionalNullable<GetSplitOptionsResponse> options, OptionalNullable<String> id) {

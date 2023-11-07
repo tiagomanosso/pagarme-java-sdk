@@ -42,8 +42,12 @@ public class GetPhoneResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  countryCode  String value for countryCode.
+     * @param  number  String value for number.
+     * @param  areaCode  String value for areaCode.
      */
+
     protected GetPhoneResponse(OptionalNullable<String> countryCode,
             OptionalNullable<String> number, OptionalNullable<String> areaCode) {
         this.countryCode = countryCode;

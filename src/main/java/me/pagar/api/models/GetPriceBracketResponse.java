@@ -46,8 +46,13 @@ public class GetPriceBracketResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  startQuantity  Integer value for startQuantity.
+     * @param  price  Integer value for price.
+     * @param  endQuantity  Integer value for endQuantity.
+     * @param  overagePrice  Integer value for overagePrice.
      */
+
     protected GetPriceBracketResponse(OptionalNullable<Integer> startQuantity,
             OptionalNullable<Integer> price, OptionalNullable<Integer> endQuantity,
             OptionalNullable<Integer> overagePrice) {

@@ -15,9 +15,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 public class CreateGooglePayRequest {
     private String version;
     private String data;
-    private CreateGooglePayHeaderRequest header;
+    private CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey;
     private String signature;
-    private String merchantIdentifier;
+    private String signedMessage;
 
     /**
      * Default constructor.
@@ -29,26 +29,27 @@ public class CreateGooglePayRequest {
      * Initialization constructor.
      * @param  version  String value for version.
      * @param  data  String value for data.
-     * @param  header  CreateGooglePayHeaderRequest value for header.
+     * @param  intermediateSigningKey  CreateGooglePayIntermediateSigningKeyRequest value for
+     *         intermediateSigningKey.
      * @param  signature  String value for signature.
-     * @param  merchantIdentifier  String value for merchantIdentifier.
+     * @param  signedMessage  String value for signedMessage.
      */
     public CreateGooglePayRequest(
             String version,
             String data,
-            CreateGooglePayHeaderRequest header,
+            CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey,
             String signature,
-            String merchantIdentifier) {
+            String signedMessage) {
         this.version = version;
         this.data = data;
-        this.header = header;
+        this.intermediateSigningKey = intermediateSigningKey;
         this.signature = signature;
-        this.merchantIdentifier = merchantIdentifier;
+        this.signedMessage = signedMessage;
     }
 
     /**
      * Getter for Version.
-     * The token version
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
      * @return Returns the String
      */
     @JsonGetter("version")
@@ -58,7 +59,7 @@ public class CreateGooglePayRequest {
 
     /**
      * Setter for Version.
-     * The token version
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
      * @param version Value for String
      */
     @JsonSetter("version")
@@ -68,7 +69,7 @@ public class CreateGooglePayRequest {
 
     /**
      * Getter for Data.
-     * The cryptography data
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      * @return Returns the String
      */
     @JsonGetter("data")
@@ -78,7 +79,7 @@ public class CreateGooglePayRequest {
 
     /**
      * Setter for Data.
-     * The cryptography data
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      * @param data Value for String
      */
     @JsonSetter("data")
@@ -87,28 +88,29 @@ public class CreateGooglePayRequest {
     }
 
     /**
-     * Getter for Header.
-     * The GooglePay header request
-     * @return Returns the CreateGooglePayHeaderRequest
+     * Getter for IntermediateSigningKey.
+     * The GooglePay intermediate signing key request
+     * @return Returns the CreateGooglePayIntermediateSigningKeyRequest
      */
-    @JsonGetter("header")
-    public CreateGooglePayHeaderRequest getHeader() {
-        return header;
+    @JsonGetter("intermediate_signing_key")
+    public CreateGooglePayIntermediateSigningKeyRequest getIntermediateSigningKey() {
+        return intermediateSigningKey;
     }
 
     /**
-     * Setter for Header.
-     * The GooglePay header request
-     * @param header Value for CreateGooglePayHeaderRequest
+     * Setter for IntermediateSigningKey.
+     * The GooglePay intermediate signing key request
+     * @param intermediateSigningKey Value for CreateGooglePayIntermediateSigningKeyRequest
      */
-    @JsonSetter("header")
-    public void setHeader(CreateGooglePayHeaderRequest header) {
-        this.header = header;
+    @JsonSetter("intermediate_signing_key")
+    public void setIntermediateSigningKey(CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey) {
+        this.intermediateSigningKey = intermediateSigningKey;
     }
 
     /**
      * Getter for Signature.
-     * Detached PKCS #7 signature, Base64 encoded as string
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde
+     * ao signature do token Google.
      * @return Returns the String
      */
     @JsonGetter("signature")
@@ -118,7 +120,8 @@ public class CreateGooglePayRequest {
 
     /**
      * Setter for Signature.
-     * Detached PKCS #7 signature, Base64 encoded as string
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde
+     * ao signature do token Google.
      * @param signature Value for String
      */
     @JsonSetter("signature")
@@ -127,23 +130,21 @@ public class CreateGooglePayRequest {
     }
 
     /**
-     * Getter for MerchantIdentifier.
-     * GooglePay Merchant identifier
+     * Getter for SignedMessage.
      * @return Returns the String
      */
-    @JsonGetter("merchant_identifier")
-    public String getMerchantIdentifier() {
-        return merchantIdentifier;
+    @JsonGetter("signed_message")
+    public String getSignedMessage() {
+        return signedMessage;
     }
 
     /**
-     * Setter for MerchantIdentifier.
-     * GooglePay Merchant identifier
-     * @param merchantIdentifier Value for String
+     * Setter for SignedMessage.
+     * @param signedMessage Value for String
      */
-    @JsonSetter("merchant_identifier")
-    public void setMerchantIdentifier(String merchantIdentifier) {
-        this.merchantIdentifier = merchantIdentifier;
+    @JsonSetter("signed_message")
+    public void setSignedMessage(String signedMessage) {
+        this.signedMessage = signedMessage;
     }
 
     /**
@@ -152,9 +153,9 @@ public class CreateGooglePayRequest {
      */
     @Override
     public String toString() {
-        return "CreateGooglePayRequest [" + "version=" + version + ", data=" + data + ", header="
-                + header + ", signature=" + signature + ", merchantIdentifier=" + merchantIdentifier
-                + "]";
+        return "CreateGooglePayRequest [" + "version=" + version + ", data=" + data
+                + ", intermediateSigningKey=" + intermediateSigningKey + ", signature=" + signature
+                + ", signedMessage=" + signedMessage + "]";
     }
 
     /**
@@ -163,7 +164,8 @@ public class CreateGooglePayRequest {
      * @return a new {@link CreateGooglePayRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder(version, data, header, signature, merchantIdentifier);
+        Builder builder = new Builder(version, data, intermediateSigningKey, signature,
+                signedMessage);
         return builder;
     }
 
@@ -173,9 +175,9 @@ public class CreateGooglePayRequest {
     public static class Builder {
         private String version;
         private String data;
-        private CreateGooglePayHeaderRequest header;
+        private CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey;
         private String signature;
-        private String merchantIdentifier;
+        private String signedMessage;
 
         /**
          * Initialization constructor.
@@ -187,17 +189,19 @@ public class CreateGooglePayRequest {
          * Initialization constructor.
          * @param  version  String value for version.
          * @param  data  String value for data.
-         * @param  header  CreateGooglePayHeaderRequest value for header.
+         * @param  intermediateSigningKey  CreateGooglePayIntermediateSigningKeyRequest value for
+         *         intermediateSigningKey.
          * @param  signature  String value for signature.
-         * @param  merchantIdentifier  String value for merchantIdentifier.
+         * @param  signedMessage  String value for signedMessage.
          */
-        public Builder(String version, String data, CreateGooglePayHeaderRequest header,
-                String signature, String merchantIdentifier) {
+        public Builder(String version, String data,
+                CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey,
+                String signature, String signedMessage) {
             this.version = version;
             this.data = data;
-            this.header = header;
+            this.intermediateSigningKey = intermediateSigningKey;
             this.signature = signature;
-            this.merchantIdentifier = merchantIdentifier;
+            this.signedMessage = signedMessage;
         }
 
         /**
@@ -221,12 +225,14 @@ public class CreateGooglePayRequest {
         }
 
         /**
-         * Setter for header.
-         * @param  header  CreateGooglePayHeaderRequest value for header.
+         * Setter for intermediateSigningKey.
+         * @param  intermediateSigningKey  CreateGooglePayIntermediateSigningKeyRequest value for
+         *         intermediateSigningKey.
          * @return Builder
          */
-        public Builder header(CreateGooglePayHeaderRequest header) {
-            this.header = header;
+        public Builder intermediateSigningKey(
+                CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey) {
+            this.intermediateSigningKey = intermediateSigningKey;
             return this;
         }
 
@@ -241,12 +247,12 @@ public class CreateGooglePayRequest {
         }
 
         /**
-         * Setter for merchantIdentifier.
-         * @param  merchantIdentifier  String value for merchantIdentifier.
+         * Setter for signedMessage.
+         * @param  signedMessage  String value for signedMessage.
          * @return Builder
          */
-        public Builder merchantIdentifier(String merchantIdentifier) {
-            this.merchantIdentifier = merchantIdentifier;
+        public Builder signedMessage(String signedMessage) {
+            this.signedMessage = signedMessage;
             return this;
         }
 
@@ -255,7 +261,8 @@ public class CreateGooglePayRequest {
          * @return {@link CreateGooglePayRequest}
          */
         public CreateGooglePayRequest build() {
-            return new CreateGooglePayRequest(version, data, header, signature, merchantIdentifier);
+            return new CreateGooglePayRequest(version, data, intermediateSigningKey, signature,
+                    signedMessage);
         }
     }
 }

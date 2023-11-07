@@ -29,16 +29,16 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 
 | Name | Description | Return Type |
 |  --- | --- | --- |
+| `getSubscriptionsController()` | Provides access to Subscriptions controller. | `SubscriptionsController` |
 | `getOrdersController()` | Provides access to Orders controller. | `OrdersController` |
 | `getPlansController()` | Provides access to Plans controller. | `PlansController` |
-| `getSubscriptionsController()` | Provides access to Subscriptions controller. | `SubscriptionsController` |
 | `getInvoicesController()` | Provides access to Invoices controller. | `InvoicesController` |
 | `getCustomersController()` | Provides access to Customers controller. | `CustomersController` |
-| `getRecipientsController()` | Provides access to Recipients controller. | `RecipientsController` |
 | `getChargesController()` | Provides access to Charges controller. | `ChargesController` |
+| `getRecipientsController()` | Provides access to Recipients controller. | `RecipientsController` |
 | `getTokensController()` | Provides access to Tokens controller. | `TokensController` |
-| `getTransfersController()` | Provides access to Transfers controller. | `TransfersController` |
 | `getTransactionsController()` | Provides access to Transactions controller. | `TransactionsController` |
+| `getTransfersController()` | Provides access to Transfers controller. | `TransfersController` |
 | `getPayablesController()` | Provides access to Payables controller. | `PayablesController` |
 | `getBalanceOperationsController()` | Provides access to BalanceOperations controller. | `BalanceOperationsController` |
 

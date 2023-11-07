@@ -50,8 +50,14 @@ public class GetBalanceResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  currency  String value for currency.
+     * @param  availableAmount  Long value for availableAmount.
+     * @param  recipient  GetRecipientResponse value for recipient.
+     * @param  transferredAmount  Long value for transferredAmount.
+     * @param  waitingFundsAmount  Long value for waitingFundsAmount.
      */
+
     protected GetBalanceResponse(OptionalNullable<String> currency,
             OptionalNullable<Long> availableAmount,
             OptionalNullable<GetRecipientResponse> recipient,

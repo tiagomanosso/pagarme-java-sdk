@@ -34,8 +34,10 @@ public class GetChargesSummaryResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  total  Integer value for total.
      */
+
     protected GetChargesSummaryResponse(OptionalNullable<Integer> total) {
         this.total = total;
     }

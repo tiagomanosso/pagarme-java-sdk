@@ -42,8 +42,12 @@ public class CreateSubscriptionBoletoRequest {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  interest  CreateInterestRequest value for interest.
+     * @param  fine  CreateFineRequest value for fine.
+     * @param  maxDaysToPayPastDue  Integer value for maxDaysToPayPastDue.
      */
+
     protected CreateSubscriptionBoletoRequest(CreateInterestRequest interest,
             CreateFineRequest fine, OptionalNullable<Integer> maxDaysToPayPastDue) {
         this.interest = interest;

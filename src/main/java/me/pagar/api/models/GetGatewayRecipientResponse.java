@@ -50,8 +50,14 @@ public class GetGatewayRecipientResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  gateway  String value for gateway.
+     * @param  status  String value for status.
+     * @param  pgid  String value for pgid.
+     * @param  createdAt  String value for createdAt.
+     * @param  updatedAt  String value for updatedAt.
      */
+
     protected GetGatewayRecipientResponse(OptionalNullable<String> gateway,
             OptionalNullable<String> status, OptionalNullable<String> pgid,
             OptionalNullable<String> createdAt, OptionalNullable<String> updatedAt) {

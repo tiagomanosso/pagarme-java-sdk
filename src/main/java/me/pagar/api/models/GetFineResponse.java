@@ -42,8 +42,12 @@ public class GetFineResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  days  Integer value for days.
+     * @param  type  String value for type.
+     * @param  amount  Integer value for amount.
      */
+
     protected GetFineResponse(OptionalNullable<Integer> days, OptionalNullable<String> type,
             OptionalNullable<Integer> amount) {
         this.days = days;

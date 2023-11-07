@@ -39,8 +39,11 @@ public class ListOrderResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetOrderResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListOrderResponse(OptionalNullable<List<GetOrderResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

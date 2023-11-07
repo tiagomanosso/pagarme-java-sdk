@@ -39,8 +39,11 @@ public class ListPlansResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetPlanResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListPlansResponse(OptionalNullable<List<GetPlanResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

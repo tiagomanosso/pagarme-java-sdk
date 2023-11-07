@@ -38,8 +38,11 @@ public class GetTransferSourceResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  sourceId  String value for sourceId.
+     * @param  type  String value for type.
      */
+
     protected GetTransferSourceResponse(OptionalNullable<String> sourceId,
             OptionalNullable<String> type) {
         this.sourceId = sourceId;

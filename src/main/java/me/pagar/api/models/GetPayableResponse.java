@@ -121,8 +121,31 @@ public class GetPayableResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  Long value for id.
+     * @param  status  String value for status.
+     * @param  amount  Integer value for amount.
+     * @param  fee  Integer value for fee.
+     * @param  anticipationFee  Integer value for anticipationFee.
+     * @param  fraudCoverageFee  Integer value for fraudCoverageFee.
+     * @param  installment  Integer value for installment.
+     * @param  gatewayId  Integer value for gatewayId.
+     * @param  chargeId  String value for chargeId.
+     * @param  splitId  String value for splitId.
+     * @param  bulkAnticipationId  String value for bulkAnticipationId.
+     * @param  anticipationId  String value for anticipationId.
+     * @param  recipientId  String value for recipientId.
+     * @param  originatorModel  String value for originatorModel.
+     * @param  originatorModelId  String value for originatorModelId.
+     * @param  paymentDate  LocalDateTime value for paymentDate.
+     * @param  originalPaymentDate  LocalDateTime value for originalPaymentDate.
+     * @param  type  String value for type.
+     * @param  paymentMethod  String value for paymentMethod.
+     * @param  accrualAt  LocalDateTime value for accrualAt.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  liquidationArrangementId  String value for liquidationArrangementId.
      */
+
     protected GetPayableResponse(OptionalNullable<Long> id, OptionalNullable<String> status,
             OptionalNullable<Integer> amount, OptionalNullable<Integer> fee,
             OptionalNullable<Integer> anticipationFee, OptionalNullable<Integer> fraudCoverageFee,

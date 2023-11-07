@@ -39,8 +39,11 @@ public class ListCyclesResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetPeriodResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListCyclesResponse(OptionalNullable<List<GetPeriodResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

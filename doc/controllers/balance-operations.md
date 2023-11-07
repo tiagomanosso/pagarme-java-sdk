@@ -20,7 +20,8 @@ BalanceOperationsController balanceOperationsController = client.getBalanceOpera
 ListBalanceOperationResponse getBalanceOperations(
     final String status,
     final LocalDateTime createdSince,
-    final LocalDateTime createdUntil)
+    final LocalDateTime createdUntil,
+    final String recipientId)
 ```
 
 ## Parameters
@@ -30,6 +31,7 @@ ListBalanceOperationResponse getBalanceOperations(
 | `status` | `String` | Query, Optional | - |
 | `createdSince` | `LocalDateTime` | Query, Optional | - |
 | `createdUntil` | `LocalDateTime` | Query, Optional | - |
+| `recipientId` | `String` | Query, Optional | - |
 
 ## Response Type
 
@@ -39,7 +41,7 @@ ListBalanceOperationResponse getBalanceOperations(
 
 ```java
 try {
-    ListBalanceOperationResponse result = balanceOperationsController.getBalanceOperations(null, null, null);
+    ListBalanceOperationResponse result = balanceOperationsController.getBalanceOperations(null, null, null, null);
     System.out.println(result);
 } catch (ApiException e) {
     e.printStackTrace();

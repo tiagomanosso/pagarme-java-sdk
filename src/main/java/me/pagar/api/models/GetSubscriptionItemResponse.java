@@ -86,8 +86,22 @@ public class GetSubscriptionItemResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  description  String value for description.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  pricingScheme  GetPricingSchemeResponse value for pricingScheme.
+     * @param  discounts  List of GetDiscountResponse value for discounts.
+     * @param  increments  List of GetIncrementResponse value for increments.
+     * @param  subscription  GetSubscriptionResponse value for subscription.
+     * @param  name  String value for name.
+     * @param  quantity  Integer value for quantity.
+     * @param  cycles  Integer value for cycles.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
      */
+
     protected GetSubscriptionItemResponse(OptionalNullable<String> id,
             OptionalNullable<String> description, OptionalNullable<String> status,
             OptionalNullable<LocalDateTime> createdAt, OptionalNullable<LocalDateTime> updatedAt,

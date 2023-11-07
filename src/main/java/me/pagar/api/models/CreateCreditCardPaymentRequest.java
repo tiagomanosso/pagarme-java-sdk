@@ -29,6 +29,7 @@ public class CreateCreditCardPaymentRequest {
     private Boolean autoRecovery;
     private String operationType;
     private String recurrencyCycle;
+    private CreateCardPayloadRequest payload;
 
     /**
      * Default constructor.
@@ -55,6 +56,7 @@ public class CreateCreditCardPaymentRequest {
      * @param  autoRecovery  Boolean value for autoRecovery.
      * @param  operationType  String value for operationType.
      * @param  recurrencyCycle  String value for recurrencyCycle.
+     * @param  payload  CreateCardPayloadRequest value for payload.
      */
     public CreateCreditCardPaymentRequest(
             Integer installments,
@@ -71,7 +73,8 @@ public class CreateCreditCardPaymentRequest {
             CreateCardPaymentContactlessRequest contactless,
             Boolean autoRecovery,
             String operationType,
-            String recurrencyCycle) {
+            String recurrencyCycle,
+            CreateCardPayloadRequest payload) {
         this.installments = installments;
         this.statementDescriptor = statementDescriptor;
         this.card = card;
@@ -87,6 +90,7 @@ public class CreateCreditCardPaymentRequest {
         this.autoRecovery = autoRecovery;
         this.operationType = operationType;
         this.recurrencyCycle = recurrencyCycle;
+        this.payload = payload;
     }
 
     /**
@@ -403,6 +407,25 @@ public class CreateCreditCardPaymentRequest {
     }
 
     /**
+     * Getter for Payload.
+     * @return Returns the CreateCardPayloadRequest
+     */
+    @JsonGetter("payload")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    public CreateCardPayloadRequest getPayload() {
+        return payload;
+    }
+
+    /**
+     * Setter for Payload.
+     * @param payload Value for CreateCardPayloadRequest
+     */
+    @JsonSetter("payload")
+    public void setPayload(CreateCardPayloadRequest payload) {
+        this.payload = payload;
+    }
+
+    /**
      * Converts this CreateCreditCardPaymentRequest into string format.
      * @return String representation of this class
      */
@@ -415,7 +438,8 @@ public class CreateCreditCardPaymentRequest {
                 + ", extendedLimitCode=" + extendedLimitCode + ", merchantCategoryCode="
                 + merchantCategoryCode + ", authentication=" + authentication + ", contactless="
                 + contactless + ", autoRecovery=" + autoRecovery + ", operationType="
-                + operationType + ", recurrencyCycle=" + recurrencyCycle + "]";
+                + operationType + ", recurrencyCycle=" + recurrencyCycle + ", payload=" + payload
+                + "]";
     }
 
     /**
@@ -439,7 +463,8 @@ public class CreateCreditCardPaymentRequest {
                 .contactless(getContactless())
                 .autoRecovery(getAutoRecovery())
                 .operationType(getOperationType())
-                .recurrencyCycle(getRecurrencyCycle());
+                .recurrencyCycle(getRecurrencyCycle())
+                .payload(getPayload());
         return builder;
     }
 
@@ -462,6 +487,7 @@ public class CreateCreditCardPaymentRequest {
         private Boolean autoRecovery;
         private String operationType;
         private String recurrencyCycle;
+        private CreateCardPayloadRequest payload;
 
 
 
@@ -616,6 +642,16 @@ public class CreateCreditCardPaymentRequest {
         }
 
         /**
+         * Setter for payload.
+         * @param  payload  CreateCardPayloadRequest value for payload.
+         * @return Builder
+         */
+        public Builder payload(CreateCardPayloadRequest payload) {
+            this.payload = payload;
+            return this;
+        }
+
+        /**
          * Builds a new {@link CreateCreditCardPaymentRequest} object using the set fields.
          * @return {@link CreateCreditCardPaymentRequest}
          */
@@ -623,7 +659,7 @@ public class CreateCreditCardPaymentRequest {
             return new CreateCreditCardPaymentRequest(installments, statementDescriptor, card,
                     cardId, cardToken, recurrence, capture, extendedLimitEnabled, extendedLimitCode,
                     merchantCategoryCode, authentication, contactless, autoRecovery, operationType,
-                    recurrencyCycle);
+                    recurrencyCycle, payload);
         }
     }
 }

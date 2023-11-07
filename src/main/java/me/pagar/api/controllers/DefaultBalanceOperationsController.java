@@ -35,6 +35,7 @@ public final class DefaultBalanceOperationsController extends BaseController imp
      * @param  status  Optional parameter: Example:
      * @param  createdSince  Optional parameter: Example:
      * @param  createdUntil  Optional parameter: Example:
+     * @param  recipientId  Optional parameter: Example:
      * @return    Returns the ListBalanceOperationResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
@@ -42,8 +43,10 @@ public final class DefaultBalanceOperationsController extends BaseController imp
     public ListBalanceOperationResponse getBalanceOperations(
             final String status,
             final LocalDateTime createdSince,
-            final LocalDateTime createdUntil) throws ApiException, IOException {
-        return prepareGetBalanceOperationsRequest(status, createdSince, createdUntil).execute();
+            final LocalDateTime createdUntil,
+            final String recipientId) throws ApiException, IOException {
+        return prepareGetBalanceOperationsRequest(status, createdSince, createdUntil,
+                recipientId).execute();
     }
 
     /**
@@ -52,7 +55,8 @@ public final class DefaultBalanceOperationsController extends BaseController imp
     private ApiCall<ListBalanceOperationResponse, ApiException> prepareGetBalanceOperationsRequest(
             final String status,
             final LocalDateTime createdSince,
-            final LocalDateTime createdUntil) throws IOException {
+            final LocalDateTime createdUntil,
+            final String recipientId) throws IOException {
         return new ApiCall.Builder<ListBalanceOperationResponse, ApiException>()
                 .globalConfig(getGlobalConfiguration())
                 .requestBuilder(requestBuilder -> requestBuilder
@@ -64,6 +68,8 @@ public final class DefaultBalanceOperationsController extends BaseController imp
                                 .value(DateTimeHelper.toRfc8601DateTime(createdSince)).isRequired(false))
                         .queryParam(param -> param.key("created_until")
                                 .value(DateTimeHelper.toRfc8601DateTime(createdUntil)).isRequired(false))
+                        .queryParam(param -> param.key("recipient_id")
+                                .value(recipientId).isRequired(false))
                         .headerParam(param -> param.key("accept").value("application/json"))
                         .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))

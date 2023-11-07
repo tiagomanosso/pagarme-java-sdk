@@ -38,8 +38,11 @@ public class GetTransferTargetResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  targetId  String value for targetId.
+     * @param  type  String value for type.
      */
+
     protected GetTransferTargetResponse(OptionalNullable<String> targetId,
             OptionalNullable<String> type) {
         this.targetId = targetId;

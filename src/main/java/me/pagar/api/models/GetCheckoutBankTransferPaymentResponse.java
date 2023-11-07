@@ -35,8 +35,10 @@ public class GetCheckoutBankTransferPaymentResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  bank  List of String value for bank.
      */
+
     protected GetCheckoutBankTransferPaymentResponse(OptionalNullable<List<String>> bank) {
         this.bank = bank;
     }

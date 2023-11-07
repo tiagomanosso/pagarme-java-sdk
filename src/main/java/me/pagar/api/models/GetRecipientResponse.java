@@ -105,8 +105,27 @@ public class GetRecipientResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  name  String value for name.
+     * @param  email  String value for email.
+     * @param  document  String value for document.
+     * @param  description  String value for description.
+     * @param  type  String value for type.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
+     * @param  defaultBankAccount  GetBankAccountResponse value for defaultBankAccount.
+     * @param  gatewayRecipients  List of GetGatewayRecipientResponse value for gatewayRecipients.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  automaticAnticipationSettings  GetAutomaticAnticipationResponse value for
+     *         automaticAnticipationSettings.
+     * @param  transferSettings  GetTransferSettingsResponse value for transferSettings.
+     * @param  code  String value for code.
+     * @param  paymentMode  String value for paymentMode.
      */
+
     protected GetRecipientResponse(OptionalNullable<String> id, OptionalNullable<String> name,
             OptionalNullable<String> email, OptionalNullable<String> document,
             OptionalNullable<String> description, OptionalNullable<String> type,

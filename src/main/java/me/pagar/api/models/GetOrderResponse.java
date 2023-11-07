@@ -23,12 +23,15 @@ import me.pagar.api.DateTimeHelper;
 public class GetOrderResponse {
     private OptionalNullable<String> id;
     private OptionalNullable<String> code;
+    private OptionalNullable<Integer> amount;
     private OptionalNullable<String> currency;
+    private OptionalNullable<Boolean> closed;
     private OptionalNullable<List<GetOrderItemResponse>> items;
     private OptionalNullable<GetCustomerResponse> customer;
     private OptionalNullable<String> status;
     private OptionalNullable<LocalDateTime> createdAt;
     private OptionalNullable<LocalDateTime> updatedAt;
+    private OptionalNullable<LocalDateTime> closedAt;
     private OptionalNullable<List<GetChargeResponse>> charges;
     private OptionalNullable<String> invoiceUrl;
     private OptionalNullable<GetShippingResponse> shipping;
@@ -38,7 +41,6 @@ public class GetOrderResponse {
     private OptionalNullable<String> sessionId;
     private OptionalNullable<GetLocationResponse> location;
     private OptionalNullable<GetDeviceResponse> device;
-    private OptionalNullable<Boolean> closed;
 
     /**
      * Default constructor.
@@ -50,12 +52,15 @@ public class GetOrderResponse {
      * Initialization constructor.
      * @param  id  String value for id.
      * @param  code  String value for code.
+     * @param  amount  Integer value for amount.
      * @param  currency  String value for currency.
+     * @param  closed  Boolean value for closed.
      * @param  items  List of GetOrderItemResponse value for items.
      * @param  customer  GetCustomerResponse value for customer.
      * @param  status  String value for status.
      * @param  createdAt  LocalDateTime value for createdAt.
      * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  closedAt  LocalDateTime value for closedAt.
      * @param  charges  List of GetChargeResponse value for charges.
      * @param  invoiceUrl  String value for invoiceUrl.
      * @param  shipping  GetShippingResponse value for shipping.
@@ -65,17 +70,19 @@ public class GetOrderResponse {
      * @param  sessionId  String value for sessionId.
      * @param  location  GetLocationResponse value for location.
      * @param  device  GetDeviceResponse value for device.
-     * @param  closed  Boolean value for closed.
      */
     public GetOrderResponse(
             String id,
             String code,
+            Integer amount,
             String currency,
+            Boolean closed,
             List<GetOrderItemResponse> items,
             GetCustomerResponse customer,
             String status,
             LocalDateTime createdAt,
             LocalDateTime updatedAt,
+            LocalDateTime closedAt,
             List<GetChargeResponse> charges,
             String invoiceUrl,
             GetShippingResponse shipping,
@@ -84,16 +91,18 @@ public class GetOrderResponse {
             String ip,
             String sessionId,
             GetLocationResponse location,
-            GetDeviceResponse device,
-            Boolean closed) {
+            GetDeviceResponse device) {
         this.id = OptionalNullable.of(id);
         this.code = OptionalNullable.of(code);
+        this.amount = OptionalNullable.of(amount);
         this.currency = OptionalNullable.of(currency);
+        this.closed = OptionalNullable.of(closed);
         this.items = OptionalNullable.of(items);
         this.customer = OptionalNullable.of(customer);
         this.status = OptionalNullable.of(status);
         this.createdAt = OptionalNullable.of(createdAt);
         this.updatedAt = OptionalNullable.of(updatedAt);
+        this.closedAt = OptionalNullable.of(closedAt);
         this.charges = OptionalNullable.of(charges);
         this.invoiceUrl = OptionalNullable.of(invoiceUrl);
         this.shipping = OptionalNullable.of(shipping);
@@ -103,31 +112,56 @@ public class GetOrderResponse {
         this.sessionId = OptionalNullable.of(sessionId);
         this.location = OptionalNullable.of(location);
         this.device = OptionalNullable.of(device);
-        this.closed = OptionalNullable.of(closed);
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  code  String value for code.
+     * @param  amount  Integer value for amount.
+     * @param  currency  String value for currency.
+     * @param  closed  Boolean value for closed.
+     * @param  items  List of GetOrderItemResponse value for items.
+     * @param  customer  GetCustomerResponse value for customer.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  closedAt  LocalDateTime value for closedAt.
+     * @param  charges  List of GetChargeResponse value for charges.
+     * @param  invoiceUrl  String value for invoiceUrl.
+     * @param  shipping  GetShippingResponse value for shipping.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  checkouts  List of GetCheckoutPaymentResponse value for checkouts.
+     * @param  ip  String value for ip.
+     * @param  sessionId  String value for sessionId.
+     * @param  location  GetLocationResponse value for location.
+     * @param  device  GetDeviceResponse value for device.
      */
+
     protected GetOrderResponse(OptionalNullable<String> id, OptionalNullable<String> code,
-            OptionalNullable<String> currency, OptionalNullable<List<GetOrderItemResponse>> items,
+            OptionalNullable<Integer> amount, OptionalNullable<String> currency,
+            OptionalNullable<Boolean> closed, OptionalNullable<List<GetOrderItemResponse>> items,
             OptionalNullable<GetCustomerResponse> customer, OptionalNullable<String> status,
             OptionalNullable<LocalDateTime> createdAt, OptionalNullable<LocalDateTime> updatedAt,
+            OptionalNullable<LocalDateTime> closedAt,
             OptionalNullable<List<GetChargeResponse>> charges, OptionalNullable<String> invoiceUrl,
             OptionalNullable<GetShippingResponse> shipping,
             OptionalNullable<Map<String, String>> metadata,
             OptionalNullable<List<GetCheckoutPaymentResponse>> checkouts,
             OptionalNullable<String> ip, OptionalNullable<String> sessionId,
             OptionalNullable<GetLocationResponse> location,
-            OptionalNullable<GetDeviceResponse> device, OptionalNullable<Boolean> closed) {
+            OptionalNullable<GetDeviceResponse> device) {
         this.id = id;
         this.code = code;
+        this.amount = amount;
         this.currency = currency;
+        this.closed = closed;
         this.items = items;
         this.customer = customer;
         this.status = status;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.closedAt = closedAt;
         this.charges = charges;
         this.invoiceUrl = invoiceUrl;
         this.shipping = shipping;
@@ -137,7 +171,6 @@ public class GetOrderResponse {
         this.sessionId = sessionId;
         this.location = location;
         this.device = device;
-        this.closed = closed;
     }
 
     /**
@@ -211,6 +244,41 @@ public class GetOrderResponse {
     }
 
     /**
+     * Internal Getter for Amount.
+     * @return Returns the Internal Integer
+     */
+    @JsonGetter("amount")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<Integer> internalGetAmount() {
+        return this.amount;
+    }
+
+    /**
+     * Getter for Amount.
+     * @return Returns the Integer
+     */
+    public Integer getAmount() {
+        return OptionalNullable.getFrom(amount);
+    }
+
+    /**
+     * Setter for Amount.
+     * @param amount Value for Integer
+     */
+    @JsonSetter("amount")
+    public void setAmount(Integer amount) {
+        this.amount = OptionalNullable.of(amount);
+    }
+
+    /**
+     * UnSetter for Amount.
+     */
+    public void unsetAmount() {
+        amount = null;
+    }
+
+    /**
      * Internal Getter for Currency.
      * @return Returns the Internal String
      */
@@ -243,6 +311,45 @@ public class GetOrderResponse {
      */
     public void unsetCurrency() {
         currency = null;
+    }
+
+    /**
+     * Internal Getter for Closed.
+     * Indicates whether the order is closed
+     * @return Returns the Internal Boolean
+     */
+    @JsonGetter("closed")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<Boolean> internalGetClosed() {
+        return this.closed;
+    }
+
+    /**
+     * Getter for Closed.
+     * Indicates whether the order is closed
+     * @return Returns the Boolean
+     */
+    public Boolean getClosed() {
+        return OptionalNullable.getFrom(closed);
+    }
+
+    /**
+     * Setter for Closed.
+     * Indicates whether the order is closed
+     * @param closed Value for Boolean
+     */
+    @JsonSetter("closed")
+    public void setClosed(Boolean closed) {
+        this.closed = OptionalNullable.of(closed);
+    }
+
+    /**
+     * UnSetter for Closed.
+     * Indicates whether the order is closed
+     */
+    public void unsetClosed() {
+        closed = null;
     }
 
     /**
@@ -420,6 +527,42 @@ public class GetOrderResponse {
      */
     public void unsetUpdatedAt() {
         updatedAt = null;
+    }
+
+    /**
+     * Internal Getter for ClosedAt.
+     * @return Returns the Internal LocalDateTime
+     */
+    @JsonGetter("closed_at")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Rfc8601DateTimeSerializer.class)
+    protected OptionalNullable<LocalDateTime> internalGetClosedAt() {
+        return this.closedAt;
+    }
+
+    /**
+     * Getter for ClosedAt.
+     * @return Returns the LocalDateTime
+     */
+    public LocalDateTime getClosedAt() {
+        return OptionalNullable.getFrom(closedAt);
+    }
+
+    /**
+     * Setter for ClosedAt.
+     * @param closedAt Value for LocalDateTime
+     */
+    @JsonSetter("closed_at")
+    @JsonDeserialize(using = DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setClosedAt(LocalDateTime closedAt) {
+        this.closedAt = OptionalNullable.of(closedAt);
+    }
+
+    /**
+     * UnSetter for ClosedAt.
+     */
+    public void unsetClosedAt() {
+        closedAt = null;
     }
 
     /**
@@ -758,56 +901,18 @@ public class GetOrderResponse {
     }
 
     /**
-     * Internal Getter for Closed.
-     * Indicates whether the order is closed
-     * @return Returns the Internal Boolean
-     */
-    @JsonGetter("closed")
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    @JsonSerialize(using = OptionalNullable.Serializer.class)
-    protected OptionalNullable<Boolean> internalGetClosed() {
-        return this.closed;
-    }
-
-    /**
-     * Getter for Closed.
-     * Indicates whether the order is closed
-     * @return Returns the Boolean
-     */
-    public Boolean getClosed() {
-        return OptionalNullable.getFrom(closed);
-    }
-
-    /**
-     * Setter for Closed.
-     * Indicates whether the order is closed
-     * @param closed Value for Boolean
-     */
-    @JsonSetter("closed")
-    public void setClosed(Boolean closed) {
-        this.closed = OptionalNullable.of(closed);
-    }
-
-    /**
-     * UnSetter for Closed.
-     * Indicates whether the order is closed
-     */
-    public void unsetClosed() {
-        closed = null;
-    }
-
-    /**
      * Converts this GetOrderResponse into string format.
      * @return String representation of this class
      */
     @Override
     public String toString() {
-        return "GetOrderResponse [" + "id=" + id + ", code=" + code + ", currency=" + currency
-                + ", items=" + items + ", customer=" + customer + ", status=" + status
-                + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", charges=" + charges
+        return "GetOrderResponse [" + "id=" + id + ", code=" + code + ", amount=" + amount
+                + ", currency=" + currency + ", closed=" + closed + ", items=" + items
+                + ", customer=" + customer + ", status=" + status + ", createdAt=" + createdAt
+                + ", updatedAt=" + updatedAt + ", closedAt=" + closedAt + ", charges=" + charges
                 + ", invoiceUrl=" + invoiceUrl + ", shipping=" + shipping + ", metadata=" + metadata
                 + ", checkouts=" + checkouts + ", ip=" + ip + ", sessionId=" + sessionId
-                + ", location=" + location + ", device=" + device + ", closed=" + closed + "]";
+                + ", location=" + location + ", device=" + device + "]";
     }
 
     /**
@@ -819,12 +924,15 @@ public class GetOrderResponse {
         Builder builder = new Builder();
         builder.id = internalGetId();
         builder.code = internalGetCode();
+        builder.amount = internalGetAmount();
         builder.currency = internalGetCurrency();
+        builder.closed = internalGetClosed();
         builder.items = internalGetItems();
         builder.customer = internalGetCustomer();
         builder.status = internalGetStatus();
         builder.createdAt = internalGetCreatedAt();
         builder.updatedAt = internalGetUpdatedAt();
+        builder.closedAt = internalGetClosedAt();
         builder.charges = internalGetCharges();
         builder.invoiceUrl = internalGetInvoiceUrl();
         builder.shipping = internalGetShipping();
@@ -834,7 +942,6 @@ public class GetOrderResponse {
         builder.sessionId = internalGetSessionId();
         builder.location = internalGetLocation();
         builder.device = internalGetDevice();
-        builder.closed = internalGetClosed();
         return builder;
     }
 
@@ -844,12 +951,15 @@ public class GetOrderResponse {
     public static class Builder {
         private OptionalNullable<String> id;
         private OptionalNullable<String> code;
+        private OptionalNullable<Integer> amount;
         private OptionalNullable<String> currency;
+        private OptionalNullable<Boolean> closed;
         private OptionalNullable<List<GetOrderItemResponse>> items;
         private OptionalNullable<GetCustomerResponse> customer;
         private OptionalNullable<String> status;
         private OptionalNullable<LocalDateTime> createdAt;
         private OptionalNullable<LocalDateTime> updatedAt;
+        private OptionalNullable<LocalDateTime> closedAt;
         private OptionalNullable<List<GetChargeResponse>> charges;
         private OptionalNullable<String> invoiceUrl;
         private OptionalNullable<GetShippingResponse> shipping;
@@ -859,7 +969,6 @@ public class GetOrderResponse {
         private OptionalNullable<String> sessionId;
         private OptionalNullable<GetLocationResponse> location;
         private OptionalNullable<GetDeviceResponse> device;
-        private OptionalNullable<Boolean> closed;
 
 
 
@@ -902,6 +1011,25 @@ public class GetOrderResponse {
         }
 
         /**
+         * Setter for amount.
+         * @param  amount  Integer value for amount.
+         * @return Builder
+         */
+        public Builder amount(Integer amount) {
+            this.amount = OptionalNullable.of(amount);
+            return this;
+        }
+
+        /**
+         * UnSetter for amount.
+         * @return Builder
+         */
+        public Builder unsetAmount() {
+            amount = null;
+            return this;
+        }
+
+        /**
          * Setter for currency.
          * @param  currency  String value for currency.
          * @return Builder
@@ -917,6 +1045,25 @@ public class GetOrderResponse {
          */
         public Builder unsetCurrency() {
             currency = null;
+            return this;
+        }
+
+        /**
+         * Setter for closed.
+         * @param  closed  Boolean value for closed.
+         * @return Builder
+         */
+        public Builder closed(Boolean closed) {
+            this.closed = OptionalNullable.of(closed);
+            return this;
+        }
+
+        /**
+         * UnSetter for closed.
+         * @return Builder
+         */
+        public Builder unsetClosed() {
+            closed = null;
             return this;
         }
 
@@ -1012,6 +1159,25 @@ public class GetOrderResponse {
          */
         public Builder unsetUpdatedAt() {
             updatedAt = null;
+            return this;
+        }
+
+        /**
+         * Setter for closedAt.
+         * @param  closedAt  LocalDateTime value for closedAt.
+         * @return Builder
+         */
+        public Builder closedAt(LocalDateTime closedAt) {
+            this.closedAt = OptionalNullable.of(closedAt);
+            return this;
+        }
+
+        /**
+         * UnSetter for closedAt.
+         * @return Builder
+         */
+        public Builder unsetClosedAt() {
+            closedAt = null;
             return this;
         }
 
@@ -1187,32 +1353,13 @@ public class GetOrderResponse {
         }
 
         /**
-         * Setter for closed.
-         * @param  closed  Boolean value for closed.
-         * @return Builder
-         */
-        public Builder closed(Boolean closed) {
-            this.closed = OptionalNullable.of(closed);
-            return this;
-        }
-
-        /**
-         * UnSetter for closed.
-         * @return Builder
-         */
-        public Builder unsetClosed() {
-            closed = null;
-            return this;
-        }
-
-        /**
          * Builds a new {@link GetOrderResponse} object using the set fields.
          * @return {@link GetOrderResponse}
          */
         public GetOrderResponse build() {
-            return new GetOrderResponse(id, code, currency, items, customer, status, createdAt,
-                    updatedAt, charges, invoiceUrl, shipping, metadata, checkouts, ip, sessionId,
-                    location, device, closed);
+            return new GetOrderResponse(id, code, amount, currency, closed, items, customer, status,
+                    createdAt, updatedAt, closedAt, charges, invoiceUrl, shipping, metadata,
+                    checkouts, ip, sessionId, location, device);
         }
     }
 }

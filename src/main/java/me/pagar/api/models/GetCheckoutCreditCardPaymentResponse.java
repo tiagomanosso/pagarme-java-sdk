@@ -44,8 +44,13 @@ public class GetCheckoutCreditCardPaymentResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  statementDescriptor  String value for statementDescriptor.
+     * @param  installments  List of GetCheckoutCardInstallmentOptionsResponse value for
+     *         installments.
+     * @param  authentication  GetPaymentAuthenticationResponse value for authentication.
      */
+
     protected GetCheckoutCreditCardPaymentResponse(OptionalNullable<String> statementDescriptor,
             OptionalNullable<List<GetCheckoutCardInstallmentOptionsResponse>> installments,
             OptionalNullable<GetPaymentAuthenticationResponse> authentication) {

@@ -102,8 +102,26 @@ public class GetAddressResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  street  String value for street.
+     * @param  number  String value for number.
+     * @param  complement  String value for complement.
+     * @param  zipCode  String value for zipCode.
+     * @param  neighborhood  String value for neighborhood.
+     * @param  city  String value for city.
+     * @param  state  String value for state.
+     * @param  country  String value for country.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  customer  GetCustomerResponse value for customer.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  line1  String value for line1.
+     * @param  line2  String value for line2.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
      */
+
     protected GetAddressResponse(OptionalNullable<String> id, OptionalNullable<String> street,
             OptionalNullable<String> number, OptionalNullable<String> complement,
             OptionalNullable<String> zipCode, OptionalNullable<String> neighborhood,

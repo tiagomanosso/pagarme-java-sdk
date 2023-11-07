@@ -41,8 +41,11 @@ public class GetCheckoutBoletoPaymentResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  dueAt  LocalDateTime value for dueAt.
+     * @param  instructions  String value for instructions.
      */
+
     protected GetCheckoutBoletoPaymentResponse(OptionalNullable<LocalDateTime> dueAt,
             OptionalNullable<String> instructions) {
         this.dueAt = dueAt;

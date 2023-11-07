@@ -39,8 +39,11 @@ public class ListAccessTokensResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetAccessTokenResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListAccessTokensResponse(OptionalNullable<List<GetAccessTokenResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

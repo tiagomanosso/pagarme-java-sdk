@@ -86,8 +86,22 @@ public class GetWithdrawResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  gatewayId  String value for gatewayId.
+     * @param  amount  Integer value for amount.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  metadata  List of String value for metadata.
+     * @param  fee  Integer value for fee.
+     * @param  fundingDate  LocalDateTime value for fundingDate.
+     * @param  fundingEstimatedDate  LocalDateTime value for fundingEstimatedDate.
+     * @param  type  String value for type.
+     * @param  source  GetWithdrawSourceResponse value for source.
+     * @param  target  GetWithdrawTargetResponse value for target.
      */
+
     protected GetWithdrawResponse(OptionalNullable<String> id, OptionalNullable<String> gatewayId,
             OptionalNullable<Integer> amount, OptionalNullable<String> status,
             OptionalNullable<LocalDateTime> createdAt, OptionalNullable<LocalDateTime> updatedAt,

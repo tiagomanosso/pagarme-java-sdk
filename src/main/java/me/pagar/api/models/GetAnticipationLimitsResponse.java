@@ -38,8 +38,11 @@ public class GetAnticipationLimitsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  max  GetAnticipationLimitResponse value for max.
+     * @param  min  GetAnticipationLimitResponse value for min.
      */
+
     protected GetAnticipationLimitsResponse(OptionalNullable<GetAnticipationLimitResponse> max,
             OptionalNullable<GetAnticipationLimitResponse> min) {
         this.max = max;

@@ -155,8 +155,39 @@ public class GetSubscriptionResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  code  String value for code.
+     * @param  startAt  LocalDateTime value for startAt.
+     * @param  interval  String value for interval.
+     * @param  intervalCount  Integer value for intervalCount.
+     * @param  billingType  String value for billingType.
+     * @param  currentCycle  GetPeriodResponse value for currentCycle.
+     * @param  paymentMethod  String value for paymentMethod.
+     * @param  currency  String value for currency.
+     * @param  installments  Integer value for installments.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  customer  GetCustomerResponse value for customer.
+     * @param  card  GetCardResponse value for card.
+     * @param  items  List of GetSubscriptionItemResponse value for items.
+     * @param  statementDescriptor  String value for statementDescriptor.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  setup  GetSetupResponse value for setup.
+     * @param  gatewayAffiliationId  String value for gatewayAffiliationId.
+     * @param  nextBillingAt  LocalDateTime value for nextBillingAt.
+     * @param  billingDay  Integer value for billingDay.
+     * @param  minimumPrice  Integer value for minimumPrice.
+     * @param  canceledAt  LocalDateTime value for canceledAt.
+     * @param  discounts  List of GetDiscountResponse value for discounts.
+     * @param  increments  List of GetIncrementResponse value for increments.
+     * @param  boletoDueDays  Integer value for boletoDueDays.
+     * @param  split  GetSubscriptionSplitResponse value for split.
+     * @param  boleto  GetSubscriptionBoletoResponse value for boleto.
+     * @param  manualBilling  Boolean value for manualBilling.
      */
+
     protected GetSubscriptionResponse(OptionalNullable<String> id, OptionalNullable<String> code,
             OptionalNullable<LocalDateTime> startAt, OptionalNullable<String> interval,
             OptionalNullable<Integer> intervalCount, OptionalNullable<String> billingType,

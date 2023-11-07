@@ -51,8 +51,14 @@ public class GetAutomaticAnticipationResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  enabled  Boolean value for enabled.
+     * @param  type  String value for type.
+     * @param  volumePercentage  Integer value for volumePercentage.
+     * @param  delay  Integer value for delay.
+     * @param  days  List of Integer value for days.
      */
+
     protected GetAutomaticAnticipationResponse(OptionalNullable<Boolean> enabled,
             OptionalNullable<String> type, OptionalNullable<Integer> volumePercentage,
             OptionalNullable<Integer> delay, OptionalNullable<List<Integer>> days) {

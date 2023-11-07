@@ -66,8 +66,18 @@ public class GetBalanceOperationResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  status  String value for status.
+     * @param  balanceAmount  String value for balanceAmount.
+     * @param  balanceOldAmount  String value for balanceOldAmount.
+     * @param  type  String value for type.
+     * @param  amount  String value for amount.
+     * @param  fee  String value for fee.
+     * @param  createdAt  String value for createdAt.
+     * @param  movementObject  GetMovementObjectBaseResponse value for movementObject.
      */
+
     protected GetBalanceOperationResponse(OptionalNullable<String> id,
             OptionalNullable<String> status, OptionalNullable<String> balanceAmount,
             OptionalNullable<String> balanceOldAmount, OptionalNullable<String> type,

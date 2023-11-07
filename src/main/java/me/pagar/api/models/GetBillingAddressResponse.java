@@ -70,8 +70,19 @@ public class GetBillingAddressResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  street  String value for street.
+     * @param  number  String value for number.
+     * @param  zipCode  String value for zipCode.
+     * @param  neighborhood  String value for neighborhood.
+     * @param  city  String value for city.
+     * @param  state  String value for state.
+     * @param  country  String value for country.
+     * @param  complement  String value for complement.
+     * @param  line1  String value for line1.
+     * @param  line2  String value for line2.
      */
+
     protected GetBillingAddressResponse(OptionalNullable<String> street,
             OptionalNullable<String> number, OptionalNullable<String> zipCode,
             OptionalNullable<String> neighborhood, OptionalNullable<String> city,

@@ -75,8 +75,20 @@ public class CreateAddressRequest {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  street  String value for street.
+     * @param  number  String value for number.
+     * @param  zipCode  String value for zipCode.
+     * @param  neighborhood  String value for neighborhood.
+     * @param  city  String value for city.
+     * @param  state  String value for state.
+     * @param  country  String value for country.
+     * @param  complement  String value for complement.
+     * @param  line1  String value for line1.
+     * @param  line2  String value for line2.
+     * @param  metadata  Map of String, value for metadata.
      */
+
     protected CreateAddressRequest(String street, String number, String zipCode,
             String neighborhood, String city, String state, String country, String complement,
             String line1, String line2, OptionalNullable<Map<String, String>> metadata) {

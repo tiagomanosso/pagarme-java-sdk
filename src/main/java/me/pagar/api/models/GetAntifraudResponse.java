@@ -50,8 +50,14 @@ public class GetAntifraudResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  status  String value for status.
+     * @param  returnCode  String value for returnCode.
+     * @param  returnMessage  String value for returnMessage.
+     * @param  providerName  String value for providerName.
+     * @param  score  String value for score.
      */
+
     protected GetAntifraudResponse(OptionalNullable<String> status,
             OptionalNullable<String> returnCode, OptionalNullable<String> returnMessage,
             OptionalNullable<String> providerName, OptionalNullable<String> score) {

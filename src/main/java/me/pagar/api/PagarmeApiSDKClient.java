@@ -51,22 +51,22 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
     /**
      * Private store for controllers.
      */
+    private SubscriptionsController subscriptions;
     private OrdersController orders;
     private PlansController plans;
-    private SubscriptionsController subscriptions;
     private InvoicesController invoices;
     private CustomersController customers;
-    private RecipientsController recipients;
     private ChargesController charges;
+    private RecipientsController recipients;
     private TokensController tokens;
-    private TransfersController transfers;
     private TransactionsController transactions;
+    private TransfersController transfers;
     private PayablesController payables;
     private BalanceOperationsController balanceOperations;
 
     private static final CompatibilityFactory compatibilityFactory = new CompatibilityFactoryImpl();
 
-    private static String userAgent = "PagarmeApiSDK - Java 6.8.0";
+    private static String userAgent = "PagarmeApiSDK - Java 6.8.1";
 
     /**
      * Current API environment.
@@ -125,16 +125,16 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
                 .userAgent(userAgent)
                 .globalHeader("ServiceRefererName", serviceRefererName)
                 .build();
+        subscriptions = new DefaultSubscriptionsController(globalConfig);
         orders = new DefaultOrdersController(globalConfig);
         plans = new DefaultPlansController(globalConfig);
-        subscriptions = new DefaultSubscriptionsController(globalConfig);
         invoices = new DefaultInvoicesController(globalConfig);
         customers = new DefaultCustomersController(globalConfig);
-        recipients = new DefaultRecipientsController(globalConfig);
         charges = new DefaultChargesController(globalConfig);
+        recipients = new DefaultRecipientsController(globalConfig);
         tokens = new DefaultTokensController(globalConfig);
-        transfers = new DefaultTransfersController(globalConfig);
         transactions = new DefaultTransactionsController(globalConfig);
+        transfers = new DefaultTransfersController(globalConfig);
         payables = new DefaultPayablesController(globalConfig);
         balanceOperations = new DefaultBalanceOperationsController(globalConfig);
     }
@@ -144,6 +144,14 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
      */
     public static void shutdown() {
         OkClient.shutdown();
+    }
+
+    /**
+     * Get the instance of SubscriptionsController.
+     * @return subscriptions
+     */
+    public SubscriptionsController getSubscriptionsController() {
+        return subscriptions;
     }
 
     /**
@@ -163,14 +171,6 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
     }
 
     /**
-     * Get the instance of SubscriptionsController.
-     * @return subscriptions
-     */
-    public SubscriptionsController getSubscriptionsController() {
-        return subscriptions;
-    }
-
-    /**
      * Get the instance of InvoicesController.
      * @return invoices
      */
@@ -187,19 +187,19 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
     }
 
     /**
-     * Get the instance of RecipientsController.
-     * @return recipients
-     */
-    public RecipientsController getRecipientsController() {
-        return recipients;
-    }
-
-    /**
      * Get the instance of ChargesController.
      * @return charges
      */
     public ChargesController getChargesController() {
         return charges;
+    }
+
+    /**
+     * Get the instance of RecipientsController.
+     * @return recipients
+     */
+    public RecipientsController getRecipientsController() {
+        return recipients;
     }
 
     /**
@@ -211,19 +211,19 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
     }
 
     /**
-     * Get the instance of TransfersController.
-     * @return transfers
-     */
-    public TransfersController getTransfersController() {
-        return transfers;
-    }
-
-    /**
      * Get the instance of TransactionsController.
      * @return transactions
      */
     public TransactionsController getTransactionsController() {
         return transactions;
+    }
+
+    /**
+     * Get the instance of TransfersController.
+     * @return transfers
+     */
+    public TransfersController getTransfersController() {
+        return transfers;
     }
 
     /**

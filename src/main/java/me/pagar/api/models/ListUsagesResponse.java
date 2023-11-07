@@ -39,8 +39,11 @@ public class ListUsagesResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetUsageResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListUsagesResponse(OptionalNullable<List<GetUsageResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

@@ -43,8 +43,12 @@ public class GetCheckoutPixPaymentResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  expiresAt  LocalDateTime value for expiresAt.
+     * @param  additionalInformation  List of PixAdditionalInformation value for
+     *         additionalInformation.
      */
+
     protected GetCheckoutPixPaymentResponse(OptionalNullable<LocalDateTime> expiresAt,
             OptionalNullable<List<PixAdditionalInformation>> additionalInformation) {
         this.expiresAt = expiresAt;

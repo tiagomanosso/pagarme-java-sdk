@@ -63,8 +63,17 @@ public class GetCheckoutPaymentSettingsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  successUrl  String value for successUrl.
+     * @param  paymentUrl  String value for paymentUrl.
+     * @param  acceptedPaymentMethods  List of String value for acceptedPaymentMethods.
+     * @param  status  String value for status.
+     * @param  customer  GetCustomerResponse value for customer.
+     * @param  amount  Integer value for amount.
+     * @param  defaultPaymentMethod  String value for defaultPaymentMethod.
+     * @param  gatewayAffiliationId  String value for gatewayAffiliationId.
      */
+
     protected GetCheckoutPaymentSettingsResponse(OptionalNullable<String> successUrl,
             OptionalNullable<String> paymentUrl,
             OptionalNullable<List<String>> acceptedPaymentMethods, OptionalNullable<String> status,

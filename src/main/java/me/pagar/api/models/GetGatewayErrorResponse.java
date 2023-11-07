@@ -34,8 +34,10 @@ public class GetGatewayErrorResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  message  String value for message.
      */
+
     protected GetGatewayErrorResponse(OptionalNullable<String> message) {
         this.message = message;
     }

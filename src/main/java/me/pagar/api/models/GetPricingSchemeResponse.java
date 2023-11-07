@@ -51,8 +51,14 @@ public class GetPricingSchemeResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  price  Integer value for price.
+     * @param  schemeType  String value for schemeType.
+     * @param  priceBrackets  List of GetPriceBracketResponse value for priceBrackets.
+     * @param  minimumPrice  Integer value for minimumPrice.
+     * @param  percentage  Double value for percentage.
      */
+
     protected GetPricingSchemeResponse(OptionalNullable<Integer> price,
             OptionalNullable<String> schemeType,
             OptionalNullable<List<GetPriceBracketResponse>> priceBrackets,
