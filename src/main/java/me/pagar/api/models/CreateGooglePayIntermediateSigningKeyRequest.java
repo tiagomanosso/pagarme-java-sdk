@@ -7,15 +7,18 @@
 package me.pagar.api.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.apimatic.core.types.OptionalNullable;
 import java.util.List;
 
 /**
  * This is a model class for CreateGooglePayIntermediateSigningKeyRequest type.
  */
 public class CreateGooglePayIntermediateSigningKeyRequest {
-    private String signedKey;
-    private List<String> signatures;
+    private OptionalNullable<String> signedKey;
+    private OptionalNullable<List<String>> signatures;
 
     /**
      * Default constructor.
@@ -31,8 +34,32 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
     public CreateGooglePayIntermediateSigningKeyRequest(
             String signedKey,
             List<String> signatures) {
+        this.signedKey = OptionalNullable.of(signedKey);
+        this.signatures = OptionalNullable.of(signatures);
+    }
+
+    /**
+     * Initialization constructor.
+     * @param  signedKey  String value for signedKey.
+     * @param  signatures  List of String value for signatures.
+     */
+
+    protected CreateGooglePayIntermediateSigningKeyRequest(OptionalNullable<String> signedKey,
+            OptionalNullable<List<String>> signatures) {
         this.signedKey = signedKey;
         this.signatures = signatures;
+    }
+
+    /**
+     * Internal Getter for SignedKey.
+     * Uma mensagem codificada em Base64 com a descrição de pagamento da chave.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("signed_key")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetSignedKey() {
+        return this.signedKey;
     }
 
     /**
@@ -40,9 +67,8 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
      * Uma mensagem codificada em Base64 com a descrição de pagamento da chave.
      * @return Returns the String
      */
-    @JsonGetter("signed_key")
     public String getSignedKey() {
-        return signedKey;
+        return OptionalNullable.getFrom(signedKey);
     }
 
     /**
@@ -52,7 +78,28 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
      */
     @JsonSetter("signed_key")
     public void setSignedKey(String signedKey) {
-        this.signedKey = signedKey;
+        this.signedKey = OptionalNullable.of(signedKey);
+    }
+
+    /**
+     * UnSetter for SignedKey.
+     * Uma mensagem codificada em Base64 com a descrição de pagamento da chave.
+     */
+    public void unsetSignedKey() {
+        signedKey = null;
+    }
+
+    /**
+     * Internal Getter for Signatures.
+     * Verifica se a origem da chave de assinatura intermediária é o Google. É codificada em Base64
+     * e criada usando o ECDSA.
+     * @return Returns the Internal List of String
+     */
+    @JsonGetter("signatures")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<List<String>> internalGetSignatures() {
+        return this.signatures;
     }
 
     /**
@@ -61,9 +108,8 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
      * e criada usando o ECDSA.
      * @return Returns the List of String
      */
-    @JsonGetter("signatures")
     public List<String> getSignatures() {
-        return signatures;
+        return OptionalNullable.getFrom(signatures);
     }
 
     /**
@@ -74,7 +120,16 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
      */
     @JsonSetter("signatures")
     public void setSignatures(List<String> signatures) {
-        this.signatures = signatures;
+        this.signatures = OptionalNullable.of(signatures);
+    }
+
+    /**
+     * UnSetter for Signatures.
+     * Verifica se a origem da chave de assinatura intermediária é o Google. É codificada em Base64
+     * e criada usando o ECDSA.
+     */
+    public void unsetSignatures() {
+        signatures = null;
     }
 
     /**
@@ -93,7 +148,9 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
      * @return a new {@link CreateGooglePayIntermediateSigningKeyRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder(signedKey, signatures);
+        Builder builder = new Builder();
+        builder.signedKey = internalGetSignedKey();
+        builder.signatures = internalGetSignatures();
         return builder;
     }
 
@@ -101,24 +158,10 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
      * Class to build instances of {@link CreateGooglePayIntermediateSigningKeyRequest}.
      */
     public static class Builder {
-        private String signedKey;
-        private List<String> signatures;
+        private OptionalNullable<String> signedKey;
+        private OptionalNullable<List<String>> signatures;
 
-        /**
-         * Initialization constructor.
-         */
-        public Builder() {
-        }
 
-        /**
-         * Initialization constructor.
-         * @param  signedKey  String value for signedKey.
-         * @param  signatures  List of String value for signatures.
-         */
-        public Builder(String signedKey, List<String> signatures) {
-            this.signedKey = signedKey;
-            this.signatures = signatures;
-        }
 
         /**
          * Setter for signedKey.
@@ -126,7 +169,16 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
          * @return Builder
          */
         public Builder signedKey(String signedKey) {
-            this.signedKey = signedKey;
+            this.signedKey = OptionalNullable.of(signedKey);
+            return this;
+        }
+
+        /**
+         * UnSetter for signedKey.
+         * @return Builder
+         */
+        public Builder unsetSignedKey() {
+            signedKey = null;
             return this;
         }
 
@@ -136,7 +188,16 @@ public class CreateGooglePayIntermediateSigningKeyRequest {
          * @return Builder
          */
         public Builder signatures(List<String> signatures) {
-            this.signatures = signatures;
+            this.signatures = OptionalNullable.of(signatures);
+            return this;
+        }
+
+        /**
+         * UnSetter for signatures.
+         * @return Builder
+         */
+        public Builder unsetSignatures() {
+            signatures = null;
             return this;
         }
 
