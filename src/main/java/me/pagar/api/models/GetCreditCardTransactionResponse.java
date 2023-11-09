@@ -44,6 +44,7 @@ public class GetCreditCardTransactionResponse
     private OptionalNullable<Integer> installments;
     private OptionalNullable<String> threedAuthenticationUrl;
     private OptionalNullable<String> fundingSource;
+    private OptionalNullable<GetRetryTransactionInformationResponse> retryInfo;
 
     /**
      * Default constructor.
@@ -87,6 +88,7 @@ public class GetCreditCardTransactionResponse
      * @param  installments  Integer value for installments.
      * @param  threedAuthenticationUrl  String value for threedAuthenticationUrl.
      * @param  fundingSource  String value for fundingSource.
+     * @param  retryInfo  GetRetryTransactionInformationResponse value for retryInfo.
      */
     public GetCreditCardTransactionResponse(
             String gatewayId,
@@ -120,7 +122,8 @@ public class GetCreditCardTransactionResponse
             String acquirerReturnCode,
             Integer installments,
             String threedAuthenticationUrl,
-            String fundingSource) {
+            String fundingSource,
+            GetRetryTransactionInformationResponse retryInfo) {
         super(gatewayId, amount, status, success, createdAt, updatedAt, attemptCount, maxAttempts,
                 splits, nextAttempt, transactionType, id, gatewayResponse, antifraudResponse,
                 metadata, split, interest, fine, maxDaysToPayPastDue);
@@ -137,6 +140,7 @@ public class GetCreditCardTransactionResponse
         this.installments = OptionalNullable.of(installments);
         this.threedAuthenticationUrl = OptionalNullable.of(threedAuthenticationUrl);
         this.fundingSource = OptionalNullable.of(fundingSource);
+        this.retryInfo = OptionalNullable.of(retryInfo);
     }
 
     /**
@@ -173,6 +177,7 @@ public class GetCreditCardTransactionResponse
      * @param  installments  Integer value for installments.
      * @param  threedAuthenticationUrl  String value for threedAuthenticationUrl.
      * @param  fundingSource  String value for fundingSource.
+     * @param  retryInfo  GetRetryTransactionInformationResponse value for retryInfo.
      */
 
     protected GetCreditCardTransactionResponse(OptionalNullable<String> gatewayId,
@@ -195,7 +200,8 @@ public class GetCreditCardTransactionResponse
             OptionalNullable<String> acquirerMessage, OptionalNullable<String> acquirerReturnCode,
             OptionalNullable<Integer> installments,
             OptionalNullable<String> threedAuthenticationUrl,
-            OptionalNullable<String> fundingSource) {
+            OptionalNullable<String> fundingSource,
+            OptionalNullable<GetRetryTransactionInformationResponse> retryInfo) {
         super(gatewayId, amount, status, success, createdAt, updatedAt, attemptCount, maxAttempts,
                 splits, nextAttempt, transactionType, id, gatewayResponse, antifraudResponse,
                 metadata, split, interest, fine, maxDaysToPayPastDue);
@@ -212,6 +218,7 @@ public class GetCreditCardTransactionResponse
         this.installments = installments;
         this.threedAuthenticationUrl = threedAuthenticationUrl;
         this.fundingSource = fundingSource;
+        this.retryInfo = retryInfo;
     }
 
     /**
@@ -668,6 +675,45 @@ public class GetCreditCardTransactionResponse
     }
 
     /**
+     * Internal Getter for RetryInfo.
+     * Retry transaction information
+     * @return Returns the Internal GetRetryTransactionInformationResponse
+     */
+    @JsonGetter("retry_info")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<GetRetryTransactionInformationResponse> internalGetRetryInfo() {
+        return this.retryInfo;
+    }
+
+    /**
+     * Getter for RetryInfo.
+     * Retry transaction information
+     * @return Returns the GetRetryTransactionInformationResponse
+     */
+    public GetRetryTransactionInformationResponse getRetryInfo() {
+        return OptionalNullable.getFrom(retryInfo);
+    }
+
+    /**
+     * Setter for RetryInfo.
+     * Retry transaction information
+     * @param retryInfo Value for GetRetryTransactionInformationResponse
+     */
+    @JsonSetter("retry_info")
+    public void setRetryInfo(GetRetryTransactionInformationResponse retryInfo) {
+        this.retryInfo = OptionalNullable.of(retryInfo);
+    }
+
+    /**
+     * UnSetter for RetryInfo.
+     * Retry transaction information
+     */
+    public void unsetRetryInfo() {
+        retryInfo = null;
+    }
+
+    /**
      * Converts this GetCreditCardTransactionResponse into string format.
      * @return String representation of this class
      */
@@ -680,15 +726,15 @@ public class GetCreditCardTransactionResponse
                 + operationType + ", card=" + card + ", acquirerMessage=" + acquirerMessage
                 + ", acquirerReturnCode=" + acquirerReturnCode + ", installments=" + installments
                 + ", threedAuthenticationUrl=" + threedAuthenticationUrl + ", fundingSource="
-                + fundingSource + ", gatewayId=" + getGatewayId() + ", amount=" + getAmount()
-                + ", status=" + getStatus() + ", success=" + getSuccess() + ", createdAt="
-                + getCreatedAt() + ", updatedAt=" + getUpdatedAt() + ", attemptCount="
-                + getAttemptCount() + ", maxAttempts=" + getMaxAttempts() + ", splits="
-                + getSplits() + ", nextAttempt=" + getNextAttempt() + ", transactionType="
-                + getTransactionType() + ", id=" + getId() + ", gatewayResponse="
-                + getGatewayResponse() + ", antifraudResponse=" + getAntifraudResponse()
-                + ", metadata=" + getMetadata() + ", split=" + getSplit() + ", interest="
-                + getInterest() + ", fine=" + getFine() + ", maxDaysToPayPastDue="
+                + fundingSource + ", retryInfo=" + retryInfo + ", gatewayId=" + getGatewayId()
+                + ", amount=" + getAmount() + ", status=" + getStatus() + ", success="
+                + getSuccess() + ", createdAt=" + getCreatedAt() + ", updatedAt=" + getUpdatedAt()
+                + ", attemptCount=" + getAttemptCount() + ", maxAttempts=" + getMaxAttempts()
+                + ", splits=" + getSplits() + ", nextAttempt=" + getNextAttempt()
+                + ", transactionType=" + getTransactionType() + ", id=" + getId()
+                + ", gatewayResponse=" + getGatewayResponse() + ", antifraudResponse="
+                + getAntifraudResponse() + ", metadata=" + getMetadata() + ", split=" + getSplit()
+                + ", interest=" + getInterest() + ", fine=" + getFine() + ", maxDaysToPayPastDue="
                 + getMaxDaysToPayPastDue() + "]";
     }
 
@@ -713,6 +759,7 @@ public class GetCreditCardTransactionResponse
         builder.installments = internalGetInstallments();
         builder.threedAuthenticationUrl = internalGetThreedAuthenticationUrl();
         builder.fundingSource = internalGetFundingSource();
+        builder.retryInfo = internalGetRetryInfo();
         builder.gatewayId = internalGetGatewayId();
         builder.amount = internalGetAmount();
         builder.status = internalGetStatus();
@@ -770,6 +817,7 @@ public class GetCreditCardTransactionResponse
         private OptionalNullable<Integer> installments;
         private OptionalNullable<String> threedAuthenticationUrl;
         private OptionalNullable<String> fundingSource;
+        private OptionalNullable<GetRetryTransactionInformationResponse> retryInfo;
 
 
 
@@ -1346,6 +1394,25 @@ public class GetCreditCardTransactionResponse
         }
 
         /**
+         * Setter for retryInfo.
+         * @param  retryInfo  GetRetryTransactionInformationResponse value for retryInfo.
+         * @return Builder
+         */
+        public Builder retryInfo(GetRetryTransactionInformationResponse retryInfo) {
+            this.retryInfo = OptionalNullable.of(retryInfo);
+            return this;
+        }
+
+        /**
+         * UnSetter for retryInfo.
+         * @return Builder
+         */
+        public Builder unsetRetryInfo() {
+            retryInfo = null;
+            return this;
+        }
+
+        /**
          * Builds a new {@link GetCreditCardTransactionResponse} object using the set fields.
          * @return {@link GetCreditCardTransactionResponse}
          */
@@ -1356,7 +1423,7 @@ public class GetCreditCardTransactionResponse
                     interest, fine, maxDaysToPayPastDue, statementDescriptor, acquirerName,
                     acquirerAffiliationCode, acquirerTid, acquirerNsu, acquirerAuthCode,
                     operationType, card, acquirerMessage, acquirerReturnCode, installments,
-                    threedAuthenticationUrl, fundingSource);
+                    threedAuthenticationUrl, fundingSource, retryInfo);
         }
     }
 }
