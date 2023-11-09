@@ -70,8 +70,18 @@ public class CreateChargeRequest {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  amount  int value for amount.
+     * @param  payment  CreatePaymentRequest value for payment.
+     * @param  orderId  String value for orderId.
+     * @param  code  String value for code.
+     * @param  customerId  String value for customerId.
+     * @param  customer  CreateCustomerRequest value for customer.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  dueAt  LocalDateTime value for dueAt.
+     * @param  antifraud  CreateAntifraudRequest value for antifraud.
      */
+
     protected CreateChargeRequest(int amount, CreatePaymentRequest payment, String orderId,
             OptionalNullable<String> code, OptionalNullable<String> customerId,
             OptionalNullable<CreateCustomerRequest> customer,

@@ -39,8 +39,11 @@ public class GetSubscriptionSplitResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  enabled  Boolean value for enabled.
+     * @param  rules  List of GetSplitResponse value for rules.
      */
+
     protected GetSubscriptionSplitResponse(OptionalNullable<Boolean> enabled,
             OptionalNullable<List<GetSplitResponse>> rules) {
         this.enabled = enabled;

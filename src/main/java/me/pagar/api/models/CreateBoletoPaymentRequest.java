@@ -81,8 +81,21 @@ public class CreateBoletoPaymentRequest {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  retries  int value for retries.
+     * @param  instructions  String value for instructions.
+     * @param  billingAddress  CreateAddressRequest value for billingAddress.
+     * @param  documentNumber  String value for documentNumber.
+     * @param  statementDescriptor  String value for statementDescriptor.
+     * @param  bank  String value for bank.
+     * @param  dueAt  LocalDateTime value for dueAt.
+     * @param  billingAddressId  String value for billingAddressId.
+     * @param  nossoNumero  String value for nossoNumero.
+     * @param  interest  CreateInterestRequest value for interest.
+     * @param  fine  CreateFineRequest value for fine.
+     * @param  maxDaysToPayPastDue  Integer value for maxDaysToPayPastDue.
      */
+
     protected CreateBoletoPaymentRequest(int retries, String instructions,
             CreateAddressRequest billingAddress, String documentNumber, String statementDescriptor,
             OptionalNullable<String> bank, OptionalNullable<LocalDateTime> dueAt,

@@ -27,6 +27,12 @@ import me.pagar.api.controllers.TransfersController;
 public interface PagarmeApiSDKClientInterface extends Configuration {
     
     /**
+     * Provides access to Subscriptions controller.
+     * @return Returns the SubscriptionsController instance
+     */
+    SubscriptionsController getSubscriptionsController();
+
+    /**
      * Provides access to Orders controller.
      * @return Returns the OrdersController instance
      */
@@ -37,12 +43,6 @@ public interface PagarmeApiSDKClientInterface extends Configuration {
      * @return Returns the PlansController instance
      */
     PlansController getPlansController();
-
-    /**
-     * Provides access to Subscriptions controller.
-     * @return Returns the SubscriptionsController instance
-     */
-    SubscriptionsController getSubscriptionsController();
 
     /**
      * Provides access to Invoices controller.
@@ -57,16 +57,16 @@ public interface PagarmeApiSDKClientInterface extends Configuration {
     CustomersController getCustomersController();
 
     /**
-     * Provides access to Recipients controller.
-     * @return Returns the RecipientsController instance
-     */
-    RecipientsController getRecipientsController();
-
-    /**
      * Provides access to Charges controller.
      * @return Returns the ChargesController instance
      */
     ChargesController getChargesController();
+
+    /**
+     * Provides access to Recipients controller.
+     * @return Returns the RecipientsController instance
+     */
+    RecipientsController getRecipientsController();
 
     /**
      * Provides access to Tokens controller.
@@ -75,16 +75,16 @@ public interface PagarmeApiSDKClientInterface extends Configuration {
     TokensController getTokensController();
 
     /**
-     * Provides access to Transfers controller.
-     * @return Returns the TransfersController instance
-     */
-    TransfersController getTransfersController();
-
-    /**
      * Provides access to Transactions controller.
      * @return Returns the TransactionsController instance
      */
     TransactionsController getTransactionsController();
+
+    /**
+     * Provides access to Transfers controller.
+     * @return Returns the TransfersController instance
+     */
+    TransfersController getTransfersController();
 
     /**
      * Provides access to Payables controller.

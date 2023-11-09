@@ -94,8 +94,24 @@ public class GetCustomerResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  name  String value for name.
+     * @param  email  String value for email.
+     * @param  delinquent  Boolean value for delinquent.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  document  String value for document.
+     * @param  type  String value for type.
+     * @param  fbAccessToken  String value for fbAccessToken.
+     * @param  address  GetAddressResponse value for address.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  phones  GetPhonesResponse value for phones.
+     * @param  fbId  Long value for fbId.
+     * @param  code  String value for code.
+     * @param  documentType  String value for documentType.
      */
+
     protected GetCustomerResponse(OptionalNullable<String> id, OptionalNullable<String> name,
             OptionalNullable<String> email, OptionalNullable<Boolean> delinquent,
             OptionalNullable<LocalDateTime> createdAt, OptionalNullable<LocalDateTime> updatedAt,

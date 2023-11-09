@@ -39,8 +39,11 @@ public class ListDiscountsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetDiscountResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListDiscountsResponse(OptionalNullable<List<GetDiscountResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

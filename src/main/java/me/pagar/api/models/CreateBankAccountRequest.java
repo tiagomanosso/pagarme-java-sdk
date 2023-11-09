@@ -75,8 +75,20 @@ public class CreateBankAccountRequest {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  holderName  String value for holderName.
+     * @param  holderType  String value for holderType.
+     * @param  holderDocument  String value for holderDocument.
+     * @param  bank  String value for bank.
+     * @param  branchNumber  String value for branchNumber.
+     * @param  accountNumber  String value for accountNumber.
+     * @param  accountCheckDigit  String value for accountCheckDigit.
+     * @param  type  String value for type.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  branchCheckDigit  String value for branchCheckDigit.
+     * @param  pixKey  String value for pixKey.
      */
+
     protected CreateBankAccountRequest(String holderName, String holderType, String holderDocument,
             String bank, String branchNumber, String accountNumber, String accountCheckDigit,
             String type, Map<String, String> metadata, OptionalNullable<String> branchCheckDigit,

@@ -39,8 +39,11 @@ public class ListTransactionsFilesResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetTransactionReportFileResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListTransactionsFilesResponse(
             OptionalNullable<List<GetTransactionReportFileResponse>> data,
             OptionalNullable<PagingResponse> paging) {

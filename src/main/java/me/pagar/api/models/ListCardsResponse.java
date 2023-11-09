@@ -39,8 +39,11 @@ public class ListCardsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetCardResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListCardsResponse(OptionalNullable<List<GetCardResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

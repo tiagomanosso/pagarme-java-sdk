@@ -38,8 +38,11 @@ public class GetLocationResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  latitude  String value for latitude.
+     * @param  longitude  String value for longitude.
      */
+
     protected GetLocationResponse(OptionalNullable<String> latitude,
             OptionalNullable<String> longitude) {
         this.latitude = latitude;

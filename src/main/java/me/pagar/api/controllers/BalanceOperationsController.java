@@ -21,6 +21,7 @@ public interface BalanceOperationsController {
      * @param  status  Optional parameter: Example:
      * @param  createdSince  Optional parameter: Example:
      * @param  createdUntil  Optional parameter: Example:
+     * @param  recipientId  Optional parameter: Example:
      * @return    Returns the ListBalanceOperationResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
@@ -28,7 +29,8 @@ public interface BalanceOperationsController {
     ListBalanceOperationResponse getBalanceOperations(
             final String status,
             final LocalDateTime createdSince,
-            final LocalDateTime createdUntil) throws ApiException, IOException;
+            final LocalDateTime createdUntil,
+            final String recipientId) throws ApiException, IOException;
 
     /**
      * @param  id  Required parameter: Example:

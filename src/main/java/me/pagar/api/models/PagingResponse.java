@@ -42,8 +42,12 @@ public class PagingResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  total  Integer value for total.
+     * @param  previous  String value for previous.
+     * @param  next  String value for next.
      */
+
     protected PagingResponse(OptionalNullable<Integer> total, OptionalNullable<String> previous,
             OptionalNullable<String> next) {
         this.total = total;

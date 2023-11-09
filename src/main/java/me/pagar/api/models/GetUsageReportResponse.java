@@ -42,8 +42,12 @@ public class GetUsageReportResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  url  String value for url.
+     * @param  usageReportUrl  String value for usageReportUrl.
+     * @param  groupedReportUrl  String value for groupedReportUrl.
      */
+
     protected GetUsageReportResponse(OptionalNullable<String> url,
             OptionalNullable<String> usageReportUrl, OptionalNullable<String> groupedReportUrl) {
         this.url = url;

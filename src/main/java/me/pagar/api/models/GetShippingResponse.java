@@ -65,8 +65,17 @@ public class GetShippingResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  amount  Integer value for amount.
+     * @param  description  String value for description.
+     * @param  recipientName  String value for recipientName.
+     * @param  recipientPhone  String value for recipientPhone.
+     * @param  address  GetAddressResponse value for address.
+     * @param  maxDeliveryDate  LocalDateTime value for maxDeliveryDate.
+     * @param  estimatedDeliveryDate  LocalDateTime value for estimatedDeliveryDate.
+     * @param  type  String value for type.
      */
+
     protected GetShippingResponse(OptionalNullable<Integer> amount,
             OptionalNullable<String> description, OptionalNullable<String> recipientName,
             OptionalNullable<String> recipientPhone, OptionalNullable<GetAddressResponse> address,

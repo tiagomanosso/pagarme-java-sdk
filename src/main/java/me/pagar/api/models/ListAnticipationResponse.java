@@ -39,8 +39,11 @@ public class ListAnticipationResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetAnticipationResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListAnticipationResponse(OptionalNullable<List<GetAnticipationResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

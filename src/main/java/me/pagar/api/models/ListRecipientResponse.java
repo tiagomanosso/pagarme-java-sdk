@@ -39,8 +39,11 @@ public class ListRecipientResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetRecipientResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListRecipientResponse(OptionalNullable<List<GetRecipientResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

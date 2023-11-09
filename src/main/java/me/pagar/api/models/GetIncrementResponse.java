@@ -73,8 +73,19 @@ public class GetIncrementResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  value  Double value for value.
+     * @param  incrementType  String value for incrementType.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  cycles  Integer value for cycles.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
+     * @param  description  String value for description.
+     * @param  subscription  GetSubscriptionResponse value for subscription.
+     * @param  subscriptionItem  GetSubscriptionItemResponse value for subscriptionItem.
      */
+
     protected GetIncrementResponse(OptionalNullable<String> id, OptionalNullable<Double> value,
             OptionalNullable<String> incrementType, OptionalNullable<String> status,
             OptionalNullable<LocalDateTime> createdAt, OptionalNullable<Integer> cycles,

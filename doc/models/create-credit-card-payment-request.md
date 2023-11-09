@@ -26,6 +26,7 @@ The settings for creating a credit card payment
 | `AutoRecovery` | `Boolean` | Optional | Indicates whether a particular payment will enter the offline retry flow | Boolean getAutoRecovery() | setAutoRecovery(Boolean autoRecovery) |
 | `OperationType` | `String` | Optional | AuthOnly, AuthAndCapture, PreAuth | String getOperationType() | setOperationType(String operationType) |
 | `RecurrencyCycle` | `String` | Optional | Defines whether the card has been used one or more times. | String getRecurrencyCycle() | setRecurrencyCycle(String recurrencyCycle) |
+| `Payload` | [`CreateCardPayloadRequest`](../../doc/models/create-card-payload-request.md) | Optional | - | CreateCardPayloadRequest getPayload() | setPayload(CreateCardPayloadRequest payload) |
 
 ## Example (as JSON)
 
@@ -42,7 +43,7 @@ The settings for creating a credit card payment
     "exp_year": 68,
     "cvv": "cvv4"
   },
-  "card_id": "card_id4",
+  "card_id": "card_id6",
   "card_token": "card_token0"
 }
 ```

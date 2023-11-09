@@ -73,8 +73,19 @@ public class GetAnticipationResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  requestedAmount  Integer value for requestedAmount.
+     * @param  approvedAmount  Integer value for approvedAmount.
+     * @param  recipient  GetRecipientResponse value for recipient.
+     * @param  pgid  String value for pgid.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  paymentDate  LocalDateTime value for paymentDate.
+     * @param  status  String value for status.
+     * @param  timeframe  String value for timeframe.
      */
+
     protected GetAnticipationResponse(OptionalNullable<String> id,
             OptionalNullable<Integer> requestedAmount, OptionalNullable<Integer> approvedAmount,
             OptionalNullable<GetRecipientResponse> recipient, OptionalNullable<String> pgid,

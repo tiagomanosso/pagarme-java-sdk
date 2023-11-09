@@ -39,8 +39,11 @@ public class ListTransferResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetTransferResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListTransferResponse(OptionalNullable<List<GetTransferResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

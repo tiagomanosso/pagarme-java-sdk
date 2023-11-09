@@ -140,8 +140,41 @@ public class GetCreditCardTransactionResponse
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  gatewayId  String value for gatewayId.
+     * @param  amount  Integer value for amount.
+     * @param  status  String value for status.
+     * @param  success  Boolean value for success.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  attemptCount  Integer value for attemptCount.
+     * @param  maxAttempts  Integer value for maxAttempts.
+     * @param  splits  List of GetSplitResponse value for splits.
+     * @param  nextAttempt  LocalDateTime value for nextAttempt.
+     * @param  transactionType  String value for transactionType.
+     * @param  id  String value for id.
+     * @param  gatewayResponse  GetGatewayResponseResponse value for gatewayResponse.
+     * @param  antifraudResponse  GetAntifraudResponse value for antifraudResponse.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  split  List of GetSplitResponse value for split.
+     * @param  interest  GetInterestResponse value for interest.
+     * @param  fine  GetFineResponse value for fine.
+     * @param  maxDaysToPayPastDue  Integer value for maxDaysToPayPastDue.
+     * @param  statementDescriptor  String value for statementDescriptor.
+     * @param  acquirerName  String value for acquirerName.
+     * @param  acquirerAffiliationCode  String value for acquirerAffiliationCode.
+     * @param  acquirerTid  String value for acquirerTid.
+     * @param  acquirerNsu  String value for acquirerNsu.
+     * @param  acquirerAuthCode  String value for acquirerAuthCode.
+     * @param  operationType  String value for operationType.
+     * @param  card  GetCardResponse value for card.
+     * @param  acquirerMessage  String value for acquirerMessage.
+     * @param  acquirerReturnCode  String value for acquirerReturnCode.
+     * @param  installments  Integer value for installments.
+     * @param  threedAuthenticationUrl  String value for threedAuthenticationUrl.
+     * @param  fundingSource  String value for fundingSource.
      */
+
     protected GetCreditCardTransactionResponse(OptionalNullable<String> gatewayId,
             OptionalNullable<Integer> amount, OptionalNullable<String> status,
             OptionalNullable<Boolean> success, OptionalNullable<LocalDateTime> createdAt,

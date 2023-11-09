@@ -39,8 +39,11 @@ public class ListAddressesResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetAddressResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListAddressesResponse(OptionalNullable<List<GetAddressResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

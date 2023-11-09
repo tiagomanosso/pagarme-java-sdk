@@ -38,8 +38,11 @@ public class GetPhonesResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  homePhone  GetPhoneResponse value for homePhone.
+     * @param  mobilePhone  GetPhoneResponse value for mobilePhone.
      */
+
     protected GetPhonesResponse(OptionalNullable<GetPhoneResponse> homePhone,
             OptionalNullable<GetPhoneResponse> mobilePhone) {
         this.homePhone = homePhone;

@@ -58,8 +58,16 @@ public class GetInvoiceItemResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  amount  Integer value for amount.
+     * @param  description  String value for description.
+     * @param  pricingScheme  GetPricingSchemeResponse value for pricingScheme.
+     * @param  priceBracket  GetPriceBracketResponse value for priceBracket.
+     * @param  quantity  Integer value for quantity.
+     * @param  name  String value for name.
+     * @param  subscriptionItemId  String value for subscriptionItemId.
      */
+
     protected GetInvoiceItemResponse(OptionalNullable<Integer> amount,
             OptionalNullable<String> description,
             OptionalNullable<GetPricingSchemeResponse> pricingScheme,

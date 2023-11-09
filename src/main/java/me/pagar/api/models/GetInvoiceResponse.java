@@ -127,8 +127,32 @@ public class GetInvoiceResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  code  String value for code.
+     * @param  url  String value for url.
+     * @param  amount  Integer value for amount.
+     * @param  status  String value for status.
+     * @param  paymentMethod  String value for paymentMethod.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  items  List of GetInvoiceItemResponse value for items.
+     * @param  customer  GetCustomerResponse value for customer.
+     * @param  charge  GetChargeResponse value for charge.
+     * @param  installments  Integer value for installments.
+     * @param  billingAddress  GetBillingAddressResponse value for billingAddress.
+     * @param  subscription  GetSubscriptionResponse value for subscription.
+     * @param  cycle  GetPeriodResponse value for cycle.
+     * @param  shipping  GetShippingResponse value for shipping.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  dueAt  LocalDateTime value for dueAt.
+     * @param  canceledAt  LocalDateTime value for canceledAt.
+     * @param  billingAt  LocalDateTime value for billingAt.
+     * @param  seenAt  LocalDateTime value for seenAt.
+     * @param  totalDiscount  Integer value for totalDiscount.
+     * @param  totalIncrement  Integer value for totalIncrement.
+     * @param  subscriptionId  String value for subscriptionId.
      */
+
     protected GetInvoiceResponse(OptionalNullable<String> id, OptionalNullable<String> code,
             OptionalNullable<String> url, OptionalNullable<Integer> amount,
             OptionalNullable<String> status, OptionalNullable<String> paymentMethod,

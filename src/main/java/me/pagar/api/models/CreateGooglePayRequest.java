@@ -7,17 +7,21 @@
 package me.pagar.api.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.apimatic.core.types.OptionalNullable;
 
 /**
  * This is a model class for CreateGooglePayRequest type.
  */
 public class CreateGooglePayRequest {
-    private String version;
-    private String data;
-    private CreateGooglePayHeaderRequest header;
-    private String signature;
-    private String merchantIdentifier;
+    private OptionalNullable<String> version;
+    private OptionalNullable<String> data;
+    private OptionalNullable<CreateGooglePayIntermediateSigningKeyRequest> intermediateSigningKey;
+    private OptionalNullable<String> signature;
+    private OptionalNullable<String> signedMessage;
+    private OptionalNullable<String> merchantIdentifier;
 
     /**
      * Default constructor.
@@ -29,121 +33,279 @@ public class CreateGooglePayRequest {
      * Initialization constructor.
      * @param  version  String value for version.
      * @param  data  String value for data.
-     * @param  header  CreateGooglePayHeaderRequest value for header.
+     * @param  intermediateSigningKey  CreateGooglePayIntermediateSigningKeyRequest value for
+     *         intermediateSigningKey.
      * @param  signature  String value for signature.
+     * @param  signedMessage  String value for signedMessage.
      * @param  merchantIdentifier  String value for merchantIdentifier.
      */
     public CreateGooglePayRequest(
             String version,
             String data,
-            CreateGooglePayHeaderRequest header,
+            CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey,
             String signature,
+            String signedMessage,
             String merchantIdentifier) {
+        this.version = OptionalNullable.of(version);
+        this.data = OptionalNullable.of(data);
+        this.intermediateSigningKey = OptionalNullable.of(intermediateSigningKey);
+        this.signature = OptionalNullable.of(signature);
+        this.signedMessage = OptionalNullable.of(signedMessage);
+        this.merchantIdentifier = OptionalNullable.of(merchantIdentifier);
+    }
+
+    /**
+     * Initialization constructor.
+     * @param  version  String value for version.
+     * @param  data  String value for data.
+     * @param  intermediateSigningKey  CreateGooglePayIntermediateSigningKeyRequest value for
+     *         intermediateSigningKey.
+     * @param  signature  String value for signature.
+     * @param  signedMessage  String value for signedMessage.
+     * @param  merchantIdentifier  String value for merchantIdentifier.
+     */
+
+    protected CreateGooglePayRequest(OptionalNullable<String> version,
+            OptionalNullable<String> data,
+            OptionalNullable<CreateGooglePayIntermediateSigningKeyRequest> intermediateSigningKey,
+            OptionalNullable<String> signature, OptionalNullable<String> signedMessage,
+            OptionalNullable<String> merchantIdentifier) {
         this.version = version;
         this.data = data;
-        this.header = header;
+        this.intermediateSigningKey = intermediateSigningKey;
         this.signature = signature;
+        this.signedMessage = signedMessage;
         this.merchantIdentifier = merchantIdentifier;
+    }
+
+    /**
+     * Internal Getter for Version.
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
+     * @return Returns the Internal String
+     */
+    @JsonGetter("version")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetVersion() {
+        return this.version;
     }
 
     /**
      * Getter for Version.
-     * The token version
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
      * @return Returns the String
      */
-    @JsonGetter("version")
     public String getVersion() {
-        return version;
+        return OptionalNullable.getFrom(version);
     }
 
     /**
      * Setter for Version.
-     * The token version
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
      * @param version Value for String
      */
     @JsonSetter("version")
     public void setVersion(String version) {
-        this.version = version;
+        this.version = OptionalNullable.of(version);
+    }
+
+    /**
+     * UnSetter for Version.
+     * Informação sobre a versão do token. Único valor aceito é EC_v2
+     */
+    public void unsetVersion() {
+        version = null;
+    }
+
+    /**
+     * Internal Getter for Data.
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("data")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetData() {
+        return this.data;
     }
 
     /**
      * Getter for Data.
-     * The cryptography data
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      * @return Returns the String
      */
-    @JsonGetter("data")
     public String getData() {
-        return data;
+        return OptionalNullable.getFrom(data);
     }
 
     /**
      * Setter for Data.
-     * The cryptography data
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      * @param data Value for String
      */
     @JsonSetter("data")
     public void setData(String data) {
-        this.data = data;
+        this.data = OptionalNullable.of(data);
     }
 
     /**
-     * Getter for Header.
-     * The GooglePay header request
-     * @return Returns the CreateGooglePayHeaderRequest
+     * UnSetter for Data.
+     * Dados de pagamento criptografados. Corresponde ao encryptedMessage do token Google.
      */
-    @JsonGetter("header")
-    public CreateGooglePayHeaderRequest getHeader() {
-        return header;
+    public void unsetData() {
+        data = null;
     }
 
     /**
-     * Setter for Header.
-     * The GooglePay header request
-     * @param header Value for CreateGooglePayHeaderRequest
+     * Internal Getter for IntermediateSigningKey.
+     * The GooglePay intermediate signing key request
+     * @return Returns the Internal CreateGooglePayIntermediateSigningKeyRequest
      */
-    @JsonSetter("header")
-    public void setHeader(CreateGooglePayHeaderRequest header) {
-        this.header = header;
+    @JsonGetter("intermediate_signing_key")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<CreateGooglePayIntermediateSigningKeyRequest> internalGetIntermediateSigningKey() {
+        return this.intermediateSigningKey;
+    }
+
+    /**
+     * Getter for IntermediateSigningKey.
+     * The GooglePay intermediate signing key request
+     * @return Returns the CreateGooglePayIntermediateSigningKeyRequest
+     */
+    public CreateGooglePayIntermediateSigningKeyRequest getIntermediateSigningKey() {
+        return OptionalNullable.getFrom(intermediateSigningKey);
+    }
+
+    /**
+     * Setter for IntermediateSigningKey.
+     * The GooglePay intermediate signing key request
+     * @param intermediateSigningKey Value for CreateGooglePayIntermediateSigningKeyRequest
+     */
+    @JsonSetter("intermediate_signing_key")
+    public void setIntermediateSigningKey(CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey) {
+        this.intermediateSigningKey = OptionalNullable.of(intermediateSigningKey);
+    }
+
+    /**
+     * UnSetter for IntermediateSigningKey.
+     * The GooglePay intermediate signing key request
+     */
+    public void unsetIntermediateSigningKey() {
+        intermediateSigningKey = null;
+    }
+
+    /**
+     * Internal Getter for Signature.
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde
+     * ao signature do token Google.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("signature")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetSignature() {
+        return this.signature;
     }
 
     /**
      * Getter for Signature.
-     * Detached PKCS #7 signature, Base64 encoded as string
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde
+     * ao signature do token Google.
      * @return Returns the String
      */
-    @JsonGetter("signature")
     public String getSignature() {
-        return signature;
+        return OptionalNullable.getFrom(signature);
     }
 
     /**
      * Setter for Signature.
-     * Detached PKCS #7 signature, Base64 encoded as string
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde
+     * ao signature do token Google.
      * @param signature Value for String
      */
     @JsonSetter("signature")
     public void setSignature(String signature) {
-        this.signature = signature;
+        this.signature = OptionalNullable.of(signature);
+    }
+
+    /**
+     * UnSetter for Signature.
+     * Assinatura dos dados de pagamento. Verifica se a origem da mensagem é o Google. Corresponde
+     * ao signature do token Google.
+     */
+    public void unsetSignature() {
+        signature = null;
+    }
+
+    /**
+     * Internal Getter for SignedMessage.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("signed_message")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetSignedMessage() {
+        return this.signedMessage;
+    }
+
+    /**
+     * Getter for SignedMessage.
+     * @return Returns the String
+     */
+    public String getSignedMessage() {
+        return OptionalNullable.getFrom(signedMessage);
+    }
+
+    /**
+     * Setter for SignedMessage.
+     * @param signedMessage Value for String
+     */
+    @JsonSetter("signed_message")
+    public void setSignedMessage(String signedMessage) {
+        this.signedMessage = OptionalNullable.of(signedMessage);
+    }
+
+    /**
+     * UnSetter for SignedMessage.
+     */
+    public void unsetSignedMessage() {
+        signedMessage = null;
+    }
+
+    /**
+     * Internal Getter for MerchantIdentifier.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("merchant_identifier")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetMerchantIdentifier() {
+        return this.merchantIdentifier;
     }
 
     /**
      * Getter for MerchantIdentifier.
-     * GooglePay Merchant identifier
      * @return Returns the String
      */
-    @JsonGetter("merchant_identifier")
     public String getMerchantIdentifier() {
-        return merchantIdentifier;
+        return OptionalNullable.getFrom(merchantIdentifier);
     }
 
     /**
      * Setter for MerchantIdentifier.
-     * GooglePay Merchant identifier
      * @param merchantIdentifier Value for String
      */
     @JsonSetter("merchant_identifier")
     public void setMerchantIdentifier(String merchantIdentifier) {
-        this.merchantIdentifier = merchantIdentifier;
+        this.merchantIdentifier = OptionalNullable.of(merchantIdentifier);
+    }
+
+    /**
+     * UnSetter for MerchantIdentifier.
+     */
+    public void unsetMerchantIdentifier() {
+        merchantIdentifier = null;
     }
 
     /**
@@ -152,8 +314,9 @@ public class CreateGooglePayRequest {
      */
     @Override
     public String toString() {
-        return "CreateGooglePayRequest [" + "version=" + version + ", data=" + data + ", header="
-                + header + ", signature=" + signature + ", merchantIdentifier=" + merchantIdentifier
+        return "CreateGooglePayRequest [" + "version=" + version + ", data=" + data
+                + ", intermediateSigningKey=" + intermediateSigningKey + ", signature=" + signature
+                + ", signedMessage=" + signedMessage + ", merchantIdentifier=" + merchantIdentifier
                 + "]";
     }
 
@@ -163,7 +326,13 @@ public class CreateGooglePayRequest {
      * @return a new {@link CreateGooglePayRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder(version, data, header, signature, merchantIdentifier);
+        Builder builder = new Builder();
+        builder.version = internalGetVersion();
+        builder.data = internalGetData();
+        builder.intermediateSigningKey = internalGetIntermediateSigningKey();
+        builder.signature = internalGetSignature();
+        builder.signedMessage = internalGetSignedMessage();
+        builder.merchantIdentifier = internalGetMerchantIdentifier();
         return builder;
     }
 
@@ -171,34 +340,14 @@ public class CreateGooglePayRequest {
      * Class to build instances of {@link CreateGooglePayRequest}.
      */
     public static class Builder {
-        private String version;
-        private String data;
-        private CreateGooglePayHeaderRequest header;
-        private String signature;
-        private String merchantIdentifier;
+        private OptionalNullable<String> version;
+        private OptionalNullable<String> data;
+        private OptionalNullable<CreateGooglePayIntermediateSigningKeyRequest> intermediateSigningKey;
+        private OptionalNullable<String> signature;
+        private OptionalNullable<String> signedMessage;
+        private OptionalNullable<String> merchantIdentifier;
 
-        /**
-         * Initialization constructor.
-         */
-        public Builder() {
-        }
 
-        /**
-         * Initialization constructor.
-         * @param  version  String value for version.
-         * @param  data  String value for data.
-         * @param  header  CreateGooglePayHeaderRequest value for header.
-         * @param  signature  String value for signature.
-         * @param  merchantIdentifier  String value for merchantIdentifier.
-         */
-        public Builder(String version, String data, CreateGooglePayHeaderRequest header,
-                String signature, String merchantIdentifier) {
-            this.version = version;
-            this.data = data;
-            this.header = header;
-            this.signature = signature;
-            this.merchantIdentifier = merchantIdentifier;
-        }
 
         /**
          * Setter for version.
@@ -206,7 +355,16 @@ public class CreateGooglePayRequest {
          * @return Builder
          */
         public Builder version(String version) {
-            this.version = version;
+            this.version = OptionalNullable.of(version);
+            return this;
+        }
+
+        /**
+         * UnSetter for version.
+         * @return Builder
+         */
+        public Builder unsetVersion() {
+            version = null;
             return this;
         }
 
@@ -216,17 +374,37 @@ public class CreateGooglePayRequest {
          * @return Builder
          */
         public Builder data(String data) {
-            this.data = data;
+            this.data = OptionalNullable.of(data);
             return this;
         }
 
         /**
-         * Setter for header.
-         * @param  header  CreateGooglePayHeaderRequest value for header.
+         * UnSetter for data.
          * @return Builder
          */
-        public Builder header(CreateGooglePayHeaderRequest header) {
-            this.header = header;
+        public Builder unsetData() {
+            data = null;
+            return this;
+        }
+
+        /**
+         * Setter for intermediateSigningKey.
+         * @param  intermediateSigningKey  CreateGooglePayIntermediateSigningKeyRequest value for
+         *         intermediateSigningKey.
+         * @return Builder
+         */
+        public Builder intermediateSigningKey(
+                CreateGooglePayIntermediateSigningKeyRequest intermediateSigningKey) {
+            this.intermediateSigningKey = OptionalNullable.of(intermediateSigningKey);
+            return this;
+        }
+
+        /**
+         * UnSetter for intermediateSigningKey.
+         * @return Builder
+         */
+        public Builder unsetIntermediateSigningKey() {
+            intermediateSigningKey = null;
             return this;
         }
 
@@ -236,7 +414,35 @@ public class CreateGooglePayRequest {
          * @return Builder
          */
         public Builder signature(String signature) {
-            this.signature = signature;
+            this.signature = OptionalNullable.of(signature);
+            return this;
+        }
+
+        /**
+         * UnSetter for signature.
+         * @return Builder
+         */
+        public Builder unsetSignature() {
+            signature = null;
+            return this;
+        }
+
+        /**
+         * Setter for signedMessage.
+         * @param  signedMessage  String value for signedMessage.
+         * @return Builder
+         */
+        public Builder signedMessage(String signedMessage) {
+            this.signedMessage = OptionalNullable.of(signedMessage);
+            return this;
+        }
+
+        /**
+         * UnSetter for signedMessage.
+         * @return Builder
+         */
+        public Builder unsetSignedMessage() {
+            signedMessage = null;
             return this;
         }
 
@@ -246,7 +452,16 @@ public class CreateGooglePayRequest {
          * @return Builder
          */
         public Builder merchantIdentifier(String merchantIdentifier) {
-            this.merchantIdentifier = merchantIdentifier;
+            this.merchantIdentifier = OptionalNullable.of(merchantIdentifier);
+            return this;
+        }
+
+        /**
+         * UnSetter for merchantIdentifier.
+         * @return Builder
+         */
+        public Builder unsetMerchantIdentifier() {
+            merchantIdentifier = null;
             return this;
         }
 
@@ -255,7 +470,8 @@ public class CreateGooglePayRequest {
          * @return {@link CreateGooglePayRequest}
          */
         public CreateGooglePayRequest build() {
-            return new CreateGooglePayRequest(version, data, header, signature, merchantIdentifier);
+            return new CreateGooglePayRequest(version, data, intermediateSigningKey, signature,
+                    signedMessage, merchantIdentifier);
         }
     }
 }

@@ -38,8 +38,11 @@ public class PixAdditionalInformation {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  name  String value for name.
+     * @param  value  String value for value.
      */
+
     protected PixAdditionalInformation(OptionalNullable<String> name,
             OptionalNullable<String> value) {
         this.name = name;

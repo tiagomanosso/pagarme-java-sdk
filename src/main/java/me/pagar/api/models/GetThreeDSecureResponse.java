@@ -50,8 +50,14 @@ public class GetThreeDSecureResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  mpi  String value for mpi.
+     * @param  eci  String value for eci.
+     * @param  cavv  String value for cavv.
+     * @param  transactionId  String value for transactionId.
+     * @param  successUrl  String value for successUrl.
      */
+
     protected GetThreeDSecureResponse(OptionalNullable<String> mpi, OptionalNullable<String> eci,
             OptionalNullable<String> cavv, OptionalNullable<String> transactionId,
             OptionalNullable<String> successUrl) {

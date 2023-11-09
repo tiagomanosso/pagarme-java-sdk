@@ -102,8 +102,26 @@ public class GetCardResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  lastFourDigits  String value for lastFourDigits.
+     * @param  brand  String value for brand.
+     * @param  holderName  String value for holderName.
+     * @param  expMonth  Integer value for expMonth.
+     * @param  expYear  Integer value for expYear.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  billingAddress  GetBillingAddressResponse value for billingAddress.
+     * @param  customer  GetCustomerResponse value for customer.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  type  String value for type.
+     * @param  holderDocument  String value for holderDocument.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
+     * @param  firstSixDigits  String value for firstSixDigits.
+     * @param  label  String value for label.
      */
+
     protected GetCardResponse(OptionalNullable<String> id, OptionalNullable<String> lastFourDigits,
             OptionalNullable<String> brand, OptionalNullable<String> holderName,
             OptionalNullable<Integer> expMonth, OptionalNullable<Integer> expYear,

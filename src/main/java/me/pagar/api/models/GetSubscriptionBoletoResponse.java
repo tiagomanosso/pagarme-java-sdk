@@ -42,8 +42,12 @@ public class GetSubscriptionBoletoResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  interest  GetInterestResponse value for interest.
+     * @param  fine  GetFineResponse value for fine.
+     * @param  maxDaysToPayPastDue  Integer value for maxDaysToPayPastDue.
      */
+
     protected GetSubscriptionBoletoResponse(OptionalNullable<GetInterestResponse> interest,
             OptionalNullable<GetFineResponse> fine,
             OptionalNullable<Integer> maxDaysToPayPastDue) {

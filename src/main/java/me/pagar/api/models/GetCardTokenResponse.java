@@ -62,8 +62,17 @@ public class GetCardTokenResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  lastFourDigits  String value for lastFourDigits.
+     * @param  holderName  String value for holderName.
+     * @param  holderDocument  String value for holderDocument.
+     * @param  expMonth  Integer value for expMonth.
+     * @param  expYear  Integer value for expYear.
+     * @param  brand  String value for brand.
+     * @param  type  String value for type.
+     * @param  label  String value for label.
      */
+
     protected GetCardTokenResponse(OptionalNullable<String> lastFourDigits,
             OptionalNullable<String> holderName, OptionalNullable<String> holderDocument,
             OptionalNullable<Integer> expMonth, OptionalNullable<Integer> expYear,

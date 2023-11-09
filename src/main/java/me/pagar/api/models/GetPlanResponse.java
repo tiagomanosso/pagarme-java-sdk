@@ -119,8 +119,30 @@ public class GetPlanResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  name  String value for name.
+     * @param  description  String value for description.
+     * @param  url  String value for url.
+     * @param  statementDescriptor  String value for statementDescriptor.
+     * @param  interval  String value for interval.
+     * @param  intervalCount  Integer value for intervalCount.
+     * @param  billingType  String value for billingType.
+     * @param  paymentMethods  List of String value for paymentMethods.
+     * @param  installments  List of Integer value for installments.
+     * @param  status  String value for status.
+     * @param  currency  String value for currency.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  items  List of GetPlanItemResponse value for items.
+     * @param  billingDays  List of Integer value for billingDays.
+     * @param  shippable  Boolean value for shippable.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  trialPeriodDays  Integer value for trialPeriodDays.
+     * @param  minimumPrice  Integer value for minimumPrice.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
      */
+
     protected GetPlanResponse(OptionalNullable<String> id, OptionalNullable<String> name,
             OptionalNullable<String> description, OptionalNullable<String> url,
             OptionalNullable<String> statementDescriptor, OptionalNullable<String> interval,

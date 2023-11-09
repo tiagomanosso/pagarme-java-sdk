@@ -39,8 +39,11 @@ public class GetGatewayResponseResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  code  String value for code.
+     * @param  errors  List of GetGatewayErrorResponse value for errors.
      */
+
     protected GetGatewayResponseResponse(OptionalNullable<String> code,
             OptionalNullable<List<GetGatewayErrorResponse>> errors) {
         this.code = code;

@@ -34,8 +34,10 @@ public class GetDeviceResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  platform  String value for platform.
      */
+
     protected GetDeviceResponse(OptionalNullable<String> platform) {
         this.platform = platform;
     }

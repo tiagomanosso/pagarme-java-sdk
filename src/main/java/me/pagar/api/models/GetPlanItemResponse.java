@@ -77,8 +77,20 @@ public class GetPlanItemResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  name  String value for name.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  pricingScheme  GetPricingSchemeResponse value for pricingScheme.
+     * @param  description  String value for description.
+     * @param  plan  GetPlanResponse value for plan.
+     * @param  quantity  Integer value for quantity.
+     * @param  cycles  Integer value for cycles.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
      */
+
     protected GetPlanItemResponse(OptionalNullable<String> id, OptionalNullable<String> name,
             OptionalNullable<String> status, OptionalNullable<LocalDateTime> createdAt,
             OptionalNullable<LocalDateTime> updatedAt,

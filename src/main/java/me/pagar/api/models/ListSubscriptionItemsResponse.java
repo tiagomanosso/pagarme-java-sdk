@@ -39,8 +39,11 @@ public class ListSubscriptionItemsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetSubscriptionItemResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListSubscriptionItemsResponse(
             OptionalNullable<List<GetSubscriptionItemResponse>> data,
             OptionalNullable<PagingResponse> paging) {

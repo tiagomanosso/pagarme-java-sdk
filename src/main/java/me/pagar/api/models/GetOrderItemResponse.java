@@ -9,19 +9,26 @@ package me.pagar.api.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.apimatic.core.types.OptionalNullable;
+import java.time.LocalDateTime;
+import me.pagar.api.DateTimeHelper;
 
 /**
  * This is a model class for GetOrderItemResponse type.
  */
 public class GetOrderItemResponse {
     private OptionalNullable<String> id;
-    private OptionalNullable<Integer> amount;
+    private OptionalNullable<String> type;
     private OptionalNullable<String> description;
+    private OptionalNullable<Integer> amount;
     private OptionalNullable<Integer> quantity;
     private OptionalNullable<String> category;
     private OptionalNullable<String> code;
+    private OptionalNullable<String> status;
+    private OptionalNullable<LocalDateTime> createdAt;
+    private OptionalNullable<LocalDateTime> updatedAt;
 
     /**
      * Default constructor.
@@ -32,39 +39,69 @@ public class GetOrderItemResponse {
     /**
      * Initialization constructor.
      * @param  id  String value for id.
-     * @param  amount  Integer value for amount.
+     * @param  type  String value for type.
      * @param  description  String value for description.
+     * @param  amount  Integer value for amount.
      * @param  quantity  Integer value for quantity.
      * @param  category  String value for category.
      * @param  code  String value for code.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
      */
     public GetOrderItemResponse(
             String id,
-            Integer amount,
+            String type,
             String description,
+            Integer amount,
             Integer quantity,
             String category,
-            String code) {
+            String code,
+            String status,
+            LocalDateTime createdAt,
+            LocalDateTime updatedAt) {
         this.id = OptionalNullable.of(id);
-        this.amount = OptionalNullable.of(amount);
+        this.type = OptionalNullable.of(type);
         this.description = OptionalNullable.of(description);
+        this.amount = OptionalNullable.of(amount);
         this.quantity = OptionalNullable.of(quantity);
         this.category = OptionalNullable.of(category);
         this.code = OptionalNullable.of(code);
+        this.status = OptionalNullable.of(status);
+        this.createdAt = OptionalNullable.of(createdAt);
+        this.updatedAt = OptionalNullable.of(updatedAt);
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  type  String value for type.
+     * @param  description  String value for description.
+     * @param  amount  Integer value for amount.
+     * @param  quantity  Integer value for quantity.
+     * @param  category  String value for category.
+     * @param  code  String value for code.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
      */
-    protected GetOrderItemResponse(OptionalNullable<String> id, OptionalNullable<Integer> amount,
-            OptionalNullable<String> description, OptionalNullable<Integer> quantity,
-            OptionalNullable<String> category, OptionalNullable<String> code) {
+
+    protected GetOrderItemResponse(OptionalNullable<String> id, OptionalNullable<String> type,
+            OptionalNullable<String> description, OptionalNullable<Integer> amount,
+            OptionalNullable<Integer> quantity, OptionalNullable<String> category,
+            OptionalNullable<String> code, OptionalNullable<String> status,
+            OptionalNullable<LocalDateTime> createdAt,
+            OptionalNullable<LocalDateTime> updatedAt) {
         this.id = id;
-        this.amount = amount;
+        this.type = type;
         this.description = description;
+        this.amount = amount;
         this.quantity = quantity;
         this.category = category;
         this.code = code;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     /**
@@ -107,38 +144,38 @@ public class GetOrderItemResponse {
     }
 
     /**
-     * Internal Getter for Amount.
-     * @return Returns the Internal Integer
+     * Internal Getter for Type.
+     * @return Returns the Internal String
      */
-    @JsonGetter("amount")
+    @JsonGetter("type")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonSerialize(using = OptionalNullable.Serializer.class)
-    protected OptionalNullable<Integer> internalGetAmount() {
-        return this.amount;
+    protected OptionalNullable<String> internalGetType() {
+        return this.type;
     }
 
     /**
-     * Getter for Amount.
-     * @return Returns the Integer
+     * Getter for Type.
+     * @return Returns the String
      */
-    public Integer getAmount() {
-        return OptionalNullable.getFrom(amount);
+    public String getType() {
+        return OptionalNullable.getFrom(type);
     }
 
     /**
-     * Setter for Amount.
-     * @param amount Value for Integer
+     * Setter for Type.
+     * @param type Value for String
      */
-    @JsonSetter("amount")
-    public void setAmount(Integer amount) {
-        this.amount = OptionalNullable.of(amount);
+    @JsonSetter("type")
+    public void setType(String type) {
+        this.type = OptionalNullable.of(type);
     }
 
     /**
-     * UnSetter for Amount.
+     * UnSetter for Type.
      */
-    public void unsetAmount() {
-        amount = null;
+    public void unsetType() {
+        type = null;
     }
 
     /**
@@ -174,6 +211,41 @@ public class GetOrderItemResponse {
      */
     public void unsetDescription() {
         description = null;
+    }
+
+    /**
+     * Internal Getter for Amount.
+     * @return Returns the Internal Integer
+     */
+    @JsonGetter("amount")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<Integer> internalGetAmount() {
+        return this.amount;
+    }
+
+    /**
+     * Getter for Amount.
+     * @return Returns the Integer
+     */
+    public Integer getAmount() {
+        return OptionalNullable.getFrom(amount);
+    }
+
+    /**
+     * Setter for Amount.
+     * @param amount Value for Integer
+     */
+    @JsonSetter("amount")
+    public void setAmount(Integer amount) {
+        this.amount = OptionalNullable.of(amount);
+    }
+
+    /**
+     * UnSetter for Amount.
+     */
+    public void unsetAmount() {
+        amount = null;
     }
 
     /**
@@ -290,14 +362,122 @@ public class GetOrderItemResponse {
     }
 
     /**
+     * Internal Getter for Status.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("status")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetStatus() {
+        return this.status;
+    }
+
+    /**
+     * Getter for Status.
+     * @return Returns the String
+     */
+    public String getStatus() {
+        return OptionalNullable.getFrom(status);
+    }
+
+    /**
+     * Setter for Status.
+     * @param status Value for String
+     */
+    @JsonSetter("status")
+    public void setStatus(String status) {
+        this.status = OptionalNullable.of(status);
+    }
+
+    /**
+     * UnSetter for Status.
+     */
+    public void unsetStatus() {
+        status = null;
+    }
+
+    /**
+     * Internal Getter for CreatedAt.
+     * @return Returns the Internal LocalDateTime
+     */
+    @JsonGetter("created_at")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Rfc8601DateTimeSerializer.class)
+    protected OptionalNullable<LocalDateTime> internalGetCreatedAt() {
+        return this.createdAt;
+    }
+
+    /**
+     * Getter for CreatedAt.
+     * @return Returns the LocalDateTime
+     */
+    public LocalDateTime getCreatedAt() {
+        return OptionalNullable.getFrom(createdAt);
+    }
+
+    /**
+     * Setter for CreatedAt.
+     * @param createdAt Value for LocalDateTime
+     */
+    @JsonSetter("created_at")
+    @JsonDeserialize(using = DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = OptionalNullable.of(createdAt);
+    }
+
+    /**
+     * UnSetter for CreatedAt.
+     */
+    public void unsetCreatedAt() {
+        createdAt = null;
+    }
+
+    /**
+     * Internal Getter for UpdatedAt.
+     * @return Returns the Internal LocalDateTime
+     */
+    @JsonGetter("updated_at")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Rfc8601DateTimeSerializer.class)
+    protected OptionalNullable<LocalDateTime> internalGetUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    /**
+     * Getter for UpdatedAt.
+     * @return Returns the LocalDateTime
+     */
+    public LocalDateTime getUpdatedAt() {
+        return OptionalNullable.getFrom(updatedAt);
+    }
+
+    /**
+     * Setter for UpdatedAt.
+     * @param updatedAt Value for LocalDateTime
+     */
+    @JsonSetter("updated_at")
+    @JsonDeserialize(using = DateTimeHelper.Rfc8601DateTimeDeserializer.class)
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = OptionalNullable.of(updatedAt);
+    }
+
+    /**
+     * UnSetter for UpdatedAt.
+     */
+    public void unsetUpdatedAt() {
+        updatedAt = null;
+    }
+
+    /**
      * Converts this GetOrderItemResponse into string format.
      * @return String representation of this class
      */
     @Override
     public String toString() {
-        return "GetOrderItemResponse [" + "id=" + id + ", amount=" + amount + ", description="
-                + description + ", quantity=" + quantity + ", category=" + category + ", code="
-                + code + "]";
+        return "GetOrderItemResponse [" + "id=" + id + ", type=" + type + ", description="
+                + description + ", amount=" + amount + ", quantity=" + quantity + ", category="
+                + category + ", code=" + code + ", status=" + status + ", createdAt=" + createdAt
+                + ", updatedAt=" + updatedAt + "]";
     }
 
     /**
@@ -308,11 +488,15 @@ public class GetOrderItemResponse {
     public Builder toBuilder() {
         Builder builder = new Builder();
         builder.id = internalGetId();
-        builder.amount = internalGetAmount();
+        builder.type = internalGetType();
         builder.description = internalGetDescription();
+        builder.amount = internalGetAmount();
         builder.quantity = internalGetQuantity();
         builder.category = internalGetCategory();
         builder.code = internalGetCode();
+        builder.status = internalGetStatus();
+        builder.createdAt = internalGetCreatedAt();
+        builder.updatedAt = internalGetUpdatedAt();
         return builder;
     }
 
@@ -321,11 +505,15 @@ public class GetOrderItemResponse {
      */
     public static class Builder {
         private OptionalNullable<String> id;
-        private OptionalNullable<Integer> amount;
+        private OptionalNullable<String> type;
         private OptionalNullable<String> description;
+        private OptionalNullable<Integer> amount;
         private OptionalNullable<Integer> quantity;
         private OptionalNullable<String> category;
         private OptionalNullable<String> code;
+        private OptionalNullable<String> status;
+        private OptionalNullable<LocalDateTime> createdAt;
+        private OptionalNullable<LocalDateTime> updatedAt;
 
 
 
@@ -349,21 +537,21 @@ public class GetOrderItemResponse {
         }
 
         /**
-         * Setter for amount.
-         * @param  amount  Integer value for amount.
+         * Setter for type.
+         * @param  type  String value for type.
          * @return Builder
          */
-        public Builder amount(Integer amount) {
-            this.amount = OptionalNullable.of(amount);
+        public Builder type(String type) {
+            this.type = OptionalNullable.of(type);
             return this;
         }
 
         /**
-         * UnSetter for amount.
+         * UnSetter for type.
          * @return Builder
          */
-        public Builder unsetAmount() {
-            amount = null;
+        public Builder unsetType() {
+            type = null;
             return this;
         }
 
@@ -383,6 +571,25 @@ public class GetOrderItemResponse {
          */
         public Builder unsetDescription() {
             description = null;
+            return this;
+        }
+
+        /**
+         * Setter for amount.
+         * @param  amount  Integer value for amount.
+         * @return Builder
+         */
+        public Builder amount(Integer amount) {
+            this.amount = OptionalNullable.of(amount);
+            return this;
+        }
+
+        /**
+         * UnSetter for amount.
+         * @return Builder
+         */
+        public Builder unsetAmount() {
+            amount = null;
             return this;
         }
 
@@ -444,11 +651,69 @@ public class GetOrderItemResponse {
         }
 
         /**
+         * Setter for status.
+         * @param  status  String value for status.
+         * @return Builder
+         */
+        public Builder status(String status) {
+            this.status = OptionalNullable.of(status);
+            return this;
+        }
+
+        /**
+         * UnSetter for status.
+         * @return Builder
+         */
+        public Builder unsetStatus() {
+            status = null;
+            return this;
+        }
+
+        /**
+         * Setter for createdAt.
+         * @param  createdAt  LocalDateTime value for createdAt.
+         * @return Builder
+         */
+        public Builder createdAt(LocalDateTime createdAt) {
+            this.createdAt = OptionalNullable.of(createdAt);
+            return this;
+        }
+
+        /**
+         * UnSetter for createdAt.
+         * @return Builder
+         */
+        public Builder unsetCreatedAt() {
+            createdAt = null;
+            return this;
+        }
+
+        /**
+         * Setter for updatedAt.
+         * @param  updatedAt  LocalDateTime value for updatedAt.
+         * @return Builder
+         */
+        public Builder updatedAt(LocalDateTime updatedAt) {
+            this.updatedAt = OptionalNullable.of(updatedAt);
+            return this;
+        }
+
+        /**
+         * UnSetter for updatedAt.
+         * @return Builder
+         */
+        public Builder unsetUpdatedAt() {
+            updatedAt = null;
+            return this;
+        }
+
+        /**
          * Builds a new {@link GetOrderItemResponse} object using the set fields.
          * @return {@link GetOrderItemResponse}
          */
         public GetOrderItemResponse build() {
-            return new GetOrderItemResponse(id, amount, description, quantity, category, code);
+            return new GetOrderItemResponse(id, type, description, amount, quantity, category, code,
+                    status, createdAt, updatedAt);
         }
     }
 }

@@ -62,8 +62,16 @@ public class GetTransferResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  amount  Integer value for amount.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  bankAccount  GetBankAccountResponse value for bankAccount.
+     * @param  metadata  Map of String, value for metadata.
      */
+
     protected GetTransferResponse(OptionalNullable<String> id, OptionalNullable<Integer> amount,
             OptionalNullable<String> status, OptionalNullable<LocalDateTime> createdAt,
             OptionalNullable<LocalDateTime> updatedAt,

@@ -98,8 +98,25 @@ public class GetBankAccountResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  holderName  String value for holderName.
+     * @param  holderType  String value for holderType.
+     * @param  bank  String value for bank.
+     * @param  branchNumber  String value for branchNumber.
+     * @param  branchCheckDigit  String value for branchCheckDigit.
+     * @param  accountNumber  String value for accountNumber.
+     * @param  accountCheckDigit  String value for accountCheckDigit.
+     * @param  type  String value for type.
+     * @param  status  String value for status.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
+     * @param  recipient  GetRecipientResponse value for recipient.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  pixKey  String value for pixKey.
      */
+
     protected GetBankAccountResponse(OptionalNullable<String> id,
             OptionalNullable<String> holderName, OptionalNullable<String> holderType,
             OptionalNullable<String> bank, OptionalNullable<String> branchNumber,

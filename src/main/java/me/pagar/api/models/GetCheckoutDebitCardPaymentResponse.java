@@ -38,8 +38,11 @@ public class GetCheckoutDebitCardPaymentResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  statementDescriptor  String value for statementDescriptor.
+     * @param  authentication  GetPaymentAuthenticationResponse value for authentication.
      */
+
     protected GetCheckoutDebitCardPaymentResponse(OptionalNullable<String> statementDescriptor,
             OptionalNullable<GetPaymentAuthenticationResponse> authentication) {
         this.statementDescriptor = statementDescriptor;

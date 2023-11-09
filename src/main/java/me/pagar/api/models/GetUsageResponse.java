@@ -77,8 +77,20 @@ public class GetUsageResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  quantity  Integer value for quantity.
+     * @param  description  String value for description.
+     * @param  usedAt  LocalDateTime value for usedAt.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  status  String value for status.
+     * @param  deletedAt  LocalDateTime value for deletedAt.
+     * @param  subscriptionItem  GetSubscriptionItemResponse value for subscriptionItem.
+     * @param  code  String value for code.
+     * @param  group  String value for group.
+     * @param  amount  Integer value for amount.
      */
+
     protected GetUsageResponse(OptionalNullable<String> id, OptionalNullable<Integer> quantity,
             OptionalNullable<String> description, OptionalNullable<LocalDateTime> usedAt,
             OptionalNullable<LocalDateTime> createdAt, OptionalNullable<String> status,

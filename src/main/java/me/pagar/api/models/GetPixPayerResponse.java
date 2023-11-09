@@ -46,8 +46,13 @@ public class GetPixPayerResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  name  String value for name.
+     * @param  document  String value for document.
+     * @param  documentType  String value for documentType.
+     * @param  bankAccount  GetPixBankAccountResponse value for bankAccount.
      */
+
     protected GetPixPayerResponse(OptionalNullable<String> name, OptionalNullable<String> document,
             OptionalNullable<String> documentType,
             OptionalNullable<GetPixBankAccountResponse> bankAccount) {

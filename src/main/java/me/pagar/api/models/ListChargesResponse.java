@@ -39,8 +39,11 @@ public class ListChargesResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetChargeResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListChargesResponse(OptionalNullable<List<GetChargeResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

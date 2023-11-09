@@ -41,8 +41,11 @@ public class GetTransactionReportFileResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  name  String value for name.
+     * @param  date  LocalDateTime value for date.
      */
+
     protected GetTransactionReportFileResponse(OptionalNullable<String> name,
             OptionalNullable<LocalDateTime> date) {
         this.name = name;

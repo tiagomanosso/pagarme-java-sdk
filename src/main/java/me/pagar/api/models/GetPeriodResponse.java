@@ -73,8 +73,19 @@ public class GetPeriodResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  startAt  LocalDateTime value for startAt.
+     * @param  endAt  LocalDateTime value for endAt.
+     * @param  id  String value for id.
+     * @param  billingAt  LocalDateTime value for billingAt.
+     * @param  subscription  GetSubscriptionResponse value for subscription.
+     * @param  status  String value for status.
+     * @param  duration  Integer value for duration.
+     * @param  createdAt  String value for createdAt.
+     * @param  updatedAt  String value for updatedAt.
+     * @param  cycle  Integer value for cycle.
      */
+
     protected GetPeriodResponse(OptionalNullable<LocalDateTime> startAt,
             OptionalNullable<LocalDateTime> endAt, OptionalNullable<String> id,
             OptionalNullable<LocalDateTime> billingAt,

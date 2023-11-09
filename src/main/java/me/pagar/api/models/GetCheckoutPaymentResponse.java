@@ -142,8 +142,36 @@ public class GetCheckoutPaymentResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  id  String value for id.
+     * @param  amount  Integer value for amount.
+     * @param  defaultPaymentMethod  String value for defaultPaymentMethod.
+     * @param  successUrl  String value for successUrl.
+     * @param  paymentUrl  String value for paymentUrl.
+     * @param  gatewayAffiliationId  String value for gatewayAffiliationId.
+     * @param  acceptedPaymentMethods  List of String value for acceptedPaymentMethods.
+     * @param  status  String value for status.
+     * @param  skipCheckoutSuccessPage  Boolean value for skipCheckoutSuccessPage.
+     * @param  createdAt  LocalDateTime value for createdAt.
+     * @param  updatedAt  LocalDateTime value for updatedAt.
+     * @param  canceledAt  LocalDateTime value for canceledAt.
+     * @param  customerEditable  Boolean value for customerEditable.
+     * @param  customer  GetCustomerResponse value for customer.
+     * @param  billingaddress  GetAddressResponse value for billingaddress.
+     * @param  creditCard  GetCheckoutCreditCardPaymentResponse value for creditCard.
+     * @param  boleto  GetCheckoutBoletoPaymentResponse value for boleto.
+     * @param  billingAddressEditable  Boolean value for billingAddressEditable.
+     * @param  shipping  GetShippingResponse value for shipping.
+     * @param  shippable  Boolean value for shippable.
+     * @param  closedAt  LocalDateTime value for closedAt.
+     * @param  expiresAt  LocalDateTime value for expiresAt.
+     * @param  currency  String value for currency.
+     * @param  debitCard  GetCheckoutDebitCardPaymentResponse value for debitCard.
+     * @param  bankTransfer  GetCheckoutBankTransferPaymentResponse value for bankTransfer.
+     * @param  acceptedBrands  List of String value for acceptedBrands.
+     * @param  pix  GetCheckoutPixPaymentResponse value for pix.
      */
+
     protected GetCheckoutPaymentResponse(OptionalNullable<String> id,
             OptionalNullable<Integer> amount, OptionalNullable<String> defaultPaymentMethod,
             OptionalNullable<String> successUrl, OptionalNullable<String> paymentUrl,

@@ -39,8 +39,11 @@ public class ListSubscriptionsResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  data  List of GetSubscriptionResponse value for data.
+     * @param  paging  PagingResponse value for paging.
      */
+
     protected ListSubscriptionsResponse(OptionalNullable<List<GetSubscriptionResponse>> data,
             OptionalNullable<PagingResponse> paging) {
         this.data = data;

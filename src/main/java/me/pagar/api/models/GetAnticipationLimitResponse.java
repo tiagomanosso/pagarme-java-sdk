@@ -38,8 +38,11 @@ public class GetAnticipationLimitResponse {
     }
 
     /**
-     * Internal initialization constructor.
+     * Initialization constructor.
+     * @param  amount  Integer value for amount.
+     * @param  anticipationFee  Integer value for anticipationFee.
      */
+
     protected GetAnticipationLimitResponse(OptionalNullable<Integer> amount,
             OptionalNullable<Integer> anticipationFee) {
         this.amount = amount;
