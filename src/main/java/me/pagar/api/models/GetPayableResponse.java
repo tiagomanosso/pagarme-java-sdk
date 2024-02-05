@@ -26,7 +26,7 @@ public class GetPayableResponse {
     private OptionalNullable<Integer> anticipationFee;
     private OptionalNullable<Integer> fraudCoverageFee;
     private OptionalNullable<Integer> installment;
-    private OptionalNullable<Integer> gatewayId;
+    private OptionalNullable<Long> gatewayId;
     private OptionalNullable<String> chargeId;
     private OptionalNullable<String> splitId;
     private OptionalNullable<String> bulkAnticipationId;
@@ -57,7 +57,7 @@ public class GetPayableResponse {
      * @param  anticipationFee  Integer value for anticipationFee.
      * @param  fraudCoverageFee  Integer value for fraudCoverageFee.
      * @param  installment  Integer value for installment.
-     * @param  gatewayId  Integer value for gatewayId.
+     * @param  gatewayId  Long value for gatewayId.
      * @param  chargeId  String value for chargeId.
      * @param  splitId  String value for splitId.
      * @param  bulkAnticipationId  String value for bulkAnticipationId.
@@ -81,7 +81,7 @@ public class GetPayableResponse {
             Integer anticipationFee,
             Integer fraudCoverageFee,
             Integer installment,
-            Integer gatewayId,
+            Long gatewayId,
             String chargeId,
             String splitId,
             String bulkAnticipationId,
@@ -129,7 +129,7 @@ public class GetPayableResponse {
      * @param  anticipationFee  Integer value for anticipationFee.
      * @param  fraudCoverageFee  Integer value for fraudCoverageFee.
      * @param  installment  Integer value for installment.
-     * @param  gatewayId  Integer value for gatewayId.
+     * @param  gatewayId  Long value for gatewayId.
      * @param  chargeId  String value for chargeId.
      * @param  splitId  String value for splitId.
      * @param  bulkAnticipationId  String value for bulkAnticipationId.
@@ -149,7 +149,7 @@ public class GetPayableResponse {
     protected GetPayableResponse(OptionalNullable<Long> id, OptionalNullable<String> status,
             OptionalNullable<Integer> amount, OptionalNullable<Integer> fee,
             OptionalNullable<Integer> anticipationFee, OptionalNullable<Integer> fraudCoverageFee,
-            OptionalNullable<Integer> installment, OptionalNullable<Integer> gatewayId,
+            OptionalNullable<Integer> installment, OptionalNullable<Long> gatewayId,
             OptionalNullable<String> chargeId, OptionalNullable<String> splitId,
             OptionalNullable<String> bulkAnticipationId, OptionalNullable<String> anticipationId,
             OptionalNullable<String> recipientId, OptionalNullable<String> originatorModel,
@@ -429,29 +429,29 @@ public class GetPayableResponse {
 
     /**
      * Internal Getter for GatewayId.
-     * @return Returns the Internal Integer
+     * @return Returns the Internal Long
      */
     @JsonGetter("gateway_id")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonSerialize(using = OptionalNullable.Serializer.class)
-    protected OptionalNullable<Integer> internalGetGatewayId() {
+    protected OptionalNullable<Long> internalGetGatewayId() {
         return this.gatewayId;
     }
 
     /**
      * Getter for GatewayId.
-     * @return Returns the Integer
+     * @return Returns the Long
      */
-    public Integer getGatewayId() {
+    public Long getGatewayId() {
         return OptionalNullable.getFrom(gatewayId);
     }
 
     /**
      * Setter for GatewayId.
-     * @param gatewayId Value for Integer
+     * @param gatewayId Value for Long
      */
     @JsonSetter("gateway_id")
-    public void setGatewayId(Integer gatewayId) {
+    public void setGatewayId(Long gatewayId) {
         this.gatewayId = OptionalNullable.of(gatewayId);
     }
 
@@ -1017,7 +1017,7 @@ public class GetPayableResponse {
         private OptionalNullable<Integer> anticipationFee;
         private OptionalNullable<Integer> fraudCoverageFee;
         private OptionalNullable<Integer> installment;
-        private OptionalNullable<Integer> gatewayId;
+        private OptionalNullable<Long> gatewayId;
         private OptionalNullable<String> chargeId;
         private OptionalNullable<String> splitId;
         private OptionalNullable<String> bulkAnticipationId;
@@ -1170,10 +1170,10 @@ public class GetPayableResponse {
 
         /**
          * Setter for gatewayId.
-         * @param  gatewayId  Integer value for gatewayId.
+         * @param  gatewayId  Long value for gatewayId.
          * @return Builder
          */
-        public Builder gatewayId(Integer gatewayId) {
+        public Builder gatewayId(Long gatewayId) {
             this.gatewayId = OptionalNullable.of(gatewayId);
             return this;
         }

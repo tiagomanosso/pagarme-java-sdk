@@ -28,6 +28,7 @@ Recipient response
 | `TransferSettings` | [`GetTransferSettingsResponse`](../../doc/models/get-transfer-settings-response.md) | Optional | - | GetTransferSettingsResponse getTransferSettings() | setTransferSettings(GetTransferSettingsResponse transferSettings) |
 | `Code` | `String` | Optional | Recipient code | String getCode() | setCode(String code) |
 | `PaymentMode` | `String` | Optional | Payment mode<br>**Default**: `"bank_transfer"` | String getPaymentMode() | setPaymentMode(String paymentMode) |
+| `RegisterInformation` | [`GetRegisterInformationResponse`](../../doc/models/get-register-information-response.md) | Optional | - | GetRegisterInformationResponse getRegisterInformation() | setRegisterInformation(GetRegisterInformationResponse registerInformation) |
 
 ## Example (as JSON)
 

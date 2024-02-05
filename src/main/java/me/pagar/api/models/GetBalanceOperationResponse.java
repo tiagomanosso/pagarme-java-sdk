@@ -21,7 +21,7 @@ public class GetBalanceOperationResponse {
     private OptionalNullable<String> balanceAmount;
     private OptionalNullable<String> balanceOldAmount;
     private OptionalNullable<String> type;
-    private OptionalNullable<String> amount;
+    private OptionalNullable<Integer> amount;
     private OptionalNullable<String> fee;
     private OptionalNullable<String> createdAt;
     private GetMovementObjectBaseResponse movementObject;
@@ -39,7 +39,7 @@ public class GetBalanceOperationResponse {
      * @param  balanceAmount  String value for balanceAmount.
      * @param  balanceOldAmount  String value for balanceOldAmount.
      * @param  type  String value for type.
-     * @param  amount  String value for amount.
+     * @param  amount  Integer value for amount.
      * @param  fee  String value for fee.
      * @param  createdAt  String value for createdAt.
      * @param  movementObject  GetMovementObjectBaseResponse value for movementObject.
@@ -50,7 +50,7 @@ public class GetBalanceOperationResponse {
             String balanceAmount,
             String balanceOldAmount,
             String type,
-            String amount,
+            Integer amount,
             String fee,
             String createdAt,
             GetMovementObjectBaseResponse movementObject) {
@@ -72,7 +72,7 @@ public class GetBalanceOperationResponse {
      * @param  balanceAmount  String value for balanceAmount.
      * @param  balanceOldAmount  String value for balanceOldAmount.
      * @param  type  String value for type.
-     * @param  amount  String value for amount.
+     * @param  amount  Integer value for amount.
      * @param  fee  String value for fee.
      * @param  createdAt  String value for createdAt.
      * @param  movementObject  GetMovementObjectBaseResponse value for movementObject.
@@ -81,7 +81,7 @@ public class GetBalanceOperationResponse {
     protected GetBalanceOperationResponse(OptionalNullable<String> id,
             OptionalNullable<String> status, OptionalNullable<String> balanceAmount,
             OptionalNullable<String> balanceOldAmount, OptionalNullable<String> type,
-            OptionalNullable<String> amount, OptionalNullable<String> fee,
+            OptionalNullable<Integer> amount, OptionalNullable<String> fee,
             OptionalNullable<String> createdAt, GetMovementObjectBaseResponse movementObject) {
         this.id = id;
         this.status = status;
@@ -271,29 +271,29 @@ public class GetBalanceOperationResponse {
 
     /**
      * Internal Getter for Amount.
-     * @return Returns the Internal String
+     * @return Returns the Internal Integer
      */
     @JsonGetter("amount")
     @JsonInclude(JsonInclude.Include.NON_NULL)
     @JsonSerialize(using = OptionalNullable.Serializer.class)
-    protected OptionalNullable<String> internalGetAmount() {
+    protected OptionalNullable<Integer> internalGetAmount() {
         return this.amount;
     }
 
     /**
      * Getter for Amount.
-     * @return Returns the String
+     * @return Returns the Integer
      */
-    public String getAmount() {
+    public Integer getAmount() {
         return OptionalNullable.getFrom(amount);
     }
 
     /**
      * Setter for Amount.
-     * @param amount Value for String
+     * @param amount Value for Integer
      */
     @JsonSetter("amount")
-    public void setAmount(String amount) {
+    public void setAmount(Integer amount) {
         this.amount = OptionalNullable.of(amount);
     }
 
@@ -433,7 +433,7 @@ public class GetBalanceOperationResponse {
         private OptionalNullable<String> balanceAmount;
         private OptionalNullable<String> balanceOldAmount;
         private OptionalNullable<String> type;
-        private OptionalNullable<String> amount;
+        private OptionalNullable<Integer> amount;
         private OptionalNullable<String> fee;
         private OptionalNullable<String> createdAt;
         private GetMovementObjectBaseResponse movementObject;
@@ -537,10 +537,10 @@ public class GetBalanceOperationResponse {
 
         /**
          * Setter for amount.
-         * @param  amount  String value for amount.
+         * @param  amount  Integer value for amount.
          * @return Builder
          */
-        public Builder amount(String amount) {
+        public Builder amount(Integer amount) {
             this.amount = OptionalNullable.of(amount);
             return this;
         }
