@@ -94,7 +94,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                         .queryParam(param -> param.key("customer_id")
                                 .value(customerId).isRequired(false))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -144,7 +143,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.PUT))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -183,7 +181,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                         .headerParam(param -> param.key("idempotency-key")
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.DELETE))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -227,7 +224,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                         .headerParam(param -> param.key("idempotency-key")
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.DELETE))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -272,7 +268,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.PATCH))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -313,7 +308,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.POST))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -358,7 +352,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.POST))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -397,7 +390,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                         .templateParam(param -> param.key("itemId").value(itemId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -443,7 +435,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.PATCH))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -478,7 +469,6 @@ public final class DefaultOrdersController extends BaseController implements Ord
                         .templateParam(param -> param.key("order_id").value(orderId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(

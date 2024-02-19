@@ -38,6 +38,7 @@ public class GetRecipientResponse {
     private OptionalNullable<GetTransferSettingsResponse> transferSettings;
     private OptionalNullable<String> code;
     private OptionalNullable<String> paymentMode;
+    private OptionalNullable<GetRegisterInformationResponse> registerInformation;
 
     /**
      * Default constructor.
@@ -66,6 +67,7 @@ public class GetRecipientResponse {
      * @param  transferSettings  GetTransferSettingsResponse value for transferSettings.
      * @param  code  String value for code.
      * @param  paymentMode  String value for paymentMode.
+     * @param  registerInformation  GetRegisterInformationResponse value for registerInformation.
      */
     public GetRecipientResponse(
             String id,
@@ -84,7 +86,8 @@ public class GetRecipientResponse {
             GetAutomaticAnticipationResponse automaticAnticipationSettings,
             GetTransferSettingsResponse transferSettings,
             String code,
-            String paymentMode) {
+            String paymentMode,
+            GetRegisterInformationResponse registerInformation) {
         this.id = OptionalNullable.of(id);
         this.name = OptionalNullable.of(name);
         this.email = OptionalNullable.of(email);
@@ -102,6 +105,7 @@ public class GetRecipientResponse {
         this.transferSettings = OptionalNullable.of(transferSettings);
         this.code = OptionalNullable.of(code);
         this.paymentMode = OptionalNullable.of(paymentMode);
+        this.registerInformation = OptionalNullable.of(registerInformation);
     }
 
     /**
@@ -124,6 +128,7 @@ public class GetRecipientResponse {
      * @param  transferSettings  GetTransferSettingsResponse value for transferSettings.
      * @param  code  String value for code.
      * @param  paymentMode  String value for paymentMode.
+     * @param  registerInformation  GetRegisterInformationResponse value for registerInformation.
      */
 
     protected GetRecipientResponse(OptionalNullable<String> id, OptionalNullable<String> name,
@@ -136,7 +141,8 @@ public class GetRecipientResponse {
             OptionalNullable<Map<String, String>> metadata,
             OptionalNullable<GetAutomaticAnticipationResponse> automaticAnticipationSettings,
             OptionalNullable<GetTransferSettingsResponse> transferSettings,
-            OptionalNullable<String> code, OptionalNullable<String> paymentMode) {
+            OptionalNullable<String> code, OptionalNullable<String> paymentMode,
+            OptionalNullable<GetRegisterInformationResponse> registerInformation) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -154,6 +160,7 @@ public class GetRecipientResponse {
         this.transferSettings = transferSettings;
         this.code = code;
         this.paymentMode = paymentMode;
+        this.registerInformation = registerInformation;
     }
 
     /**
@@ -815,6 +822,41 @@ public class GetRecipientResponse {
     }
 
     /**
+     * Internal Getter for RegisterInformation.
+     * @return Returns the Internal GetRegisterInformationResponse
+     */
+    @JsonGetter("register_information")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<GetRegisterInformationResponse> internalGetRegisterInformation() {
+        return this.registerInformation;
+    }
+
+    /**
+     * Getter for RegisterInformation.
+     * @return Returns the GetRegisterInformationResponse
+     */
+    public GetRegisterInformationResponse getRegisterInformation() {
+        return OptionalNullable.getFrom(registerInformation);
+    }
+
+    /**
+     * Setter for RegisterInformation.
+     * @param registerInformation Value for GetRegisterInformationResponse
+     */
+    @JsonSetter("register_information")
+    public void setRegisterInformation(GetRegisterInformationResponse registerInformation) {
+        this.registerInformation = OptionalNullable.of(registerInformation);
+    }
+
+    /**
+     * UnSetter for RegisterInformation.
+     */
+    public void unsetRegisterInformation() {
+        registerInformation = null;
+    }
+
+    /**
      * Converts this GetRecipientResponse into string format.
      * @return String representation of this class
      */
@@ -827,7 +869,7 @@ public class GetRecipientResponse {
                 + ", gatewayRecipients=" + gatewayRecipients + ", metadata=" + metadata
                 + ", automaticAnticipationSettings=" + automaticAnticipationSettings
                 + ", transferSettings=" + transferSettings + ", code=" + code + ", paymentMode="
-                + paymentMode + "]";
+                + paymentMode + ", registerInformation=" + registerInformation + "]";
     }
 
     /**
@@ -854,6 +896,7 @@ public class GetRecipientResponse {
         builder.transferSettings = internalGetTransferSettings();
         builder.code = internalGetCode();
         builder.paymentMode = internalGetPaymentMode();
+        builder.registerInformation = internalGetRegisterInformation();
         return builder;
     }
 
@@ -878,6 +921,7 @@ public class GetRecipientResponse {
         private OptionalNullable<GetTransferSettingsResponse> transferSettings;
         private OptionalNullable<String> code;
         private OptionalNullable<String> paymentMode = OptionalNullable.of("bank_transfer");
+        private OptionalNullable<GetRegisterInformationResponse> registerInformation;
 
 
 
@@ -1208,13 +1252,34 @@ public class GetRecipientResponse {
         }
 
         /**
+         * Setter for registerInformation.
+         * @param  registerInformation  GetRegisterInformationResponse value for
+         *         registerInformation.
+         * @return Builder
+         */
+        public Builder registerInformation(GetRegisterInformationResponse registerInformation) {
+            this.registerInformation = OptionalNullable.of(registerInformation);
+            return this;
+        }
+
+        /**
+         * UnSetter for registerInformation.
+         * @return Builder
+         */
+        public Builder unsetRegisterInformation() {
+            registerInformation = null;
+            return this;
+        }
+
+        /**
          * Builds a new {@link GetRecipientResponse} object using the set fields.
          * @return {@link GetRecipientResponse}
          */
         public GetRecipientResponse build() {
             return new GetRecipientResponse(id, name, email, document, description, type, status,
                     createdAt, updatedAt, deletedAt, defaultBankAccount, gatewayRecipients,
-                    metadata, automaticAnticipationSettings, transferSettings, code, paymentMode);
+                    metadata, automaticAnticipationSettings, transferSettings, code, paymentMode,
+                    registerInformation);
         }
     }
 }

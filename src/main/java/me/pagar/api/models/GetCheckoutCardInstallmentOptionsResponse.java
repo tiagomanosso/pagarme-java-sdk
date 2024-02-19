@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonSetter;
  * This is a model class for GetCheckoutCardInstallmentOptionsResponse type.
  */
 public class GetCheckoutCardInstallmentOptionsResponse {
-    private String number;
+    private Long number;
     private Integer total;
 
     /**
@@ -24,11 +24,11 @@ public class GetCheckoutCardInstallmentOptionsResponse {
 
     /**
      * Initialization constructor.
-     * @param  number  String value for number.
+     * @param  number  Long value for number.
      * @param  total  Integer value for total.
      */
     public GetCheckoutCardInstallmentOptionsResponse(
-            String number,
+            Long number,
             Integer total) {
         this.number = number;
         this.total = total;
@@ -37,20 +37,20 @@ public class GetCheckoutCardInstallmentOptionsResponse {
     /**
      * Getter for Number.
      * Número de parcelas
-     * @return Returns the String
+     * @return Returns the Long
      */
     @JsonGetter("number")
-    public String getNumber() {
+    public Long getNumber() {
         return number;
     }
 
     /**
      * Setter for Number.
      * Número de parcelas
-     * @param number Value for String
+     * @param number Value for Long
      */
     @JsonSetter("number")
-    public void setNumber(String number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
@@ -98,7 +98,7 @@ public class GetCheckoutCardInstallmentOptionsResponse {
      * Class to build instances of {@link GetCheckoutCardInstallmentOptionsResponse}.
      */
     public static class Builder {
-        private String number;
+        private Long number;
         private Integer total;
 
         /**
@@ -109,20 +109,20 @@ public class GetCheckoutCardInstallmentOptionsResponse {
 
         /**
          * Initialization constructor.
-         * @param  number  String value for number.
+         * @param  number  Long value for number.
          * @param  total  Integer value for total.
          */
-        public Builder(String number, Integer total) {
+        public Builder(Long number, Integer total) {
             this.number = number;
             this.total = total;
         }
 
         /**
          * Setter for number.
-         * @param  number  String value for number.
+         * @param  number  Long value for number.
          * @return Builder
          */
-        public Builder number(String number) {
+        public Builder number(Long number) {
             this.number = number;
             return this;
         }

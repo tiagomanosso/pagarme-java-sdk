@@ -18,7 +18,7 @@ Response object for getting an payable
 | `AnticipationFee` | `Integer` | Optional | - | Integer getAnticipationFee() | setAnticipationFee(Integer anticipationFee) |
 | `FraudCoverageFee` | `Integer` | Optional | - | Integer getFraudCoverageFee() | setFraudCoverageFee(Integer fraudCoverageFee) |
 | `Installment` | `Integer` | Optional | - | Integer getInstallment() | setInstallment(Integer installment) |
-| `GatewayId` | `Integer` | Optional | - | Integer getGatewayId() | setGatewayId(Integer gatewayId) |
+| `GatewayId` | `Long` | Optional | - | Long getGatewayId() | setGatewayId(Long gatewayId) |
 | `ChargeId` | `String` | Optional | - | String getChargeId() | setChargeId(String chargeId) |
 | `SplitId` | `String` | Optional | - | String getSplitId() | setSplitId(String splitId) |
 | `BulkAnticipationId` | `String` | Optional | - | String getBulkAnticipationId() | setBulkAnticipationId(String bulkAnticipationId) |

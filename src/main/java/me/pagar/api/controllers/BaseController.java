@@ -18,7 +18,6 @@ import me.pagar.api.exceptions.ErrorException;
  * Base class for all Controllers.
  */
 public abstract class BaseController {
-    protected final static String AUTHENTICATION_KEY = "global";
     protected static final Map<String, ErrorCase<ApiException>> GLOBAL_ERROR_CASES =
             new HashMap<String, ErrorCase<ApiException>>();
     private GlobalConfiguration globalConfig;

@@ -9,22 +9,25 @@ package me.pagar.api.models;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.apimatic.core.types.OptionalNullable;
 import java.util.Map;
 
 /**
  * This is a model class for CreateRecipientRequest type.
  */
 public class CreateRecipientRequest {
-    private String name;
-    private String email;
-    private String description;
-    private String document;
-    private String type;
+    private OptionalNullable<String> name;
+    private OptionalNullable<String> email;
+    private OptionalNullable<String> description;
+    private OptionalNullable<String> document;
+    private OptionalNullable<String> type;
     private CreateBankAccountRequest defaultBankAccount;
     private Map<String, String> metadata;
     private CreateTransferSettingsRequest transferSettings;
     private String code;
     private String paymentMode;
+    private OptionalNullable<CreateRegisterInformationBaseRequest> registerInformation;
 
     /**
      * Default constructor.
@@ -35,28 +38,66 @@ public class CreateRecipientRequest {
 
     /**
      * Initialization constructor.
+     * @param  defaultBankAccount  CreateBankAccountRequest value for defaultBankAccount.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  code  String value for code.
+     * @param  paymentMode  String value for paymentMode.
      * @param  name  String value for name.
      * @param  email  String value for email.
      * @param  description  String value for description.
      * @param  document  String value for document.
      * @param  type  String value for type.
-     * @param  defaultBankAccount  CreateBankAccountRequest value for defaultBankAccount.
-     * @param  metadata  Map of String, value for metadata.
-     * @param  code  String value for code.
-     * @param  paymentMode  String value for paymentMode.
      * @param  transferSettings  CreateTransferSettingsRequest value for transferSettings.
+     * @param  registerInformation  CreateRegisterInformationBaseRequest value for
+     *         registerInformation.
      */
     public CreateRecipientRequest(
+            CreateBankAccountRequest defaultBankAccount,
+            Map<String, String> metadata,
+            String code,
+            String paymentMode,
             String name,
             String email,
             String description,
             String document,
             String type,
-            CreateBankAccountRequest defaultBankAccount,
-            Map<String, String> metadata,
-            String code,
-            String paymentMode,
-            CreateTransferSettingsRequest transferSettings) {
+            CreateTransferSettingsRequest transferSettings,
+            CreateRegisterInformationBaseRequest registerInformation) {
+        this.name = OptionalNullable.of(name);
+        this.email = OptionalNullable.of(email);
+        this.description = OptionalNullable.of(description);
+        this.document = OptionalNullable.of(document);
+        this.type = OptionalNullable.of(type);
+        this.defaultBankAccount = defaultBankAccount;
+        this.metadata = metadata;
+        this.transferSettings = transferSettings;
+        this.code = code;
+        this.paymentMode = paymentMode;
+        this.registerInformation = OptionalNullable.of(registerInformation);
+    }
+
+    /**
+     * Initialization constructor.
+     * @param  defaultBankAccount  CreateBankAccountRequest value for defaultBankAccount.
+     * @param  metadata  Map of String, value for metadata.
+     * @param  code  String value for code.
+     * @param  paymentMode  String value for paymentMode.
+     * @param  name  String value for name.
+     * @param  email  String value for email.
+     * @param  description  String value for description.
+     * @param  document  String value for document.
+     * @param  type  String value for type.
+     * @param  transferSettings  CreateTransferSettingsRequest value for transferSettings.
+     * @param  registerInformation  CreateRegisterInformationBaseRequest value for
+     *         registerInformation.
+     */
+
+    protected CreateRecipientRequest(CreateBankAccountRequest defaultBankAccount,
+            Map<String, String> metadata, String code, String paymentMode,
+            OptionalNullable<String> name, OptionalNullable<String> email,
+            OptionalNullable<String> description, OptionalNullable<String> document,
+            OptionalNullable<String> type, CreateTransferSettingsRequest transferSettings,
+            OptionalNullable<CreateRegisterInformationBaseRequest> registerInformation) {
         this.name = name;
         this.email = email;
         this.description = description;
@@ -67,46 +108,97 @@ public class CreateRecipientRequest {
         this.transferSettings = transferSettings;
         this.code = code;
         this.paymentMode = paymentMode;
+        this.registerInformation = registerInformation;
+    }
+
+    /**
+     * Internal Getter for Name.
+     * Recipient name. Required if the register_information field isn't populated.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("name")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetName() {
+        return this.name;
     }
 
     /**
      * Getter for Name.
-     * Recipient name
+     * Recipient name. Required if the register_information field isn't populated.
      * @return Returns the String
      */
-    @JsonGetter("name")
     public String getName() {
-        return name;
+        return OptionalNullable.getFrom(name);
     }
 
     /**
      * Setter for Name.
-     * Recipient name
+     * Recipient name. Required if the register_information field isn't populated.
      * @param name Value for String
      */
     @JsonSetter("name")
     public void setName(String name) {
-        this.name = name;
+        this.name = OptionalNullable.of(name);
+    }
+
+    /**
+     * UnSetter for Name.
+     * Recipient name. Required if the register_information field isn't populated.
+     */
+    public void unsetName() {
+        name = null;
+    }
+
+    /**
+     * Internal Getter for Email.
+     * Recipient email. Required if the register_information field isn't populated.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("email")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetEmail() {
+        return this.email;
     }
 
     /**
      * Getter for Email.
-     * Recipient email
+     * Recipient email. Required if the register_information field isn't populated.
      * @return Returns the String
      */
-    @JsonGetter("email")
     public String getEmail() {
-        return email;
+        return OptionalNullable.getFrom(email);
     }
 
     /**
      * Setter for Email.
-     * Recipient email
+     * Recipient email. Required if the register_information field isn't populated.
      * @param email Value for String
      */
     @JsonSetter("email")
     public void setEmail(String email) {
-        this.email = email;
+        this.email = OptionalNullable.of(email);
+    }
+
+    /**
+     * UnSetter for Email.
+     * Recipient email. Required if the register_information field isn't populated.
+     */
+    public void unsetEmail() {
+        email = null;
+    }
+
+    /**
+     * Internal Getter for Description.
+     * Recipient description
+     * @return Returns the Internal String
+     */
+    @JsonGetter("description")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetDescription() {
+        return this.description;
     }
 
     /**
@@ -114,9 +206,8 @@ public class CreateRecipientRequest {
      * Recipient description
      * @return Returns the String
      */
-    @JsonGetter("description")
     public String getDescription() {
-        return description;
+        return OptionalNullable.getFrom(description);
     }
 
     /**
@@ -126,47 +217,93 @@ public class CreateRecipientRequest {
      */
     @JsonSetter("description")
     public void setDescription(String description) {
-        this.description = description;
+        this.description = OptionalNullable.of(description);
+    }
+
+    /**
+     * UnSetter for Description.
+     * Recipient description
+     */
+    public void unsetDescription() {
+        description = null;
+    }
+
+    /**
+     * Internal Getter for Document.
+     * Recipient document number. Required if the register_information field isn't populated.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("document")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetDocument() {
+        return this.document;
     }
 
     /**
      * Getter for Document.
-     * Recipient document number
+     * Recipient document number. Required if the register_information field isn't populated.
      * @return Returns the String
      */
-    @JsonGetter("document")
     public String getDocument() {
-        return document;
+        return OptionalNullable.getFrom(document);
     }
 
     /**
      * Setter for Document.
-     * Recipient document number
+     * Recipient document number. Required if the register_information field isn't populated.
      * @param document Value for String
      */
     @JsonSetter("document")
     public void setDocument(String document) {
-        this.document = document;
+        this.document = OptionalNullable.of(document);
+    }
+
+    /**
+     * UnSetter for Document.
+     * Recipient document number. Required if the register_information field isn't populated.
+     */
+    public void unsetDocument() {
+        document = null;
+    }
+
+    /**
+     * Internal Getter for Type.
+     * Recipient type. Required if the register_information field isn't populated.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("type")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetType() {
+        return this.type;
     }
 
     /**
      * Getter for Type.
-     * Recipient type
+     * Recipient type. Required if the register_information field isn't populated.
      * @return Returns the String
      */
-    @JsonGetter("type")
     public String getType() {
-        return type;
+        return OptionalNullable.getFrom(type);
     }
 
     /**
      * Setter for Type.
-     * Recipient type
+     * Recipient type. Required if the register_information field isn't populated.
      * @param type Value for String
      */
     @JsonSetter("type")
     public void setType(String type) {
-        this.type = type;
+        this.type = OptionalNullable.of(type);
+    }
+
+    /**
+     * UnSetter for Type.
+     * Recipient type. Required if the register_information field isn't populated.
+     */
+    public void unsetType() {
+        type = null;
     }
 
     /**
@@ -271,16 +408,55 @@ public class CreateRecipientRequest {
     }
 
     /**
+     * Internal Getter for RegisterInformation.
+     * Register Information
+     * @return Returns the Internal CreateRegisterInformationBaseRequest
+     */
+    @JsonGetter("register_information")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<CreateRegisterInformationBaseRequest> internalGetRegisterInformation() {
+        return this.registerInformation;
+    }
+
+    /**
+     * Getter for RegisterInformation.
+     * Register Information
+     * @return Returns the CreateRegisterInformationBaseRequest
+     */
+    public CreateRegisterInformationBaseRequest getRegisterInformation() {
+        return OptionalNullable.getFrom(registerInformation);
+    }
+
+    /**
+     * Setter for RegisterInformation.
+     * Register Information
+     * @param registerInformation Value for CreateRegisterInformationBaseRequest
+     */
+    @JsonSetter("register_information")
+    public void setRegisterInformation(CreateRegisterInformationBaseRequest registerInformation) {
+        this.registerInformation = OptionalNullable.of(registerInformation);
+    }
+
+    /**
+     * UnSetter for RegisterInformation.
+     * Register Information
+     */
+    public void unsetRegisterInformation() {
+        registerInformation = null;
+    }
+
+    /**
      * Converts this CreateRecipientRequest into string format.
      * @return String representation of this class
      */
     @Override
     public String toString() {
-        return "CreateRecipientRequest [" + "name=" + name + ", email=" + email + ", description="
-                + description + ", document=" + document + ", type=" + type
-                + ", defaultBankAccount=" + defaultBankAccount + ", metadata=" + metadata
-                + ", code=" + code + ", paymentMode=" + paymentMode + ", transferSettings="
-                + transferSettings + "]";
+        return "CreateRecipientRequest [" + "defaultBankAccount=" + defaultBankAccount
+                + ", metadata=" + metadata + ", code=" + code + ", paymentMode=" + paymentMode
+                + ", name=" + name + ", email=" + email + ", description=" + description
+                + ", document=" + document + ", type=" + type + ", transferSettings="
+                + transferSettings + ", registerInformation=" + registerInformation + "]";
     }
 
     /**
@@ -289,9 +465,14 @@ public class CreateRecipientRequest {
      * @return a new {@link CreateRecipientRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder(name, email, description, document, type, defaultBankAccount,
-                metadata, code, paymentMode)
+        Builder builder = new Builder(defaultBankAccount, metadata, code, paymentMode)
                 .transferSettings(getTransferSettings());
+        builder.name = internalGetName();
+        builder.email = internalGetEmail();
+        builder.description = internalGetDescription();
+        builder.document = internalGetDocument();
+        builder.type = internalGetType();
+        builder.registerInformation = internalGetRegisterInformation();
         return builder;
     }
 
@@ -299,16 +480,17 @@ public class CreateRecipientRequest {
      * Class to build instances of {@link CreateRecipientRequest}.
      */
     public static class Builder {
-        private String name;
-        private String email;
-        private String description;
-        private String document;
-        private String type;
         private CreateBankAccountRequest defaultBankAccount;
         private Map<String, String> metadata;
         private String code;
         private String paymentMode = "bank_transfer";
+        private OptionalNullable<String> name;
+        private OptionalNullable<String> email;
+        private OptionalNullable<String> description;
+        private OptionalNullable<String> document;
+        private OptionalNullable<String> type;
         private CreateTransferSettingsRequest transferSettings;
+        private OptionalNullable<CreateRegisterInformationBaseRequest> registerInformation;
 
         /**
          * Initialization constructor.
@@ -318,78 +500,17 @@ public class CreateRecipientRequest {
 
         /**
          * Initialization constructor.
-         * @param  name  String value for name.
-         * @param  email  String value for email.
-         * @param  description  String value for description.
-         * @param  document  String value for document.
-         * @param  type  String value for type.
          * @param  defaultBankAccount  CreateBankAccountRequest value for defaultBankAccount.
          * @param  metadata  Map of String, value for metadata.
          * @param  code  String value for code.
          * @param  paymentMode  String value for paymentMode.
          */
-        public Builder(String name, String email, String description, String document, String type,
-                CreateBankAccountRequest defaultBankAccount, Map<String, String> metadata,
+        public Builder(CreateBankAccountRequest defaultBankAccount, Map<String, String> metadata,
                 String code, String paymentMode) {
-            this.name = name;
-            this.email = email;
-            this.description = description;
-            this.document = document;
-            this.type = type;
             this.defaultBankAccount = defaultBankAccount;
             this.metadata = metadata;
             this.code = code;
             this.paymentMode = paymentMode;
-        }
-
-        /**
-         * Setter for name.
-         * @param  name  String value for name.
-         * @return Builder
-         */
-        public Builder name(String name) {
-            this.name = name;
-            return this;
-        }
-
-        /**
-         * Setter for email.
-         * @param  email  String value for email.
-         * @return Builder
-         */
-        public Builder email(String email) {
-            this.email = email;
-            return this;
-        }
-
-        /**
-         * Setter for description.
-         * @param  description  String value for description.
-         * @return Builder
-         */
-        public Builder description(String description) {
-            this.description = description;
-            return this;
-        }
-
-        /**
-         * Setter for document.
-         * @param  document  String value for document.
-         * @return Builder
-         */
-        public Builder document(String document) {
-            this.document = document;
-            return this;
-        }
-
-        /**
-         * Setter for type.
-         * @param  type  String value for type.
-         * @return Builder
-         */
-        public Builder type(String type) {
-            this.type = type;
-            return this;
         }
 
         /**
@@ -433,6 +554,101 @@ public class CreateRecipientRequest {
         }
 
         /**
+         * Setter for name.
+         * @param  name  String value for name.
+         * @return Builder
+         */
+        public Builder name(String name) {
+            this.name = OptionalNullable.of(name);
+            return this;
+        }
+
+        /**
+         * UnSetter for name.
+         * @return Builder
+         */
+        public Builder unsetName() {
+            name = null;
+            return this;
+        }
+
+        /**
+         * Setter for email.
+         * @param  email  String value for email.
+         * @return Builder
+         */
+        public Builder email(String email) {
+            this.email = OptionalNullable.of(email);
+            return this;
+        }
+
+        /**
+         * UnSetter for email.
+         * @return Builder
+         */
+        public Builder unsetEmail() {
+            email = null;
+            return this;
+        }
+
+        /**
+         * Setter for description.
+         * @param  description  String value for description.
+         * @return Builder
+         */
+        public Builder description(String description) {
+            this.description = OptionalNullable.of(description);
+            return this;
+        }
+
+        /**
+         * UnSetter for description.
+         * @return Builder
+         */
+        public Builder unsetDescription() {
+            description = null;
+            return this;
+        }
+
+        /**
+         * Setter for document.
+         * @param  document  String value for document.
+         * @return Builder
+         */
+        public Builder document(String document) {
+            this.document = OptionalNullable.of(document);
+            return this;
+        }
+
+        /**
+         * UnSetter for document.
+         * @return Builder
+         */
+        public Builder unsetDocument() {
+            document = null;
+            return this;
+        }
+
+        /**
+         * Setter for type.
+         * @param  type  String value for type.
+         * @return Builder
+         */
+        public Builder type(String type) {
+            this.type = OptionalNullable.of(type);
+            return this;
+        }
+
+        /**
+         * UnSetter for type.
+         * @return Builder
+         */
+        public Builder unsetType() {
+            type = null;
+            return this;
+        }
+
+        /**
          * Setter for transferSettings.
          * @param  transferSettings  CreateTransferSettingsRequest value for transferSettings.
          * @return Builder
@@ -443,12 +659,33 @@ public class CreateRecipientRequest {
         }
 
         /**
+         * Setter for registerInformation.
+         * @param  registerInformation  CreateRegisterInformationBaseRequest value for
+         *         registerInformation.
+         * @return Builder
+         */
+        public Builder registerInformation(
+                CreateRegisterInformationBaseRequest registerInformation) {
+            this.registerInformation = OptionalNullable.of(registerInformation);
+            return this;
+        }
+
+        /**
+         * UnSetter for registerInformation.
+         * @return Builder
+         */
+        public Builder unsetRegisterInformation() {
+            registerInformation = null;
+            return this;
+        }
+
+        /**
          * Builds a new {@link CreateRecipientRequest} object using the set fields.
          * @return {@link CreateRecipientRequest}
          */
         public CreateRecipientRequest build() {
-            return new CreateRecipientRequest(name, email, description, document, type,
-                    defaultBankAccount, metadata, code, paymentMode, transferSettings);
+            return new CreateRecipientRequest(defaultBankAccount, metadata, code, paymentMode, name,
+                    email, description, document, type, transferSettings, registerInformation);
         }
     }
 }

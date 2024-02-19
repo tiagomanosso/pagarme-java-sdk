@@ -30,6 +30,7 @@ Response object for getting a debit card transaction
 | `AuthenticationType` | `String` | Optional | Authentication type | String getAuthenticationType() | setAuthenticationType(String authenticationType) |
 | `ThreedAuthenticationUrl` | `String` | Optional | 3D-S Authentication Url | String getThreedAuthenticationUrl() | setThreedAuthenticationUrl(String threedAuthenticationUrl) |
 | `FundingSource` | `String` | Optional | Identify when a card is prepaid, credit or debit. | String getFundingSource() | setFundingSource(String fundingSource) |
+| `RetryInfo` | [`GetRetryTransactionInformationResponse`](../../doc/models/get-retry-transaction-information-response.md) | Optional | Retry transaction information | GetRetryTransactionInformationResponse getRetryInfo() | setRetryInfo(GetRetryTransactionInformationResponse retryInfo) |
 
 ## Example (as JSON)
 

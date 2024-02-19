@@ -52,7 +52,6 @@ public final class DefaultTransactionsController extends BaseController implemen
                         .templateParam(param -> param.key("transaction_id").value(transactionId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(

@@ -831,11 +831,6 @@ GetRecipientResponse createRecipient(
 
 ```java
 CreateRecipientRequest request = new CreateRecipientRequest.Builder(
-    "name6",
-    "email0",
-    "description6",
-    "document0",
-    "type4",
     new CreateBankAccountRequest.Builder(
         "holder_name4",
         "holder_type0",

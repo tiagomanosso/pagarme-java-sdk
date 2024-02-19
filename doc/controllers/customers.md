@@ -483,8 +483,8 @@ ListCustomersResponse getCustomers(
 |  --- | --- | --- | --- |
 | `name` | `String` | Query, Optional | Name of the Customer |
 | `document` | `String` | Query, Optional | Document of the Customer |
-| `page` | `Integer` | Query, Optional | Current page the the search<br>**Default**: `1` |
-| `size` | `Integer` | Query, Optional | Quantity pages of the search<br>**Default**: `10` |
+| `page` | `Integer` | Query, Optional | Current page the the search |
+| `size` | `Integer` | Query, Optional | Quantity pages of the search |
 | `email` | `String` | Query, Optional | Customer's email |
 | `code` | `String` | Query, Optional | Customer's code |
 

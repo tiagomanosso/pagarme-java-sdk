@@ -9,14 +9,14 @@
 
 | Name | Type | Tags | Description | Getter | Setter |
 |  --- | --- | --- | --- | --- | --- |
-| `Number` | `String` | Required | Número de parcelas | String getNumber() | setNumber(String number) |
+| `Number` | `Long` | Required | Número de parcelas | Long getNumber() | setNumber(Long number) |
 | `Total` | `Integer` | Required | Valor total da compra | Integer getTotal() | setTotal(Integer total) |
 
 ## Example (as JSON)
 
 ```json
 {
-  "number": "number0",
+  "number": 40,
   "total": 188
 }
 ```

@@ -16,7 +16,7 @@ Generic response object for getting a BalanceOperation.
 | `BalanceAmount` | `String` | Optional | - | String getBalanceAmount() | setBalanceAmount(String balanceAmount) |
 | `BalanceOldAmount` | `String` | Optional | - | String getBalanceOldAmount() | setBalanceOldAmount(String balanceOldAmount) |
 | `Type` | `String` | Optional | - | String getType() | setType(String type) |
-| `Amount` | `String` | Optional | - | String getAmount() | setAmount(String amount) |
+| `Amount` | `Integer` | Optional | - | Integer getAmount() | setAmount(Integer amount) |
 | `Fee` | `String` | Optional | - | String getFee() | setFee(String fee) |
 | `CreatedAt` | `String` | Optional | - | String getCreatedAt() | setCreatedAt(String createdAt) |
 | `MovementObject` | [`GetMovementObjectBaseResponse`](../../doc/models/get-movement-object-base-response.md) | Optional | - | GetMovementObjectBaseResponse getMovementObject() | setMovementObject(GetMovementObjectBaseResponse movementObject) |

@@ -55,7 +55,6 @@ public final class DefaultTransfersController extends BaseController implements 
                         .templateParam(param -> param.key("transfer_id").value(transferId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -90,7 +89,6 @@ public final class DefaultTransfersController extends BaseController implements 
                         .bodySerializer(() ->  ApiHelper.serialize(request))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.POST))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -120,7 +118,6 @@ public final class DefaultTransfersController extends BaseController implements 
                         .server(Server.ENUM_DEFAULT.value())
                         .path("/transfers")
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(

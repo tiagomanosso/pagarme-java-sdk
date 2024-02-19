@@ -7,8 +7,6 @@ The following parameters are configurable for the API Client:
 |  --- | --- | --- |
 | `serviceRefererName` | `String` |  |
 | `httpClientConfig` | [`ReadonlyHttpClientConfiguration`](http-client-configuration.md) | Http Client Configuration instance. |
-| `basicAuthUserName` | `String` | The username to use with basic authentication |
-| `basicAuthPassword` | `String` | The password to use with basic authentication |
 
 The API client can be initialized as follows:
 
@@ -17,7 +15,6 @@ PagarmeApiSDKClient client = new PagarmeApiSDKClient.Builder()
     .httpClientConfig(configBuilder -> configBuilder
             .timeout(0))
     .serviceRefererName("ServiceRefererName")
-    .basicAuthCredentials("BasicAuthUserName", "BasicAuthPassword")
     .build();
 ```
 
