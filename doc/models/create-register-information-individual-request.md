@@ -16,7 +16,7 @@
 | `Name` | `String` | Required | - | String getName() | setName(String name) |
 | `MotherName` | `String` | Optional | - | String getMotherName() | setMotherName(String motherName) |
 | `Birthdate` | `String` | Required | - | String getBirthdate() | setBirthdate(String birthdate) |
-| `MonthlyIncome` | `String` | Required | - | String getMonthlyIncome() | setMonthlyIncome(String monthlyIncome) |
+| `MonthlyIncome` | `int` | Required | - | int getMonthlyIncome() | setMonthlyIncome(int monthlyIncome) |
 | `ProfessionalOccupation` | `String` | Required | - | String getProfessionalOccupation() | setProfessionalOccupation(String professionalOccupation) |
 | `Address` | [`CreateRegisterInformationAddressRequest`](../../doc/models/create-register-information-address-request.md) | Required | - | CreateRegisterInformationAddressRequest getAddress() | setAddress(CreateRegisterInformationAddressRequest address) |
 
@@ -43,7 +43,7 @@
   "name": "name6",
   "mother_name": "mother_name2",
   "birthdate": "birthdate0",
-  "monthly_income": "monthly_income2",
+  "monthly_income": 206,
   "professional_occupation": "professional_occupation0",
   "address": {
     "street": "street6",

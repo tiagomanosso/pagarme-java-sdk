@@ -15,7 +15,7 @@
 |  --- | --- | --- | --- | --- | --- |
 | `CompanyName` | `String` | Required | - | String getCompanyName() | setCompanyName(String companyName) |
 | `TradingName` | `String` | Required | - | String getTradingName() | setTradingName(String tradingName) |
-| `AnnualRevenue` | `String` | Required | - | String getAnnualRevenue() | setAnnualRevenue(String annualRevenue) |
+| `AnnualRevenue` | `int` | Required | - | int getAnnualRevenue() | setAnnualRevenue(int annualRevenue) |
 | `CorporationType` | `String` | Optional | - | String getCorporationType() | setCorporationType(String corporationType) |
 | `FoundingDate` | `String` | Optional | - | String getFoundingDate() | setFoundingDate(String foundingDate) |
 | `Cnae` | `String` | Optional | - | String getCnae() | setCnae(String cnae) |
@@ -38,7 +38,7 @@
   ],
   "company_name": "company_name8",
   "trading_name": "trading_name0",
-  "annual_revenue": "annual_revenue0",
+  "annual_revenue": 156,
   "managing_partners": [
     {
       "name": "name4",
@@ -46,7 +46,7 @@
       "document": "document8",
       "mother_name": "mother_name0",
       "birthdate": "birthdate8",
-      "monthly_income": "monthly_income0",
+      "monthly_income": 202,
       "professional_occupation": "professional_occupation8",
       "self_declared_legal_representative": false,
       "address": {

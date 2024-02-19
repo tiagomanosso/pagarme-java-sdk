@@ -19,7 +19,7 @@ public class CreateManagingPartnerRequest {
     private String document;
     private String motherName;
     private String birthdate;
-    private String monthlyIncome;
+    private int monthlyIncome;
     private String professionalOccupation;
     private boolean selfDeclaredLegalRepresentative;
     private CreateRegisterInformationAddressRequest address;
@@ -38,7 +38,7 @@ public class CreateManagingPartnerRequest {
      * @param  document  String value for document.
      * @param  motherName  String value for motherName.
      * @param  birthdate  String value for birthdate.
-     * @param  monthlyIncome  String value for monthlyIncome.
+     * @param  monthlyIncome  int value for monthlyIncome.
      * @param  professionalOccupation  String value for professionalOccupation.
      * @param  selfDeclaredLegalRepresentative  boolean value for selfDeclaredLegalRepresentative.
      * @param  address  CreateRegisterInformationAddressRequest value for address.
@@ -50,7 +50,7 @@ public class CreateManagingPartnerRequest {
             String document,
             String motherName,
             String birthdate,
-            String monthlyIncome,
+            int monthlyIncome,
             String professionalOccupation,
             boolean selfDeclaredLegalRepresentative,
             CreateRegisterInformationAddressRequest address,
@@ -159,19 +159,19 @@ public class CreateManagingPartnerRequest {
 
     /**
      * Getter for MonthlyIncome.
-     * @return Returns the String
+     * @return Returns the int
      */
     @JsonGetter("monthly_income")
-    public String getMonthlyIncome() {
+    public int getMonthlyIncome() {
         return monthlyIncome;
     }
 
     /**
      * Setter for MonthlyIncome.
-     * @param monthlyIncome Value for String
+     * @param monthlyIncome Value for int
      */
     @JsonSetter("monthly_income")
-    public void setMonthlyIncome(String monthlyIncome) {
+    public void setMonthlyIncome(int monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
 
@@ -281,7 +281,7 @@ public class CreateManagingPartnerRequest {
         private String document;
         private String motherName;
         private String birthdate;
-        private String monthlyIncome;
+        private int monthlyIncome;
         private String professionalOccupation;
         private boolean selfDeclaredLegalRepresentative;
         private CreateRegisterInformationAddressRequest address;
@@ -300,7 +300,7 @@ public class CreateManagingPartnerRequest {
          * @param  document  String value for document.
          * @param  motherName  String value for motherName.
          * @param  birthdate  String value for birthdate.
-         * @param  monthlyIncome  String value for monthlyIncome.
+         * @param  monthlyIncome  int value for monthlyIncome.
          * @param  professionalOccupation  String value for professionalOccupation.
          * @param  selfDeclaredLegalRepresentative  boolean value for
          *         selfDeclaredLegalRepresentative.
@@ -309,7 +309,7 @@ public class CreateManagingPartnerRequest {
          *         phoneNumbers.
          */
         public Builder(String name, String email, String document, String motherName,
-                String birthdate, String monthlyIncome, String professionalOccupation,
+                String birthdate, int monthlyIncome, String professionalOccupation,
                 boolean selfDeclaredLegalRepresentative,
                 CreateRegisterInformationAddressRequest address,
                 List<CreateRegisterInformationPhoneRequest> phoneNumbers) {
@@ -377,10 +377,10 @@ public class CreateManagingPartnerRequest {
 
         /**
          * Setter for monthlyIncome.
-         * @param  monthlyIncome  String value for monthlyIncome.
+         * @param  monthlyIncome  int value for monthlyIncome.
          * @return Builder
          */
-        public Builder monthlyIncome(String monthlyIncome) {
+        public Builder monthlyIncome(int monthlyIncome) {
             this.monthlyIncome = monthlyIncome;
             return this;
         }

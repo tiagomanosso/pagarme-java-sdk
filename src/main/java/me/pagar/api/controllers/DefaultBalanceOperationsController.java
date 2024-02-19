@@ -71,7 +71,6 @@ public final class DefaultBalanceOperationsController extends BaseController imp
                         .queryParam(param -> param.key("recipient_id")
                                 .value(recipientId).isRequired(false))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -105,7 +104,6 @@ public final class DefaultBalanceOperationsController extends BaseController imp
                         .templateParam(param -> param.key("id").value(id).isRequired(false)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(

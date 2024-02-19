@@ -20,7 +20,7 @@ public class CreateRegisterInformationCorporationRequest
         extends CreateRegisterInformationBaseRequest {
     private String companyName;
     private String tradingName;
-    private String annualRevenue;
+    private int annualRevenue;
     private OptionalNullable<String> corporationType;
     private OptionalNullable<String> foundingDate;
     private OptionalNullable<String> cnae;
@@ -42,7 +42,7 @@ public class CreateRegisterInformationCorporationRequest
      * @param  phoneNumbers  List of CreateRegisterInformationPhoneRequest value for phoneNumbers.
      * @param  companyName  String value for companyName.
      * @param  tradingName  String value for tradingName.
-     * @param  annualRevenue  String value for annualRevenue.
+     * @param  annualRevenue  int value for annualRevenue.
      * @param  managingPartners  List of CreateManagingPartnerRequest value for managingPartners.
      * @param  mainAddress  CreateRegisterInformationAddressRequest value for mainAddress.
      * @param  siteUrl  String value for siteUrl.
@@ -57,7 +57,7 @@ public class CreateRegisterInformationCorporationRequest
             List<CreateRegisterInformationPhoneRequest> phoneNumbers,
             String companyName,
             String tradingName,
-            String annualRevenue,
+            int annualRevenue,
             List<CreateManagingPartnerRequest> managingPartners,
             CreateRegisterInformationAddressRequest mainAddress,
             String siteUrl,
@@ -83,7 +83,7 @@ public class CreateRegisterInformationCorporationRequest
      * @param  phoneNumbers  List of CreateRegisterInformationPhoneRequest value for phoneNumbers.
      * @param  companyName  String value for companyName.
      * @param  tradingName  String value for tradingName.
-     * @param  annualRevenue  String value for annualRevenue.
+     * @param  annualRevenue  int value for annualRevenue.
      * @param  managingPartners  List of CreateManagingPartnerRequest value for managingPartners.
      * @param  mainAddress  CreateRegisterInformationAddressRequest value for mainAddress.
      * @param  siteUrl  String value for siteUrl.
@@ -94,7 +94,7 @@ public class CreateRegisterInformationCorporationRequest
 
     protected CreateRegisterInformationCorporationRequest(String email, String document,
             String type, List<CreateRegisterInformationPhoneRequest> phoneNumbers,
-            String companyName, String tradingName, String annualRevenue,
+            String companyName, String tradingName, int annualRevenue,
             List<CreateManagingPartnerRequest> managingPartners,
             CreateRegisterInformationAddressRequest mainAddress, OptionalNullable<String> siteUrl,
             OptionalNullable<String> corporationType, OptionalNullable<String> foundingDate,
@@ -148,19 +148,19 @@ public class CreateRegisterInformationCorporationRequest
 
     /**
      * Getter for AnnualRevenue.
-     * @return Returns the String
+     * @return Returns the int
      */
     @JsonGetter("annual_revenue")
-    public String getAnnualRevenue() {
+    public int getAnnualRevenue() {
         return annualRevenue;
     }
 
     /**
      * Setter for AnnualRevenue.
-     * @param annualRevenue Value for String
+     * @param annualRevenue Value for int
      */
     @JsonSetter("annual_revenue")
-    public void setAnnualRevenue(String annualRevenue) {
+    public void setAnnualRevenue(int annualRevenue) {
         this.annualRevenue = annualRevenue;
     }
 
@@ -345,7 +345,7 @@ public class CreateRegisterInformationCorporationRequest
         private List<CreateRegisterInformationPhoneRequest> phoneNumbers;
         private String companyName;
         private String tradingName;
-        private String annualRevenue;
+        private int annualRevenue;
         private List<CreateManagingPartnerRequest> managingPartners;
         private CreateRegisterInformationAddressRequest mainAddress;
         private OptionalNullable<String> siteUrl;
@@ -368,14 +368,14 @@ public class CreateRegisterInformationCorporationRequest
          *         phoneNumbers.
          * @param  companyName  String value for companyName.
          * @param  tradingName  String value for tradingName.
-         * @param  annualRevenue  String value for annualRevenue.
+         * @param  annualRevenue  int value for annualRevenue.
          * @param  managingPartners  List of CreateManagingPartnerRequest value for
          *         managingPartners.
          * @param  mainAddress  CreateRegisterInformationAddressRequest value for mainAddress.
          */
         public Builder(String email, String document, String type,
                 List<CreateRegisterInformationPhoneRequest> phoneNumbers, String companyName,
-                String tradingName, String annualRevenue,
+                String tradingName, int annualRevenue,
                 List<CreateManagingPartnerRequest> managingPartners,
                 CreateRegisterInformationAddressRequest mainAddress) {
             this.email = email;
@@ -452,10 +452,10 @@ public class CreateRegisterInformationCorporationRequest
 
         /**
          * Setter for annualRevenue.
-         * @param  annualRevenue  String value for annualRevenue.
+         * @param  annualRevenue  int value for annualRevenue.
          * @return Builder
          */
-        public Builder annualRevenue(String annualRevenue) {
+        public Builder annualRevenue(int annualRevenue) {
             this.annualRevenue = annualRevenue;
             return this;
         }

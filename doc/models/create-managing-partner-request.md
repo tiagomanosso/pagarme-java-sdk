@@ -16,7 +16,7 @@ Managing Partner Request
 | `Document` | `String` | Required | - | String getDocument() | setDocument(String document) |
 | `MotherName` | `String` | Required | - | String getMotherName() | setMotherName(String motherName) |
 | `Birthdate` | `String` | Required | - | String getBirthdate() | setBirthdate(String birthdate) |
-| `MonthlyIncome` | `String` | Required | - | String getMonthlyIncome() | setMonthlyIncome(String monthlyIncome) |
+| `MonthlyIncome` | `int` | Required | - | int getMonthlyIncome() | setMonthlyIncome(int monthlyIncome) |
 | `ProfessionalOccupation` | `String` | Required | - | String getProfessionalOccupation() | setProfessionalOccupation(String professionalOccupation) |
 | `SelfDeclaredLegalRepresentative` | `boolean` | Required | - | boolean getSelfDeclaredLegalRepresentative() | setSelfDeclaredLegalRepresentative(boolean selfDeclaredLegalRepresentative) |
 | `Address` | [`CreateRegisterInformationAddressRequest`](../../doc/models/create-register-information-address-request.md) | Required | - | CreateRegisterInformationAddressRequest getAddress() | setAddress(CreateRegisterInformationAddressRequest address) |
@@ -31,7 +31,7 @@ Managing Partner Request
   "document": "document2",
   "mother_name": "mother_name0",
   "birthdate": "birthdate8",
-  "monthly_income": "monthly_income0",
+  "monthly_income": 70,
   "professional_occupation": "professional_occupation8",
   "self_declared_legal_representative": false,
   "address": {

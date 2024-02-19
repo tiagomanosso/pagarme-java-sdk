@@ -7,7 +7,6 @@
 package me.pagar.api;
 
 import io.apimatic.core.GlobalConfiguration;
-import io.apimatic.coreinterfaces.authentication.Authentication;
 import io.apimatic.coreinterfaces.compatibility.CompatibilityFactory;
 import io.apimatic.coreinterfaces.http.HttpClient;
 import io.apimatic.okhttpclient.adapter.OkClient;
@@ -66,7 +65,7 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
 
     private static final CompatibilityFactory compatibilityFactory = new CompatibilityFactoryImpl();
 
-    private static String userAgent = "PagarmeApiSDK - Java 6.8.4";
+    private static String userAgent = "PagarmeApiSDK - Java 6.8.5";
 
     /**
      * Current API environment.
@@ -88,40 +87,15 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
      */
     private final ReadonlyHttpClientConfiguration httpClientConfig;
 
-    /**
-     * BasicAuthManager.
-     */
-    private BasicAuthManager basicAuthManager;
-
-    /**
-     * Map of authentication Managers.
-     */
-    private Map<String, Authentication> authentications;
-
-
     private PagarmeApiSDKClient(Environment environment, String serviceRefererName,
-            HttpClient httpClient, ReadonlyHttpClientConfiguration httpClientConfig,
-            String basicAuthUserName, String basicAuthPassword,
-            Map<String, Authentication> authentications) {
+            HttpClient httpClient, ReadonlyHttpClientConfiguration httpClientConfig) {
         this.environment = environment;
         this.serviceRefererName = serviceRefererName;
         this.httpClient = httpClient;
         this.httpClientConfig = httpClientConfig;
-        this.authentications = 
-                (authentications == null) ? new HashMap<>() : new HashMap<>(authentications);
-        if (this.authentications.containsKey("global")) {
-            this.basicAuthManager = (BasicAuthManager) this.authentications.get("global");
-        }
-
-        if (!this.authentications.containsKey("global")
-                || !getBasicAuthCredentials().equals(basicAuthUserName, basicAuthPassword)) {
-            this.basicAuthManager = new BasicAuthManager(basicAuthUserName, basicAuthPassword);
-            this.authentications.put("global", basicAuthManager);
-        }
-
         GlobalConfiguration globalConfig = new GlobalConfiguration.Builder()
-                .authentication(this.authentications).compatibilityFactory(compatibilityFactory)
                 .httpClient(httpClient).baseUri(server -> getBaseUri(server))
+                .compatibilityFactory(compatibilityFactory)
                 .userAgent(userAgent)
                 .globalHeader("ServiceRefererName", serviceRefererName)
                 .build();
@@ -275,13 +249,6 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
     }
 
     /**
-     * The credentials to use with BasicAuth.
-     * @return basicAuthCredentials
-     */
-    public BasicAuthCredentials getBasicAuthCredentials() {
-        return basicAuthManager;
-    }
-    /**
      * The timeout to use for making HTTP requests.
      * @deprecated This method will be removed in a future version. Use
      *             {@link #getHttpClientConfig()} instead.
@@ -344,8 +311,7 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
     @Override
     public String toString() {
         return "PagarmeApiSDKClient [" + "environment=" + environment + ", serviceRefererName="
-                + serviceRefererName + ", httpClientConfig=" + httpClientConfig
-                + ", authentications=" + authentications + "]";
+                + serviceRefererName + ", httpClientConfig=" + httpClientConfig + "]";
     }
 
     /**
@@ -358,9 +324,6 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
         builder.environment = getEnvironment();
         builder.serviceRefererName = getServiceRefererName();
         builder.httpClient = getHttpClient();
-        builder.basicAuthUserName = getBasicAuthCredentials().getBasicAuthUserName();
-        builder.basicAuthPassword = getBasicAuthCredentials().getBasicAuthPassword();
-        builder.authentications = authentications;
         builder.httpClientConfig(configBldr -> configBldr =
                 ((HttpClientConfiguration) httpClientConfig).newBuilder());
         return builder;
@@ -374,30 +337,9 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
         private Environment environment = Environment.PRODUCTION;
         private String serviceRefererName = "";
         private HttpClient httpClient;
-        private String basicAuthUserName = "TODO: Replace";
-        private String basicAuthPassword = "TODO: Replace";
-        private Map<String, Authentication> authentications = null;
         private HttpClientConfiguration.Builder httpClientConfigBuilder =
                 new HttpClientConfiguration.Builder();
 
-
-        /**
-         * Credentials setter for BasicAuth.
-         * @param basicAuthUserName String value for basicAuthUserName.
-         * @param basicAuthPassword String value for basicAuthPassword.
-         * @return Builder
-         */
-        public Builder basicAuthCredentials(String basicAuthUserName, String basicAuthPassword) {
-            if (basicAuthUserName == null) {
-                throw new NullPointerException("BasicAuthUserName cannot be null.");
-            }
-            if (basicAuthPassword == null) {
-                throw new NullPointerException("BasicAuthPassword cannot be null.");
-            }
-            this.basicAuthUserName = basicAuthUserName;
-            this.basicAuthPassword = basicAuthPassword;
-            return this;
-        }
 
         /**
          * Current API environment.
@@ -456,7 +398,7 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
             httpClient = new OkClient(httpClientConfig.getConfiguration(), compatibilityFactory);
 
             return new PagarmeApiSDKClient(environment, serviceRefererName, httpClient,
-                    httpClientConfig, basicAuthUserName, basicAuthPassword, authentications);
+                    httpClientConfig);
         }
     }
 }

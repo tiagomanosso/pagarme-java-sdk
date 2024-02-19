@@ -38,12 +38,6 @@ public interface Configuration {
     long timeout();
 
     /**
-     * The credentials to use with BasicAuth.
-     * @return basicAuthCredentials
-     */
-    BasicAuthCredentials getBasicAuthCredentials();
-
-    /**
      * Get base URI by current environment.
      * @param server Server for which to get the base URI
      * @return Processed base URI

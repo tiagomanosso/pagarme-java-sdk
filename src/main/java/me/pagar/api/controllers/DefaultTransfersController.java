@@ -32,36 +32,6 @@ public final class DefaultTransfersController extends BaseController implements 
     }
 
     /**
-     * Gets all transfers.
-     * @return    Returns the ListTransfers response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    public ListTransfers getTransfers() throws ApiException, IOException {
-        return prepareGetTransfersRequest().execute();
-    }
-
-    /**
-     * Builds the ApiCall object for getTransfers.
-     */
-    private ApiCall<ListTransfers, ApiException> prepareGetTransfersRequest() throws IOException {
-        return new ApiCall.Builder<ListTransfers, ApiException>()
-                .globalConfig(getGlobalConfiguration())
-                .requestBuilder(requestBuilder -> requestBuilder
-                        .server(Server.ENUM_DEFAULT.value())
-                        .path("/transfers")
-                        .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
-                        .httpMethod(HttpMethod.GET))
-                .responseHandler(responseHandler -> responseHandler
-                        .deserializer(
-                                response -> ApiHelper.deserialize(response, ListTransfers.class))
-                        .nullify404(false)
-                        .globalErrorCase(GLOBAL_ERROR_CASES))
-                .build();
-    }
-
-    /**
      * @param  transferId  Required parameter: Example:
      * @return    Returns the GetTransfer response from the API call
      * @throws    ApiException    Represents error response from the server.
@@ -85,7 +55,6 @@ public final class DefaultTransfersController extends BaseController implements 
                         .templateParam(param -> param.key("transfer_id").value(transferId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -120,11 +89,39 @@ public final class DefaultTransfersController extends BaseController implements 
                         .bodySerializer(() ->  ApiHelper.serialize(request))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
-                        .authenticationKey(BaseController.AUTHENTICATION_KEY)
                         .httpMethod(HttpMethod.POST))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
                                 response -> ApiHelper.deserialize(response, GetTransfer.class))
+                        .nullify404(false)
+                        .globalErrorCase(GLOBAL_ERROR_CASES))
+                .build();
+    }
+
+    /**
+     * Gets all transfers.
+     * @return    Returns the ListTransfers response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    public ListTransfers getTransfers() throws ApiException, IOException {
+        return prepareGetTransfersRequest().execute();
+    }
+
+    /**
+     * Builds the ApiCall object for getTransfers.
+     */
+    private ApiCall<ListTransfers, ApiException> prepareGetTransfersRequest() throws IOException {
+        return new ApiCall.Builder<ListTransfers, ApiException>()
+                .globalConfig(getGlobalConfiguration())
+                .requestBuilder(requestBuilder -> requestBuilder
+                        .server(Server.ENUM_DEFAULT.value())
+                        .path("/transfers")
+                        .headerParam(param -> param.key("accept").value("application/json"))
+                        .httpMethod(HttpMethod.GET))
+                .responseHandler(responseHandler -> responseHandler
+                        .deserializer(
+                                response -> ApiHelper.deserialize(response, ListTransfers.class))
                         .nullify404(false)
                         .globalErrorCase(GLOBAL_ERROR_CASES))
                 .build();
