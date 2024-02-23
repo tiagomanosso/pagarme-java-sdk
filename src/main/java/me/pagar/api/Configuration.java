@@ -6,6 +6,7 @@
 
 package me.pagar.api;
 
+import me.pagar.api.authentication.BasicAuthModel;
 import me.pagar.api.http.client.ReadonlyHttpClientConfiguration;
 
 /**
@@ -36,6 +37,18 @@ public interface Configuration {
      * @return a copy of timeout
      */
     long timeout();
+
+    /**
+     * The credentials to use with BasicAuth.
+     * @return basicAuthCredentials
+     */
+    BasicAuthCredentials getBasicAuthCredentials();
+
+    /**
+     * The auth credential model for BasicAuth.
+     * @return the instance of BasicAuthModel
+     */
+    BasicAuthModel getBasicAuthModel();
 
     /**
      * Get base URI by current environment.

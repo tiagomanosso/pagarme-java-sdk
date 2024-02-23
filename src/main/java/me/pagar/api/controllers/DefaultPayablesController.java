@@ -143,6 +143,8 @@ public final class DefaultPayablesController extends BaseController implements P
                         .queryParam(param -> param.key("gateway_id")
                                 .value(gatewayId).isRequired(false))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -176,6 +178,8 @@ public final class DefaultPayablesController extends BaseController implements P
                         .templateParam(param -> param.key("id").value(id).isRequired(false)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
