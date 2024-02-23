@@ -7,12 +7,15 @@
 package me.pagar.api;
 
 import io.apimatic.core.GlobalConfiguration;
+import io.apimatic.coreinterfaces.authentication.Authentication;
 import io.apimatic.coreinterfaces.compatibility.CompatibilityFactory;
 import io.apimatic.coreinterfaces.http.HttpClient;
 import io.apimatic.okhttpclient.adapter.OkClient;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
+import me.pagar.api.authentication.BasicAuthManager;
+import me.pagar.api.authentication.BasicAuthModel;
 import me.pagar.api.controllers.BalanceOperationsController;
 import me.pagar.api.controllers.ChargesController;
 import me.pagar.api.controllers.CustomersController;
@@ -65,7 +68,7 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
 
     private static final CompatibilityFactory compatibilityFactory = new CompatibilityFactoryImpl();
 
-    private static String userAgent = "PagarmeApiSDK - Java 6.8.5";
+    private static String userAgent = "PagarmeApiSDK - Java 6.8.6";
 
     /**
      * Current API environment.
@@ -87,15 +90,47 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
      */
     private final ReadonlyHttpClientConfiguration httpClientConfig;
 
+    /**
+     * BasicAuthManager.
+     */
+    private BasicAuthManager basicAuthManager;
+
+    /**
+     * The instance of BasicAuthModel.
+     */
+    private BasicAuthModel basicAuthModel;
+
+    /**
+     * Map of authentication Managers.
+     */
+    private Map<String, Authentication> authentications;
+
     private PagarmeApiSDKClient(Environment environment, String serviceRefererName,
-            HttpClient httpClient, ReadonlyHttpClientConfiguration httpClientConfig) {
+            HttpClient httpClient, ReadonlyHttpClientConfiguration httpClientConfig,
+            BasicAuthModel basicAuthModel, Map<String, Authentication> authentications) {
         this.environment = environment;
         this.serviceRefererName = serviceRefererName;
         this.httpClient = httpClient;
         this.httpClientConfig = httpClientConfig;
+        this.authentications = 
+                (authentications == null) ? new HashMap<>() : new HashMap<>(authentications);
+        this.basicAuthModel = basicAuthModel;
+
+        if (this.authentications.containsKey("httpBasic")) {
+            this.basicAuthManager = (BasicAuthManager) this.authentications.get("httpBasic");
+        }
+
+        if (!this.authentications.containsKey("httpBasic")
+                || !getBasicAuthCredentials().equals(basicAuthModel.getUsername(),
+                        basicAuthModel.getPassword())) {
+            this.basicAuthManager = new BasicAuthManager(basicAuthModel);
+            this.authentications.put("httpBasic", basicAuthManager);
+        }
+
         GlobalConfiguration globalConfig = new GlobalConfiguration.Builder()
                 .httpClient(httpClient).baseUri(server -> getBaseUri(server))
                 .compatibilityFactory(compatibilityFactory)
+                .authentication(this.authentications)
                 .userAgent(userAgent)
                 .globalHeader("ServiceRefererName", serviceRefererName)
                 .build();
@@ -249,6 +284,21 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
     }
 
     /**
+     * The credentials to use with BasicAuth.
+     * @return basicAuthCredentials
+     */
+    public BasicAuthCredentials getBasicAuthCredentials() {
+        return basicAuthManager;
+    }
+
+    /**
+     * The auth credential model for BasicAuth.
+     * @return the instance of BasicAuthModel
+     */
+    public BasicAuthModel getBasicAuthModel() {
+        return basicAuthModel;
+    }
+    /**
      * The timeout to use for making HTTP requests.
      * @deprecated This method will be removed in a future version. Use
      *             {@link #getHttpClientConfig()} instead.
@@ -311,7 +361,8 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
     @Override
     public String toString() {
         return "PagarmeApiSDKClient [" + "environment=" + environment + ", serviceRefererName="
-                + serviceRefererName + ", httpClientConfig=" + httpClientConfig + "]";
+                + serviceRefererName + ", httpClientConfig=" + httpClientConfig
+                + ", authentications=" + authentications + "]";
     }
 
     /**
@@ -324,6 +375,9 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
         builder.environment = getEnvironment();
         builder.serviceRefererName = getServiceRefererName();
         builder.httpClient = getHttpClient();
+        builder.basicAuthCredentials(getBasicAuthModel()
+                .toBuilder().build());
+        builder.authentications = authentications;
         builder.httpClientConfig(configBldr -> configBldr =
                 ((HttpClientConfiguration) httpClientConfig).newBuilder());
         return builder;
@@ -337,9 +391,38 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
         private Environment environment = Environment.PRODUCTION;
         private String serviceRefererName = "";
         private HttpClient httpClient;
+        private BasicAuthModel basicAuthModel = new BasicAuthModel.Builder("", "").build();
+        private Map<String, Authentication> authentications = null;
         private HttpClientConfiguration.Builder httpClientConfigBuilder =
                 new HttpClientConfiguration.Builder();
 
+
+        /**
+         * Credentials setter for BasicAuth.
+         * @param basicAuthUserName String value for basicAuthUserName.
+         * @param basicAuthPassword String value for basicAuthPassword.
+         * @deprecated This builder method is deprecated.
+         * Use {@link #basicAuthCredentials(BasicAuthModel) basicAuthCredentials} instead.
+         * @return The current instance of builder.
+         */
+        @Deprecated
+        public Builder basicAuthCredentials(String basicAuthUserName, String basicAuthPassword) {
+            basicAuthModel = basicAuthModel.toBuilder()
+                .username(basicAuthUserName)
+                .password(basicAuthPassword)
+                .build();
+            return this;
+        }
+
+        /**
+         * Credentials setter for BasicAuthCredentials.
+         * @param basicAuthModel The instance of BasicAuthModel.
+         * @return The current instance of builder.
+         */
+        public Builder basicAuthCredentials(BasicAuthModel basicAuthModel) {
+            this.basicAuthModel = basicAuthModel;
+            return this;
+        }
 
         /**
          * Current API environment.
@@ -398,7 +481,7 @@ public final class PagarmeApiSDKClient implements PagarmeApiSDKClientInterface {
             httpClient = new OkClient(httpClientConfig.getConfiguration(), compatibilityFactory);
 
             return new PagarmeApiSDKClient(environment, serviceRefererName, httpClient,
-                    httpClientConfig);
+                    httpClientConfig, basicAuthModel, authentications);
         }
     }
 }

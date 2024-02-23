@@ -16,6 +16,8 @@ TokensController tokensController = client.getTokensController();
 
 # Create Token
 
+:information_source: **Note** This endpoint does not require authentication.
+
 ```java
 GetTokenResponse createToken(
     final String publicKey,
@@ -69,6 +71,8 @@ try {
 # Get Token
 
 Gets a token from its id
+
+:information_source: **Note** This endpoint does not require authentication.
 
 ```java
 GetTokenResponse getToken(

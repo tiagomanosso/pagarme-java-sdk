@@ -7,6 +7,7 @@ The following parameters are configurable for the API Client:
 |  --- | --- | --- |
 | `serviceRefererName` | `String` |  |
 | `httpClientConfig` | [`ReadonlyHttpClientConfiguration`](http-client-configuration.md) | Http Client Configuration instance. |
+| `basicAuthCredentials` | [`BasicAuthCredentials`]($a/basic-authentication.md) | The Credentials Setter for Basic Authentication |
 
 The API client can be initialized as follows:
 
@@ -15,6 +16,11 @@ PagarmeApiSDKClient client = new PagarmeApiSDKClient.Builder()
     .httpClientConfig(configBuilder -> configBuilder
             .timeout(0))
     .serviceRefererName("ServiceRefererName")
+    .basicAuthCredentials(new BasicAuthModel.Builder(
+            "BasicAuthUserName",
+            "BasicAuthPassword"
+        )
+        .build())
     .build();
 ```
 
@@ -48,6 +54,7 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 | `getServiceRefererName()` | . | `String` |
 | `getHttpClient()` | The HTTP Client instance to use for making HTTP requests. | `HttpClient` |
 | `getHttpClientConfig()` | Http Client Configuration instance. | [`ReadonlyHttpClientConfiguration`](http-client-configuration.md) |
+| `getBasicAuthCredentials()` | The credentials to use with BasicAuth. | [`BasicAuthCredentials`]($a/basic-authentication.md) |
 | `getBaseUri(Server server)` | Get base URI by current environment | `String` |
 | `getBaseUri()` | Get base URI by current environment | `String` |
 

@@ -85,6 +85,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.PUT))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -130,6 +132,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.POST))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -174,6 +178,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("recipient_id").value(recipientId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -213,6 +219,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .queryParam(param -> param.key("size")
                                 .value(size).isRequired(false))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -251,6 +259,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("withdrawal_id").value(withdrawalId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -297,6 +307,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.PATCH))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -343,6 +355,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.PATCH))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -403,6 +417,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("recipient_id").value(recipientId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -442,6 +458,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("transfer_id").value(transferId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -481,6 +499,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .shouldEncode(true))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.POST))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -527,6 +547,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.PATCH))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -566,6 +588,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("anticipation_id").value(anticipationId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -611,6 +635,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.PATCH))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -689,6 +715,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("recipient_id").value(recipientId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -723,6 +751,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("recipient_id").value(recipientId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -757,6 +787,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("recipient_id").value(recipientId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -817,6 +849,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("recipient_id").value(recipientId)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -862,6 +896,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.POST))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -902,6 +938,8 @@ public final class DefaultRecipientsController extends BaseController implements
                                 .value(idempotencyKey).isRequired(false))
                         .headerParam(param ->param.key("content-type").value("application/json"))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.POST))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -936,6 +974,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .templateParam(param -> param.key("code").value(code)
                                 .shouldEncode(true))
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
@@ -964,6 +1004,8 @@ public final class DefaultRecipientsController extends BaseController implements
                         .server(Server.ENUM_DEFAULT.value())
                         .path("/recipients/default")
                         .headerParam(param -> param.key("accept").value("application/json"))
+                        .withAuth(auth -> auth
+                                .add("httpBasic"))
                         .httpMethod(HttpMethod.GET))
                 .responseHandler(responseHandler -> responseHandler
                         .deserializer(
