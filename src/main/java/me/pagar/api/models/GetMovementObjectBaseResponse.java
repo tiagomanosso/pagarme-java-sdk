@@ -26,10 +26,11 @@ import io.apimatic.core.types.OptionalNullable;
         defaultImpl = GetMovementObjectBaseResponse.class,
         visible = true)
 @JsonSubTypes({
-    @Type(value = GetMovementObjectRefundResponse.class, name = "refund"),
     @Type(value = GetMovementObjectFeeCollectionResponse.class, name = "feeCollection"),
     @Type(value = GetMovementObjectPayableResponse.class, name = "payable"),
-    @Type(value = GetMovementObjectTransferResponse.class, name = "transfer")
+    @Type(value = GetMovementObjectRefundResponse.class, name = "refund"),
+    @Type(value = GetMovementObjectTransferResponse.class, name = "transfer"),
+    @Type(value = GetMovementObjectSettlementResponse.class, name = "settlement")
 })
 @JsonInclude(Include.ALWAYS)
 public class GetMovementObjectBaseResponse {
