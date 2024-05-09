@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import me.pagar.api.exceptions.ApiException;
 import me.pagar.api.models.CreateAnticipationRequest;
+import me.pagar.api.models.CreateKYCLinkResponse;
 import me.pagar.api.models.CreateRecipientRequest;
 import me.pagar.api.models.CreateTransferRequest;
 import me.pagar.api.models.CreateWithdrawRequest;
@@ -49,35 +50,32 @@ public interface RecipientsController {
             final String idempotencyKey) throws ApiException, IOException;
 
     /**
-     * @param  recipientId  Required parameter: Example:
-     * @param  withdrawalId  Required parameter: Example:
-     * @return    Returns the GetWithdrawResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetWithdrawResponse getWithdrawById(
-            final String recipientId,
-            final String withdrawalId) throws ApiException, IOException;
-
-    /**
-     * Retrieves recipient information.
-     * @param  recipientId  Required parameter: Recipiend id
-     * @return    Returns the GetRecipientResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetRecipientResponse getRecipient(
-            final String recipientId) throws ApiException, IOException;
-
-    /**
-     * Get balance information for a recipient.
+     * Creates an anticipation.
      * @param  recipientId  Required parameter: Recipient id
-     * @return    Returns the GetBalanceResponse response from the API call
+     * @param  request  Required parameter: Anticipation data
+     * @param  idempotencyKey  Optional parameter: Example:
+     * @return    Returns the GetAnticipationResponse response from the API call
      * @throws    ApiException    Represents error response from the server.
      * @throws    IOException    Signals that an I/O exception of some sort has occurred.
      */
-    GetBalanceResponse getBalance(
-            final String recipientId) throws ApiException, IOException;
+    GetAnticipationResponse createAnticipation(
+            final String recipientId,
+            final CreateAnticipationRequest request,
+            final String idempotencyKey) throws ApiException, IOException;
+
+    /**
+     * Gets the anticipation limits for a recipient.
+     * @param  recipientId  Required parameter: Recipient id
+     * @param  timeframe  Required parameter: Timeframe
+     * @param  paymentDate  Required parameter: Anticipation payment date
+     * @return    Returns the GetAnticipationLimitResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetAnticipationLimitResponse getAnticipationLimits(
+            final String recipientId,
+            final String timeframe,
+            final LocalDateTime paymentDate) throws ApiException, IOException;
 
     /**
      * Retrieves paginated recipients information.
@@ -92,6 +90,17 @@ public interface RecipientsController {
             final Integer size) throws ApiException, IOException;
 
     /**
+     * @param  recipientId  Required parameter: Example:
+     * @param  withdrawalId  Required parameter: Example:
+     * @return    Returns the GetWithdrawResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetWithdrawResponse getWithdrawById(
+            final String recipientId,
+            final String withdrawalId) throws ApiException, IOException;
+
+    /**
      * Updates the default bank account from a recipient.
      * @param  recipientId  Required parameter: Recipient id
      * @param  request  Required parameter: Bank account data
@@ -103,6 +112,20 @@ public interface RecipientsController {
     GetRecipientResponse updateRecipientDefaultBankAccount(
             final String recipientId,
             final UpdateRecipientBankAccountRequest request,
+            final String idempotencyKey) throws ApiException, IOException;
+
+    /**
+     * Updates recipient metadata.
+     * @param  recipientId  Required parameter: Recipient id
+     * @param  request  Required parameter: Metadata
+     * @param  idempotencyKey  Optional parameter: Example:
+     * @return    Returns the GetRecipientResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetRecipientResponse updateRecipientMetadata(
+            final String recipientId,
+            final UpdateMetadataRequest request,
             final String idempotencyKey) throws ApiException, IOException;
 
     /**
@@ -149,6 +172,20 @@ public interface RecipientsController {
             final CreateWithdrawRequest request) throws ApiException, IOException;
 
     /**
+     * Updates recipient metadata.
+     * @param  recipientId  Required parameter: Recipient id
+     * @param  request  Required parameter: Metadata
+     * @param  idempotencyKey  Optional parameter: Example:
+     * @return    Returns the GetRecipientResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetRecipientResponse updateAutomaticAnticipationSettings(
+            final String recipientId,
+            final UpdateAutomaticAnticipationSettingsRequest request,
+            final String idempotencyKey) throws ApiException, IOException;
+
+    /**
      * Gets an anticipation.
      * @param  recipientId  Required parameter: Recipient id
      * @param  anticipationId  Required parameter: Anticipation id
@@ -171,105 +208,6 @@ public interface RecipientsController {
     GetRecipientResponse updateRecipientTransferSettings(
             final String recipientId,
             final UpdateTransferSettingsRequest request,
-            final String idempotencyKey) throws ApiException, IOException;
-
-    /**
-     * Retrieves recipient information.
-     * @param  code  Required parameter: Recipient code
-     * @return    Returns the GetRecipientResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetRecipientResponse getRecipientByCode(
-            final String code) throws ApiException, IOException;
-
-    /**
-     * Updates recipient metadata.
-     * @param  recipientId  Required parameter: Recipient id
-     * @param  request  Required parameter: Metadata
-     * @param  idempotencyKey  Optional parameter: Example:
-     * @return    Returns the GetRecipientResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetRecipientResponse updateAutomaticAnticipationSettings(
-            final String recipientId,
-            final UpdateAutomaticAnticipationSettingsRequest request,
-            final String idempotencyKey) throws ApiException, IOException;
-
-    /**
-     * Creates a transfer for a recipient.
-     * @param  recipientId  Required parameter: Recipient Id
-     * @param  request  Required parameter: Transfer data
-     * @param  idempotencyKey  Optional parameter: Example:
-     * @return    Returns the GetTransferResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetTransferResponse createTransfer(
-            final String recipientId,
-            final CreateTransferRequest request,
-            final String idempotencyKey) throws ApiException, IOException;
-
-    /**
-     * Creates a new recipient.
-     * @param  request  Required parameter: Recipient data
-     * @param  idempotencyKey  Optional parameter: Example:
-     * @return    Returns the GetRecipientResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetRecipientResponse createRecipient(
-            final CreateRecipientRequest request,
-            final String idempotencyKey) throws ApiException, IOException;
-
-    /**
-     * @return    Returns the GetRecipientResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetRecipientResponse getDefaultRecipient() throws ApiException, IOException;
-
-    /**
-     * Creates an anticipation.
-     * @param  recipientId  Required parameter: Recipient id
-     * @param  request  Required parameter: Anticipation data
-     * @param  idempotencyKey  Optional parameter: Example:
-     * @return    Returns the GetAnticipationResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetAnticipationResponse createAnticipation(
-            final String recipientId,
-            final CreateAnticipationRequest request,
-            final String idempotencyKey) throws ApiException, IOException;
-
-    /**
-     * Gets the anticipation limits for a recipient.
-     * @param  recipientId  Required parameter: Recipient id
-     * @param  timeframe  Required parameter: Timeframe
-     * @param  paymentDate  Required parameter: Anticipation payment date
-     * @return    Returns the GetAnticipationLimitResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetAnticipationLimitResponse getAnticipationLimits(
-            final String recipientId,
-            final String timeframe,
-            final LocalDateTime paymentDate) throws ApiException, IOException;
-
-    /**
-     * Updates recipient metadata.
-     * @param  recipientId  Required parameter: Recipient id
-     * @param  request  Required parameter: Metadata
-     * @param  idempotencyKey  Optional parameter: Example:
-     * @return    Returns the GetRecipientResponse response from the API call
-     * @throws    ApiException    Represents error response from the server.
-     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
-     */
-    GetRecipientResponse updateRecipientMetadata(
-            final String recipientId,
-            final UpdateMetadataRequest request,
             final String idempotencyKey) throws ApiException, IOException;
 
     /**
@@ -302,6 +240,26 @@ public interface RecipientsController {
             final LocalDateTime createdUntil) throws ApiException, IOException;
 
     /**
+     * Retrieves recipient information.
+     * @param  recipientId  Required parameter: Recipiend id
+     * @return    Returns the GetRecipientResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetRecipientResponse getRecipient(
+            final String recipientId) throws ApiException, IOException;
+
+    /**
+     * Get balance information for a recipient.
+     * @param  recipientId  Required parameter: Recipient id
+     * @return    Returns the GetBalanceResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetBalanceResponse getBalance(
+            final String recipientId) throws ApiException, IOException;
+
+    /**
      * Gets a paginated list of transfers for the recipient.
      * @param  recipientId  Required parameter: Example:
      * @param  page  Optional parameter: Example:
@@ -320,5 +278,58 @@ public interface RecipientsController {
             final String status,
             final LocalDateTime createdSince,
             final LocalDateTime createdUntil) throws ApiException, IOException;
+
+    /**
+     * Creates a transfer for a recipient.
+     * @param  recipientId  Required parameter: Recipient Id
+     * @param  request  Required parameter: Transfer data
+     * @param  idempotencyKey  Optional parameter: Example:
+     * @return    Returns the GetTransferResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetTransferResponse createTransfer(
+            final String recipientId,
+            final CreateTransferRequest request,
+            final String idempotencyKey) throws ApiException, IOException;
+
+    /**
+     * Creates a new recipient.
+     * @param  request  Required parameter: Recipient data
+     * @param  idempotencyKey  Optional parameter: Example:
+     * @return    Returns the GetRecipientResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetRecipientResponse createRecipient(
+            final CreateRecipientRequest request,
+            final String idempotencyKey) throws ApiException, IOException;
+
+    /**
+     * Retrieves recipient information.
+     * @param  code  Required parameter: Recipient code
+     * @return    Returns the GetRecipientResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetRecipientResponse getRecipientByCode(
+            final String code) throws ApiException, IOException;
+
+    /**
+     * @return    Returns the GetRecipientResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    GetRecipientResponse getDefaultRecipient() throws ApiException, IOException;
+
+    /**
+     * Create a KYC link.
+     * @param  recipientId  Required parameter: Example:
+     * @return    Returns the CreateKYCLinkResponse response from the API call
+     * @throws    ApiException    Represents error response from the server.
+     * @throws    IOException    Signals that an I/O exception of some sort has occurred.
+     */
+    CreateKYCLinkResponse createKYCLink(
+            final String recipientId) throws ApiException, IOException;
 
 }
