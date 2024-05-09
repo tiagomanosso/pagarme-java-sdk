@@ -10,42 +10,77 @@ SubscriptionsController subscriptionsController = client.getSubscriptionsControl
 
 ## Methods
 
-* [Update Subscription Card](../../doc/controllers/subscriptions.md#update-subscription-card)
-* [Create Discount](../../doc/controllers/subscriptions.md#create-discount)
-* [Update Subscription Billing Date](../../doc/controllers/subscriptions.md#update-subscription-billing-date)
-* [Update Subscription Start At](../../doc/controllers/subscriptions.md#update-subscription-start-at)
-* [Get Subscription](../../doc/controllers/subscriptions.md#get-subscription)
-* [Get Usages](../../doc/controllers/subscriptions.md#get-usages)
-* [Update Latest Period End At](../../doc/controllers/subscriptions.md#update-latest-period-end-at)
-* [Delete Discount](../../doc/controllers/subscriptions.md#delete-discount)
-* [Update Subscription Payment Method](../../doc/controllers/subscriptions.md#update-subscription-payment-method)
-* [Cancel Subscription](../../doc/controllers/subscriptions.md#cancel-subscription)
-* [Create Subscription](../../doc/controllers/subscriptions.md#create-subscription)
-* [Update Subscription Affiliation Id](../../doc/controllers/subscriptions.md#update-subscription-affiliation-id)
-* [Update Subscription Minium Price](../../doc/controllers/subscriptions.md#update-subscription-minium-price)
-* [Get Subscription Cycle by Id](../../doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
-* [Get Usage Report](../../doc/controllers/subscriptions.md#get-usage-report)
 * [Renew Subscription](../../doc/controllers/subscriptions.md#renew-subscription)
+* [Update Subscription Card](../../doc/controllers/subscriptions.md#update-subscription-card)
 * [Delete Usage](../../doc/controllers/subscriptions.md#delete-usage)
+* [Create Discount](../../doc/controllers/subscriptions.md#create-discount)
 * [Create an Usage](../../doc/controllers/subscriptions.md#create-an-usage)
 * [Update Current Cycle Status](../../doc/controllers/subscriptions.md#update-current-cycle-status)
-* [Get Subscription Item](../../doc/controllers/subscriptions.md#get-subscription-item)
-* [Get Increment by Id](../../doc/controllers/subscriptions.md#get-increment-by-id)
-* [Delete Increment](../../doc/controllers/subscriptions.md#delete-increment)
-* [Get Discounts](../../doc/controllers/subscriptions.md#get-discounts)
-* [Update Subscription Due Days](../../doc/controllers/subscriptions.md#update-subscription-due-days)
-* [Create Subscription Item](../../doc/controllers/subscriptions.md#create-subscription-item)
-* [Update Split Subscription](../../doc/controllers/subscriptions.md#update-split-subscription)
+* [Delete Discount](../../doc/controllers/subscriptions.md#delete-discount)
 * [Get Subscription Items](../../doc/controllers/subscriptions.md#get-subscription-items)
+* [Update Subscription Payment Method](../../doc/controllers/subscriptions.md#update-subscription-payment-method)
+* [Get Subscription Item](../../doc/controllers/subscriptions.md#get-subscription-item)
 * [Get Subscriptions](../../doc/controllers/subscriptions.md#get-subscriptions)
+* [Cancel Subscription](../../doc/controllers/subscriptions.md#cancel-subscription)
 * [Create Increment](../../doc/controllers/subscriptions.md#create-increment)
 * [Create Usage](../../doc/controllers/subscriptions.md#create-usage)
 * [Get Discount by Id](../../doc/controllers/subscriptions.md#get-discount-by-id)
+* [Create Subscription](../../doc/controllers/subscriptions.md#create-subscription)
+* [Get Increment by Id](../../doc/controllers/subscriptions.md#get-increment-by-id)
+* [Update Subscription Affiliation Id](../../doc/controllers/subscriptions.md#update-subscription-affiliation-id)
 * [Update Subscription Metadata](../../doc/controllers/subscriptions.md#update-subscription-metadata)
+* [Delete Increment](../../doc/controllers/subscriptions.md#delete-increment)
 * [Get Subscription Cycles](../../doc/controllers/subscriptions.md#get-subscription-cycles)
+* [Get Discounts](../../doc/controllers/subscriptions.md#get-discounts)
+* [Update Subscription Billing Date](../../doc/controllers/subscriptions.md#update-subscription-billing-date)
 * [Delete Subscription Item](../../doc/controllers/subscriptions.md#delete-subscription-item)
 * [Get Increments](../../doc/controllers/subscriptions.md#get-increments)
+* [Update Subscription Due Days](../../doc/controllers/subscriptions.md#update-subscription-due-days)
+* [Update Subscription Start At](../../doc/controllers/subscriptions.md#update-subscription-start-at)
 * [Update Subscription Item](../../doc/controllers/subscriptions.md#update-subscription-item)
+* [Create Subscription Item](../../doc/controllers/subscriptions.md#create-subscription-item)
+* [Get Subscription](../../doc/controllers/subscriptions.md#get-subscription)
+* [Get Usages](../../doc/controllers/subscriptions.md#get-usages)
+* [Update Latest Period End At](../../doc/controllers/subscriptions.md#update-latest-period-end-at)
+* [Update Subscription Minium Price](../../doc/controllers/subscriptions.md#update-subscription-minium-price)
+* [Get Subscription Cycle by Id](../../doc/controllers/subscriptions.md#get-subscription-cycle-by-id)
+* [Get Usage Report](../../doc/controllers/subscriptions.md#get-usage-report)
+* [Update Split Subscription](../../doc/controllers/subscriptions.md#update-split-subscription)
+
+
+# Renew Subscription
+
+```java
+GetPeriodResponse renewSubscription(
+    final String subscriptionId,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | - |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+
+try {
+    GetPeriodResponse result = subscriptionsController.renewSubscription(subscriptionId, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
 
 
 # Update Subscription Card
@@ -95,6 +130,49 @@ try {
 ```
 
 
+# Delete Usage
+
+Deletes a usage
+
+```java
+GetUsageResponse deleteUsage(
+    final String subscriptionId,
+    final String itemId,
+    final String usageId,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | The subscription id |
+| `itemId` | `String` | Template, Required | The subscription item id |
+| `usageId` | `String` | Template, Required | The usage id |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetUsageResponse`](../../doc/models/get-usage-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+String itemId = "item_id0";
+String usageId = "usage_id0";
+
+try {
+    GetUsageResponse result = subscriptionsController.deleteUsage(subscriptionId, itemId, usageId, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
 # Create Discount
 
 Creates a discount
@@ -132,729 +210,6 @@ CreateDiscountRequest request = new CreateDiscountRequest.Builder(
 
 try {
     GetDiscountResponse result = subscriptionsController.createDiscount(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Update Subscription Billing Date
-
-Updates the billing date from a subscription
-
-```java
-GetSubscriptionResponse updateSubscriptionBillingDate(
-    final String subscriptionId,
-    final UpdateSubscriptionBillingDateRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | The subscription id |
-| `request` | [`UpdateSubscriptionBillingDateRequest`](../../doc/models/update-subscription-billing-date-request.md) | Body, Required | Request for updating the subscription billing date |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-UpdateSubscriptionBillingDateRequest request = new UpdateSubscriptionBillingDateRequest.Builder(
-    DateTimeHelper.fromRfc8601DateTime("2016-03-13T12:52:32.123Z")
-)
-.build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionBillingDate(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Update Subscription Start At
-
-Updates the start at date from a subscription
-
-```java
-GetSubscriptionResponse updateSubscriptionStartAt(
-    final String subscriptionId,
-    final UpdateSubscriptionStartAtRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | The subscription id |
-| `request` | [`UpdateSubscriptionStartAtRequest`](../../doc/models/update-subscription-start-at-request.md) | Body, Required | Request for updating the subscription start date |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-UpdateSubscriptionStartAtRequest request = new UpdateSubscriptionStartAtRequest.Builder(
-    DateTimeHelper.fromRfc8601DateTime("2016-03-13T12:52:32.123Z")
-)
-.build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionStartAt(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Get Subscription
-
-Gets a subscription
-
-```java
-GetSubscriptionResponse getSubscription(
-    final String subscriptionId)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | Subscription id |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.getSubscription(subscriptionId);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Get Usages
-
-Lists all usages from a subscription item
-
-```java
-ListUsagesResponse getUsages(
-    final String subscriptionId,
-    final String itemId,
-    final Integer page,
-    final Integer size,
-    final String code,
-    final String group,
-    final LocalDateTime usedSince,
-    final LocalDateTime usedUntil)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | The subscription id |
-| `itemId` | `String` | Template, Required | The subscription item id |
-| `page` | `Integer` | Query, Optional | Page number |
-| `size` | `Integer` | Query, Optional | Page size |
-| `code` | `String` | Query, Optional | Identification code in the client system |
-| `group` | `String` | Query, Optional | Identification group in the client system |
-| `usedSince` | `LocalDateTime` | Query, Optional | - |
-| `usedUntil` | `LocalDateTime` | Query, Optional | - |
-
-## Response Type
-
-[`ListUsagesResponse`](../../doc/models/list-usages-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-String itemId = "item_id0";
-
-try {
-    ListUsagesResponse result = subscriptionsController.getUsages(subscriptionId, itemId, null, null, null, null, null, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Update Latest Period End At
-
-```java
-GetSubscriptionResponse updateLatestPeriodEndAt(
-    final String subscriptionId,
-    final UpdateCurrentCycleEndDateRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | - |
-| `request` | [`UpdateCurrentCycleEndDateRequest`](../../doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-UpdateCurrentCycleEndDateRequest request = new UpdateCurrentCycleEndDateRequest.Builder()
-    .build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.updateLatestPeriodEndAt(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Delete Discount
-
-Deletes a discount
-
-```java
-GetDiscountResponse deleteDiscount(
-    final String subscriptionId,
-    final String discountId,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | Subscription id |
-| `discountId` | `String` | Template, Required | Discount Id |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-String discountId = "discount_id8";
-
-try {
-    GetDiscountResponse result = subscriptionsController.deleteDiscount(subscriptionId, discountId, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Update Subscription Payment Method
-
-Updates the payment method from a subscription
-
-```java
-GetSubscriptionResponse updateSubscriptionPaymentMethod(
-    final String subscriptionId,
-    final UpdateSubscriptionPaymentMethodRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | Subscription id |
-| `request` | [`UpdateSubscriptionPaymentMethodRequest`](../../doc/models/update-subscription-payment-method-request.md) | Body, Required | Request for updating the paymentmethod from a subscription |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-UpdateSubscriptionPaymentMethodRequest request = new UpdateSubscriptionPaymentMethodRequest.Builder(
-    "payment_method4",
-    "card_id2",
-    new CreateCardRequest.Builder()
-        .type("credit")
-        .build()
-)
-.build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionPaymentMethod(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Cancel Subscription
-
-Cancels a subscription
-
-```java
-GetSubscriptionResponse cancelSubscription(
-    final String subscriptionId,
-    final CreateCancelSubscriptionRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | Subscription id |
-| `request` | [`CreateCancelSubscriptionRequest`](../../doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-CreateCancelSubscriptionRequest request = new CreateCancelSubscriptionRequest.Builder(
-    true
-)
-.build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.cancelSubscription(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Create Subscription
-
-Creates a new subscription
-
-```java
-GetSubscriptionResponse createSubscription(
-    final CreateSubscriptionRequest body,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-CreateSubscriptionRequest body = new CreateSubscriptionRequest.Builder(
-    new CreateCustomerRequest.Builder(
-        "{\n    \"name\": \"Tony Stark\"\n}",
-        "email6",
-        "document6",
-        "type0",
-        new CreateAddressRequest.Builder(
-            "street6",
-            "number4",
-            "zip_code0",
-            "neighborhood2",
-            "city6",
-            "state2",
-            "country0",
-            "complement2",
-            "line_10",
-            "line_24"
-        )
-        .build(),
-        new LinkedHashMap<String, String>() {{
-            put("key0", "metadata3");
-        }},
-        new CreatePhonesRequest.Builder()
-            .build(),
-        "code8"
-    )
-    .build(),
-    new CreateCardRequest.Builder()
-        .type("credit")
-        .build(),
-    "code4",
-    "payment_method4",
-    "billing_type0",
-    "statement_descriptor6",
-    "description4",
-    "currency6",
-    "interval6",
-    170,
-    new CreatePricingSchemeRequest.Builder(
-        "scheme_type8"
-    )
-    .build(),
-    Arrays.asList(
-        new CreateSubscriptionItemRequest.Builder(
-            "description2",
-            new CreatePricingSchemeRequest.Builder(
-                "scheme_type8"
-            )
-            .build(),
-            "id8",
-            "plan_item_id8",
-            Arrays.asList(
-                new CreateDiscountRequest.Builder(
-                    90.66D,
-                    "discount_type2",
-                    "item_id4"
-                )
-                .build()
-            ),
-            "name8"
-        )
-        .build()
-    ),
-    new CreateShippingRequest.Builder(
-        52,
-        "description6",
-        "recipient_name2",
-        "recipient_phone6",
-        "address_id6",
-        new CreateAddressRequest.Builder(
-            "street6",
-            "number4",
-            "zip_code0",
-            "neighborhood2",
-            "city6",
-            "state2",
-            "country0",
-            "complement2",
-            "line_10",
-            "line_24"
-        )
-        .build(),
-        "type6"
-    )
-    .build(),
-    Arrays.asList(
-        new CreateDiscountRequest.Builder(
-            90.66D,
-            "discount_type2",
-            "item_id4"
-        )
-        .build()
-    ),
-    new LinkedHashMap<String, String>() {{
-        put("key0", "metadata7");
-        put("key1", "metadata8");
-    }},
-    Arrays.asList(
-        new CreateIncrementRequest.Builder(
-            252.86D,
-            "increment_type6",
-            "item_id6"
-        )
-        .build()
-    )
-)
-.build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.createSubscription(body, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Update Subscription Affiliation Id
-
-```java
-GetSubscriptionResponse updateSubscriptionAffiliationId(
-    final String subscriptionId,
-    final UpdateSubscriptionAffiliationIdRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | - |
-| `request` | [`UpdateSubscriptionAffiliationIdRequest`](../../doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-UpdateSubscriptionAffiliationIdRequest request = new UpdateSubscriptionAffiliationIdRequest.Builder(
-    "gateway_affiliation_id2"
-)
-.build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionAffiliationId(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Update Subscription Minium Price
-
-Atualização do valor mínimo da assinatura
-
-```java
-GetSubscriptionResponse updateSubscriptionMiniumPrice(
-    final String subscriptionId,
-    final UpdateSubscriptionMinimumPriceRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | Subscription Id |
-| `request` | [`UpdateSubscriptionMinimumPriceRequest`](../../doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-UpdateSubscriptionMinimumPriceRequest request = new UpdateSubscriptionMinimumPriceRequest.Builder()
-    .build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionMiniumPrice(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Get Subscription Cycle by Id
-
-```java
-GetPeriodResponse getSubscriptionCycleById(
-    final String subscriptionId,
-    final String cycleId)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | The subscription id |
-| `cycleId` | `String` | Template, Required | - |
-
-## Response Type
-
-[`GetPeriodResponse`](../../doc/models/get-period-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-String cycleId = "cycleId0";
-
-try {
-    GetPeriodResponse result = subscriptionsController.getSubscriptionCycleById(subscriptionId, cycleId);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Get Usage Report
-
-```java
-GetUsageReportResponse getUsageReport(
-    final String subscriptionId,
-    final String periodId)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | The subscription Id |
-| `periodId` | `String` | Template, Required | The period Id |
-
-## Response Type
-
-[`GetUsageReportResponse`](../../doc/models/get-usage-report-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-String periodId = "period_id0";
-
-try {
-    GetUsageReportResponse result = subscriptionsController.getUsageReport(subscriptionId, periodId);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Renew Subscription
-
-```java
-GetPeriodResponse renewSubscription(
-    final String subscriptionId,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | - |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetPeriodResponse`](../../doc/models/get-period-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-
-try {
-    GetPeriodResponse result = subscriptionsController.renewSubscription(subscriptionId, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Delete Usage
-
-Deletes a usage
-
-```java
-GetUsageResponse deleteUsage(
-    final String subscriptionId,
-    final String itemId,
-    final String usageId,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | The subscription id |
-| `itemId` | `String` | Template, Required | The subscription item id |
-| `usageId` | `String` | Template, Required | The usage id |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetUsageResponse`](../../doc/models/get-usage-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-String itemId = "item_id0";
-String usageId = "usage_id0";
-
-try {
-    GetUsageResponse result = subscriptionsController.deleteUsage(subscriptionId, itemId, usageId, null);
     System.out.println(result);
 } catch (ApiException e) {
     e.printStackTrace();
@@ -945,88 +300,14 @@ try {
 ```
 
 
-# Get Subscription Item
+# Delete Discount
 
-Get Subscription Item
+Deletes a discount
 
 ```java
-GetSubscriptionItemResponse getSubscriptionItem(
+GetDiscountResponse deleteDiscount(
     final String subscriptionId,
-    final String itemId)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | Subscription Id |
-| `itemId` | `String` | Template, Required | Item id |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-String itemId = "item_id0";
-
-try {
-    GetSubscriptionItemResponse result = subscriptionsController.getSubscriptionItem(subscriptionId, itemId);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Get Increment by Id
-
-```java
-GetIncrementResponse getIncrementById(
-    final String subscriptionId,
-    final String incrementId)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | The subscription Id |
-| `incrementId` | `String` | Template, Required | The increment Id |
-
-## Response Type
-
-[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-String incrementId = "increment_id8";
-
-try {
-    GetIncrementResponse result = subscriptionsController.getIncrementById(subscriptionId, incrementId);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Delete Increment
-
-Deletes a increment
-
-```java
-GetIncrementResponse deleteIncrement(
-    final String subscriptionId,
-    final String incrementId,
+    final String discountId,
     final String idempotencyKey)
 ```
 
@@ -1035,210 +316,21 @@ GetIncrementResponse deleteIncrement(
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `subscriptionId` | `String` | Template, Required | Subscription id |
-| `incrementId` | `String` | Template, Required | Increment id |
+| `discountId` | `String` | Template, Required | Discount Id |
 | `idempotencyKey` | `String` | Header, Optional | - |
 
 ## Response Type
 
-[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+[`GetDiscountResponse`](../../doc/models/get-discount-response.md)
 
 ## Example Usage
 
 ```java
 String subscriptionId = "subscription_id0";
-String incrementId = "increment_id8";
+String discountId = "discount_id8";
 
 try {
-    GetIncrementResponse result = subscriptionsController.deleteIncrement(subscriptionId, incrementId, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Get Discounts
-
-```java
-ListDiscountsResponse getDiscounts(
-    final String subscriptionId,
-    final int page,
-    final int size)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | The subscription id |
-| `page` | `int` | Query, Required | Page number |
-| `size` | `int` | Query, Required | Page size |
-
-## Response Type
-
-[`ListDiscountsResponse`](../../doc/models/list-discounts-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-int page = 30;
-int size = 18;
-
-try {
-    ListDiscountsResponse result = subscriptionsController.getDiscounts(subscriptionId, page, size);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Update Subscription Due Days
-
-Updates the boleto due days from a subscription
-
-```java
-GetSubscriptionResponse updateSubscriptionDueDays(
-    final String subscriptionId,
-    final UpdateSubscriptionDueDaysRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | Subscription Id |
-| `request` | [`UpdateSubscriptionDueDaysRequest`](../../doc/models/update-subscription-due-days-request.md) | Body, Required | - |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-UpdateSubscriptionDueDaysRequest request = new UpdateSubscriptionDueDaysRequest.Builder(
-    226
-)
-.build();
-
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionDueDays(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Create Subscription Item
-
-Creates a new Subscription item
-
-```java
-GetSubscriptionItemResponse createSubscriptionItem(
-    final String subscriptionId,
-    final CreateSubscriptionItemRequest request,
-    final String idempotencyKey)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `subscriptionId` | `String` | Template, Required | Subscription id |
-| `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
-| `idempotencyKey` | `String` | Header, Optional | - |
-
-## Response Type
-
-[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
-
-## Example Usage
-
-```java
-String subscriptionId = "subscription_id0";
-CreateSubscriptionItemRequest request = new CreateSubscriptionItemRequest.Builder(
-    "description6",
-    new CreatePricingSchemeRequest.Builder(
-        "scheme_type8"
-    )
-    .build(),
-    "id6",
-    "plan_item_id6",
-    Arrays.asList(
-        new CreateDiscountRequest.Builder(
-            90.66D,
-            "discount_type2",
-            "item_id4"
-        )
-        .build()
-    ),
-    "name6"
-)
-.build();
-
-
-try {
-    GetSubscriptionItemResponse result = subscriptionsController.createSubscriptionItem(subscriptionId, request, null);
-    System.out.println(result);
-} catch (ApiException e) {
-    e.printStackTrace();
-} catch (IOException e) {
-    e.printStackTrace();
-}
-```
-
-
-# Update Split Subscription
-
-```java
-GetSubscriptionResponse updateSplitSubscription(
-    final String id,
-    final UpdateSubscriptionSplitRequest request)
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | Subscription's id |
-| `request` | [`UpdateSubscriptionSplitRequest`](../../doc/models/update-subscription-split-request.md) | Body, Required | - |
-
-## Response Type
-
-[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
-
-## Example Usage
-
-```java
-String id = "id0";
-UpdateSubscriptionSplitRequest request = new UpdateSubscriptionSplitRequest.Builder(
-    false,
-    Arrays.asList(
-        new CreateSplitRequest.Builder(
-            "type2",
-            118,
-            "recipient_id2"
-        )
-        .build()
-    )
-)
-.build();
-
-try {
-    GetSubscriptionResponse result = subscriptionsController.updateSplitSubscription(id, request);
+    GetDiscountResponse result = subscriptionsController.deleteDiscount(subscriptionId, discountId, null);
     System.out.println(result);
 } catch (ApiException e) {
     e.printStackTrace();
@@ -1299,6 +391,92 @@ try {
 ```
 
 
+# Update Subscription Payment Method
+
+Updates the payment method from a subscription
+
+```java
+GetSubscriptionResponse updateSubscriptionPaymentMethod(
+    final String subscriptionId,
+    final UpdateSubscriptionPaymentMethodRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | Subscription id |
+| `request` | [`UpdateSubscriptionPaymentMethodRequest`](../../doc/models/update-subscription-payment-method-request.md) | Body, Required | Request for updating the paymentmethod from a subscription |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+UpdateSubscriptionPaymentMethodRequest request = new UpdateSubscriptionPaymentMethodRequest.Builder(
+    "payment_method4",
+    "card_id2",
+    new CreateCardRequest.Builder()
+        .type("credit")
+        .build()
+)
+.build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionPaymentMethod(subscriptionId, request, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Get Subscription Item
+
+Get Subscription Item
+
+```java
+GetSubscriptionItemResponse getSubscriptionItem(
+    final String subscriptionId,
+    final String itemId)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | Subscription Id |
+| `itemId` | `String` | Template, Required | Item id |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+String itemId = "item_id0";
+
+try {
+    GetSubscriptionItemResponse result = subscriptionsController.getSubscriptionItem(subscriptionId, itemId);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
 # Get Subscriptions
 
 Gets all subscriptions
@@ -1345,6 +523,50 @@ ListSubscriptionsResponse getSubscriptions(
 ```java
 try {
     ListSubscriptionsResponse result = subscriptionsController.getSubscriptions(null, null, null, null, null, null, null, null, null, null, null, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Cancel Subscription
+
+Cancels a subscription
+
+```java
+GetSubscriptionResponse cancelSubscription(
+    final String subscriptionId,
+    final CreateCancelSubscriptionRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | Subscription id |
+| `request` | [`CreateCancelSubscriptionRequest`](../../doc/models/create-cancel-subscription-request.md) | Body, Optional | Request for cancelling a subscription |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+CreateCancelSubscriptionRequest request = new CreateCancelSubscriptionRequest.Builder(
+    true
+)
+.build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.cancelSubscription(subscriptionId, request, null);
     System.out.println(result);
 } catch (ApiException e) {
     e.printStackTrace();
@@ -1485,6 +707,228 @@ try {
 ```
 
 
+# Create Subscription
+
+Creates a new subscription
+
+```java
+GetSubscriptionResponse createSubscription(
+    final CreateSubscriptionRequest body,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`CreateSubscriptionRequest`](../../doc/models/create-subscription-request.md) | Body, Required | Request for creating a subscription |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+CreateSubscriptionRequest body = new CreateSubscriptionRequest.Builder(
+    new CreateCustomerRequest.Builder(
+        "Tony Stark",
+        "email6",
+        "document6",
+        "type0",
+        new CreateAddressRequest.Builder(
+            "street6",
+            "number4",
+            "zip_code0",
+            "neighborhood2",
+            "city6",
+            "state2",
+            "country0",
+            "complement2",
+            "line_10",
+            "line_24"
+        )
+        .build(),
+        new LinkedHashMap<String, String>() {{
+            put("key0", "metadata3");
+        }},
+        new CreatePhonesRequest.Builder()
+            .build(),
+        "code8"
+    )
+    .build(),
+    new CreateCardRequest.Builder()
+        .type("credit")
+        .build(),
+    "code4",
+    "payment_method4",
+    "billing_type0",
+    "statement_descriptor6",
+    "description4",
+    "currency6",
+    "interval6",
+    170,
+    new CreatePricingSchemeRequest.Builder(
+        "scheme_type8"
+    )
+    .build(),
+    Arrays.asList(
+        new CreateSubscriptionItemRequest.Builder(
+            "description2",
+            new CreatePricingSchemeRequest.Builder(
+                "scheme_type8"
+            )
+            .build(),
+            "id8",
+            "plan_item_id8",
+            Arrays.asList(
+                new CreateDiscountRequest.Builder(
+                    90.66D,
+                    "discount_type2",
+                    "item_id4"
+                )
+                .build()
+            ),
+            "name8"
+        )
+        .build()
+    ),
+    new CreateShippingRequest.Builder(
+        52,
+        "description6",
+        "recipient_name2",
+        "recipient_phone6",
+        "address_id6",
+        new CreateAddressRequest.Builder(
+            "street6",
+            "number4",
+            "zip_code0",
+            "neighborhood2",
+            "city6",
+            "state2",
+            "country0",
+            "complement2",
+            "line_10",
+            "line_24"
+        )
+        .build(),
+        "type6"
+    )
+    .build(),
+    Arrays.asList(
+        new CreateDiscountRequest.Builder(
+            90.66D,
+            "discount_type2",
+            "item_id4"
+        )
+        .build()
+    ),
+    new LinkedHashMap<String, String>() {{
+        put("key0", "metadata7");
+        put("key1", "metadata8");
+    }},
+    Arrays.asList(
+        new CreateIncrementRequest.Builder(
+            252.86D,
+            "increment_type6",
+            "item_id6"
+        )
+        .build()
+    )
+)
+.build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.createSubscription(body, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Get Increment by Id
+
+```java
+GetIncrementResponse getIncrementById(
+    final String subscriptionId,
+    final String incrementId)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | The subscription Id |
+| `incrementId` | `String` | Template, Required | The increment Id |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+String incrementId = "increment_id8";
+
+try {
+    GetIncrementResponse result = subscriptionsController.getIncrementById(subscriptionId, incrementId);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Update Subscription Affiliation Id
+
+```java
+GetSubscriptionResponse updateSubscriptionAffiliationId(
+    final String subscriptionId,
+    final UpdateSubscriptionAffiliationIdRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | - |
+| `request` | [`UpdateSubscriptionAffiliationIdRequest`](../../doc/models/update-subscription-affiliation-id-request.md) | Body, Required | Request for updating a subscription affiliation id |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+UpdateSubscriptionAffiliationIdRequest request = new UpdateSubscriptionAffiliationIdRequest.Builder(
+    "gateway_affiliation_id2"
+)
+.build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionAffiliationId(subscriptionId, request, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
 # Update Subscription Metadata
 
 Updates the metadata from a subscription
@@ -1531,6 +975,46 @@ try {
 ```
 
 
+# Delete Increment
+
+Deletes a increment
+
+```java
+GetIncrementResponse deleteIncrement(
+    final String subscriptionId,
+    final String incrementId,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | Subscription id |
+| `incrementId` | `String` | Template, Required | Increment id |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetIncrementResponse`](../../doc/models/get-increment-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+String incrementId = "increment_id8";
+
+try {
+    GetIncrementResponse result = subscriptionsController.deleteIncrement(subscriptionId, incrementId, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
 # Get Subscription Cycles
 
 ```java
@@ -1561,6 +1045,89 @@ String size = "size0";
 
 try {
     ListCyclesResponse result = subscriptionsController.getSubscriptionCycles(subscriptionId, page, size);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Get Discounts
+
+```java
+ListDiscountsResponse getDiscounts(
+    final String subscriptionId,
+    final int page,
+    final int size)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | The subscription id |
+| `page` | `int` | Query, Required | Page number |
+| `size` | `int` | Query, Required | Page size |
+
+## Response Type
+
+[`ListDiscountsResponse`](../../doc/models/list-discounts-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+int page = 30;
+int size = 18;
+
+try {
+    ListDiscountsResponse result = subscriptionsController.getDiscounts(subscriptionId, page, size);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Update Subscription Billing Date
+
+Updates the billing date from a subscription
+
+```java
+GetSubscriptionResponse updateSubscriptionBillingDate(
+    final String subscriptionId,
+    final UpdateSubscriptionBillingDateRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | The subscription id |
+| `request` | [`UpdateSubscriptionBillingDateRequest`](../../doc/models/update-subscription-billing-date-request.md) | Body, Required | Request for updating the subscription billing date |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+UpdateSubscriptionBillingDateRequest request = new UpdateSubscriptionBillingDateRequest.Builder(
+    DateTimeHelper.fromRfc8601DateTime("2016-03-13T12:52:32.123Z")
+)
+.build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionBillingDate(subscriptionId, request, null);
     System.out.println(result);
 } catch (ApiException e) {
     e.printStackTrace();
@@ -1647,6 +1214,94 @@ try {
 ```
 
 
+# Update Subscription Due Days
+
+Updates the boleto due days from a subscription
+
+```java
+GetSubscriptionResponse updateSubscriptionDueDays(
+    final String subscriptionId,
+    final UpdateSubscriptionDueDaysRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionDueDaysRequest`](../../doc/models/update-subscription-due-days-request.md) | Body, Required | - |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+UpdateSubscriptionDueDaysRequest request = new UpdateSubscriptionDueDaysRequest.Builder(
+    226
+)
+.build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionDueDays(subscriptionId, request, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Update Subscription Start At
+
+Updates the start at date from a subscription
+
+```java
+GetSubscriptionResponse updateSubscriptionStartAt(
+    final String subscriptionId,
+    final UpdateSubscriptionStartAtRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | The subscription id |
+| `request` | [`UpdateSubscriptionStartAtRequest`](../../doc/models/update-subscription-start-at-request.md) | Body, Required | Request for updating the subscription start date |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+UpdateSubscriptionStartAtRequest request = new UpdateSubscriptionStartAtRequest.Builder(
+    DateTimeHelper.fromRfc8601DateTime("2016-03-13T12:52:32.123Z")
+)
+.build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionStartAt(subscriptionId, request, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
 # Update Subscription Item
 
 Updates a subscription item
@@ -1698,6 +1353,351 @@ UpdateSubscriptionItemRequest body = new UpdateSubscriptionItemRequest.Builder(
 
 try {
     GetSubscriptionItemResponse result = subscriptionsController.updateSubscriptionItem(subscriptionId, itemId, body, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Create Subscription Item
+
+Creates a new Subscription item
+
+```java
+GetSubscriptionItemResponse createSubscriptionItem(
+    final String subscriptionId,
+    final CreateSubscriptionItemRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | Subscription id |
+| `request` | [`CreateSubscriptionItemRequest`](../../doc/models/create-subscription-item-request.md) | Body, Required | Request for creating a subscription item |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionItemResponse`](../../doc/models/get-subscription-item-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+CreateSubscriptionItemRequest request = new CreateSubscriptionItemRequest.Builder(
+    "description6",
+    new CreatePricingSchemeRequest.Builder(
+        "scheme_type8"
+    )
+    .build(),
+    "id6",
+    "plan_item_id6",
+    Arrays.asList(
+        new CreateDiscountRequest.Builder(
+            90.66D,
+            "discount_type2",
+            "item_id4"
+        )
+        .build()
+    ),
+    "name6"
+)
+.build();
+
+
+try {
+    GetSubscriptionItemResponse result = subscriptionsController.createSubscriptionItem(subscriptionId, request, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Get Subscription
+
+Gets a subscription
+
+```java
+GetSubscriptionResponse getSubscription(
+    final String subscriptionId)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | Subscription id |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.getSubscription(subscriptionId);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Get Usages
+
+Lists all usages from a subscription item
+
+```java
+ListUsagesResponse getUsages(
+    final String subscriptionId,
+    final String itemId,
+    final Integer page,
+    final Integer size,
+    final String code,
+    final String group,
+    final LocalDateTime usedSince,
+    final LocalDateTime usedUntil)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | The subscription id |
+| `itemId` | `String` | Template, Required | The subscription item id |
+| `page` | `Integer` | Query, Optional | Page number |
+| `size` | `Integer` | Query, Optional | Page size |
+| `code` | `String` | Query, Optional | Identification code in the client system |
+| `group` | `String` | Query, Optional | Identification group in the client system |
+| `usedSince` | `LocalDateTime` | Query, Optional | - |
+| `usedUntil` | `LocalDateTime` | Query, Optional | - |
+
+## Response Type
+
+[`ListUsagesResponse`](../../doc/models/list-usages-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+String itemId = "item_id0";
+
+try {
+    ListUsagesResponse result = subscriptionsController.getUsages(subscriptionId, itemId, null, null, null, null, null, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Update Latest Period End At
+
+```java
+GetSubscriptionResponse updateLatestPeriodEndAt(
+    final String subscriptionId,
+    final UpdateCurrentCycleEndDateRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | - |
+| `request` | [`UpdateCurrentCycleEndDateRequest`](../../doc/models/update-current-cycle-end-date-request.md) | Body, Required | Request for updating the end date of the current signature cycle |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+UpdateCurrentCycleEndDateRequest request = new UpdateCurrentCycleEndDateRequest.Builder()
+    .build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.updateLatestPeriodEndAt(subscriptionId, request, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Update Subscription Minium Price
+
+Atualização do valor mínimo da assinatura
+
+```java
+GetSubscriptionResponse updateSubscriptionMiniumPrice(
+    final String subscriptionId,
+    final UpdateSubscriptionMinimumPriceRequest request,
+    final String idempotencyKey)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | Subscription Id |
+| `request` | [`UpdateSubscriptionMinimumPriceRequest`](../../doc/models/update-subscription-minimum-price-request.md) | Body, Required | Request da requisição com o valor mínimo que será configurado |
+| `idempotencyKey` | `String` | Header, Optional | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+UpdateSubscriptionMinimumPriceRequest request = new UpdateSubscriptionMinimumPriceRequest.Builder()
+    .build();
+
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.updateSubscriptionMiniumPrice(subscriptionId, request, null);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Get Subscription Cycle by Id
+
+```java
+GetPeriodResponse getSubscriptionCycleById(
+    final String subscriptionId,
+    final String cycleId)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | The subscription id |
+| `cycleId` | `String` | Template, Required | - |
+
+## Response Type
+
+[`GetPeriodResponse`](../../doc/models/get-period-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+String cycleId = "cycleId0";
+
+try {
+    GetPeriodResponse result = subscriptionsController.getSubscriptionCycleById(subscriptionId, cycleId);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Get Usage Report
+
+```java
+GetUsageReportResponse getUsageReport(
+    final String subscriptionId,
+    final String periodId)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `subscriptionId` | `String` | Template, Required | The subscription Id |
+| `periodId` | `String` | Template, Required | The period Id |
+
+## Response Type
+
+[`GetUsageReportResponse`](../../doc/models/get-usage-report-response.md)
+
+## Example Usage
+
+```java
+String subscriptionId = "subscription_id0";
+String periodId = "period_id0";
+
+try {
+    GetUsageReportResponse result = subscriptionsController.getUsageReport(subscriptionId, periodId);
+    System.out.println(result);
+} catch (ApiException e) {
+    e.printStackTrace();
+} catch (IOException e) {
+    e.printStackTrace();
+}
+```
+
+
+# Update Split Subscription
+
+```java
+GetSubscriptionResponse updateSplitSubscription(
+    final String id,
+    final UpdateSubscriptionSplitRequest request)
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `String` | Template, Required | Subscription's id |
+| `request` | [`UpdateSubscriptionSplitRequest`](../../doc/models/update-subscription-split-request.md) | Body, Required | - |
+
+## Response Type
+
+[`GetSubscriptionResponse`](../../doc/models/get-subscription-response.md)
+
+## Example Usage
+
+```java
+String id = "id0";
+UpdateSubscriptionSplitRequest request = new UpdateSubscriptionSplitRequest.Builder(
+    false,
+    Arrays.asList(
+        new CreateSplitRequest.Builder(
+            "type2",
+            118,
+            "recipient_id2"
+        )
+        .build()
+    )
+)
+.build();
+
+try {
+    GetSubscriptionResponse result = subscriptionsController.updateSplitSubscription(id, request);
     System.out.println(result);
 } catch (ApiException e) {
     e.printStackTrace();
