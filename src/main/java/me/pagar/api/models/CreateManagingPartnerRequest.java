@@ -7,7 +7,10 @@
 package me.pagar.api.models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.apimatic.core.types.OptionalNullable;
 import java.util.List;
 
 /**
@@ -17,7 +20,7 @@ public class CreateManagingPartnerRequest {
     private String name;
     private String email;
     private String document;
-    private String motherName;
+    private OptionalNullable<String> motherName;
     private String birthdate;
     private int monthlyIncome;
     private String professionalOccupation;
@@ -36,25 +39,57 @@ public class CreateManagingPartnerRequest {
      * @param  name  String value for name.
      * @param  email  String value for email.
      * @param  document  String value for document.
-     * @param  motherName  String value for motherName.
      * @param  birthdate  String value for birthdate.
      * @param  monthlyIncome  int value for monthlyIncome.
      * @param  professionalOccupation  String value for professionalOccupation.
      * @param  selfDeclaredLegalRepresentative  boolean value for selfDeclaredLegalRepresentative.
      * @param  address  CreateRegisterInformationAddressRequest value for address.
      * @param  phoneNumbers  List of CreateRegisterInformationPhoneRequest value for phoneNumbers.
+     * @param  motherName  String value for motherName.
      */
     public CreateManagingPartnerRequest(
             String name,
             String email,
             String document,
-            String motherName,
             String birthdate,
             int monthlyIncome,
             String professionalOccupation,
             boolean selfDeclaredLegalRepresentative,
             CreateRegisterInformationAddressRequest address,
-            List<CreateRegisterInformationPhoneRequest> phoneNumbers) {
+            List<CreateRegisterInformationPhoneRequest> phoneNumbers,
+            String motherName) {
+        this.name = name;
+        this.email = email;
+        this.document = document;
+        this.motherName = OptionalNullable.of(motherName);
+        this.birthdate = birthdate;
+        this.monthlyIncome = monthlyIncome;
+        this.professionalOccupation = professionalOccupation;
+        this.selfDeclaredLegalRepresentative = selfDeclaredLegalRepresentative;
+        this.address = address;
+        this.phoneNumbers = phoneNumbers;
+    }
+
+    /**
+     * Initialization constructor.
+     * @param  name  String value for name.
+     * @param  email  String value for email.
+     * @param  document  String value for document.
+     * @param  birthdate  String value for birthdate.
+     * @param  monthlyIncome  int value for monthlyIncome.
+     * @param  professionalOccupation  String value for professionalOccupation.
+     * @param  selfDeclaredLegalRepresentative  boolean value for selfDeclaredLegalRepresentative.
+     * @param  address  CreateRegisterInformationAddressRequest value for address.
+     * @param  phoneNumbers  List of CreateRegisterInformationPhoneRequest value for phoneNumbers.
+     * @param  motherName  String value for motherName.
+     */
+
+    protected CreateManagingPartnerRequest(String name, String email, String document,
+            String birthdate, int monthlyIncome, String professionalOccupation,
+            boolean selfDeclaredLegalRepresentative,
+            CreateRegisterInformationAddressRequest address,
+            List<CreateRegisterInformationPhoneRequest> phoneNumbers,
+            OptionalNullable<String> motherName) {
         this.name = name;
         this.email = email;
         this.document = document;
@@ -122,12 +157,22 @@ public class CreateManagingPartnerRequest {
     }
 
     /**
+     * Internal Getter for MotherName.
+     * @return Returns the Internal String
+     */
+    @JsonGetter("mother_name")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonSerialize(using = OptionalNullable.Serializer.class)
+    protected OptionalNullable<String> internalGetMotherName() {
+        return this.motherName;
+    }
+
+    /**
      * Getter for MotherName.
      * @return Returns the String
      */
-    @JsonGetter("mother_name")
     public String getMotherName() {
-        return motherName;
+        return OptionalNullable.getFrom(motherName);
     }
 
     /**
@@ -136,7 +181,14 @@ public class CreateManagingPartnerRequest {
      */
     @JsonSetter("mother_name")
     public void setMotherName(String motherName) {
-        this.motherName = motherName;
+        this.motherName = OptionalNullable.of(motherName);
+    }
+
+    /**
+     * UnSetter for MotherName.
+     */
+    public void unsetMotherName() {
+        motherName = null;
     }
 
     /**
@@ -254,11 +306,11 @@ public class CreateManagingPartnerRequest {
     @Override
     public String toString() {
         return "CreateManagingPartnerRequest [" + "name=" + name + ", email=" + email
-                + ", document=" + document + ", motherName=" + motherName + ", birthdate="
-                + birthdate + ", monthlyIncome=" + monthlyIncome + ", professionalOccupation="
-                + professionalOccupation + ", selfDeclaredLegalRepresentative="
-                + selfDeclaredLegalRepresentative + ", address=" + address + ", phoneNumbers="
-                + phoneNumbers + "]";
+                + ", document=" + document + ", birthdate=" + birthdate + ", monthlyIncome="
+                + monthlyIncome + ", professionalOccupation=" + professionalOccupation
+                + ", selfDeclaredLegalRepresentative=" + selfDeclaredLegalRepresentative
+                + ", address=" + address + ", phoneNumbers=" + phoneNumbers + ", motherName="
+                + motherName + "]";
     }
 
     /**
@@ -267,8 +319,9 @@ public class CreateManagingPartnerRequest {
      * @return a new {@link CreateManagingPartnerRequest.Builder} object
      */
     public Builder toBuilder() {
-        Builder builder = new Builder(name, email, document, motherName, birthdate, monthlyIncome,
+        Builder builder = new Builder(name, email, document, birthdate, monthlyIncome,
                 professionalOccupation, selfDeclaredLegalRepresentative, address, phoneNumbers);
+        builder.motherName = internalGetMotherName();
         return builder;
     }
 
@@ -279,13 +332,13 @@ public class CreateManagingPartnerRequest {
         private String name;
         private String email;
         private String document;
-        private String motherName;
         private String birthdate;
         private int monthlyIncome;
         private String professionalOccupation;
         private boolean selfDeclaredLegalRepresentative;
         private CreateRegisterInformationAddressRequest address;
         private List<CreateRegisterInformationPhoneRequest> phoneNumbers;
+        private OptionalNullable<String> motherName;
 
         /**
          * Initialization constructor.
@@ -298,7 +351,6 @@ public class CreateManagingPartnerRequest {
          * @param  name  String value for name.
          * @param  email  String value for email.
          * @param  document  String value for document.
-         * @param  motherName  String value for motherName.
          * @param  birthdate  String value for birthdate.
          * @param  monthlyIncome  int value for monthlyIncome.
          * @param  professionalOccupation  String value for professionalOccupation.
@@ -308,15 +360,14 @@ public class CreateManagingPartnerRequest {
          * @param  phoneNumbers  List of CreateRegisterInformationPhoneRequest value for
          *         phoneNumbers.
          */
-        public Builder(String name, String email, String document, String motherName,
-                String birthdate, int monthlyIncome, String professionalOccupation,
+        public Builder(String name, String email, String document, String birthdate,
+                int monthlyIncome, String professionalOccupation,
                 boolean selfDeclaredLegalRepresentative,
                 CreateRegisterInformationAddressRequest address,
                 List<CreateRegisterInformationPhoneRequest> phoneNumbers) {
             this.name = name;
             this.email = email;
             this.document = document;
-            this.motherName = motherName;
             this.birthdate = birthdate;
             this.monthlyIncome = monthlyIncome;
             this.professionalOccupation = professionalOccupation;
@@ -352,16 +403,6 @@ public class CreateManagingPartnerRequest {
          */
         public Builder document(String document) {
             this.document = document;
-            return this;
-        }
-
-        /**
-         * Setter for motherName.
-         * @param  motherName  String value for motherName.
-         * @return Builder
-         */
-        public Builder motherName(String motherName) {
-            this.motherName = motherName;
             return this;
         }
 
@@ -428,13 +469,32 @@ public class CreateManagingPartnerRequest {
         }
 
         /**
+         * Setter for motherName.
+         * @param  motherName  String value for motherName.
+         * @return Builder
+         */
+        public Builder motherName(String motherName) {
+            this.motherName = OptionalNullable.of(motherName);
+            return this;
+        }
+
+        /**
+         * UnSetter for motherName.
+         * @return Builder
+         */
+        public Builder unsetMotherName() {
+            motherName = null;
+            return this;
+        }
+
+        /**
          * Builds a new {@link CreateManagingPartnerRequest} object using the set fields.
          * @return {@link CreateManagingPartnerRequest}
          */
         public CreateManagingPartnerRequest build() {
-            return new CreateManagingPartnerRequest(name, email, document, motherName, birthdate,
-                    monthlyIncome, professionalOccupation, selfDeclaredLegalRepresentative, address,
-                    phoneNumbers);
+            return new CreateManagingPartnerRequest(name, email, document, birthdate, monthlyIncome,
+                    professionalOccupation, selfDeclaredLegalRepresentative, address, phoneNumbers,
+                    motherName);
         }
     }
 }

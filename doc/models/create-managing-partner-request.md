@@ -14,7 +14,7 @@ Managing Partner Request
 | `Name` | `String` | Required | - | String getName() | setName(String name) |
 | `Email` | `String` | Required | - | String getEmail() | setEmail(String email) |
 | `Document` | `String` | Required | - | String getDocument() | setDocument(String document) |
-| `MotherName` | `String` | Required | - | String getMotherName() | setMotherName(String motherName) |
+| `MotherName` | `String` | Optional | - | String getMotherName() | setMotherName(String motherName) |
 | `Birthdate` | `String` | Required | - | String getBirthdate() | setBirthdate(String birthdate) |
 | `MonthlyIncome` | `int` | Required | - | int getMonthlyIncome() | setMonthlyIncome(int monthlyIncome) |
 | `ProfessionalOccupation` | `String` | Required | - | String getProfessionalOccupation() | setProfessionalOccupation(String professionalOccupation) |
@@ -29,7 +29,6 @@ Managing Partner Request
   "name": "name4",
   "email": "email2",
   "document": "document2",
-  "mother_name": "mother_name0",
   "birthdate": "birthdate8",
   "monthly_income": 70,
   "professional_occupation": "professional_occupation8",
@@ -50,7 +49,8 @@ Managing Partner Request
       "number": "number2",
       "type": "type0"
     }
-  ]
+  ],
+  "mother_name": "mother_name0"
 }
 ```
 
