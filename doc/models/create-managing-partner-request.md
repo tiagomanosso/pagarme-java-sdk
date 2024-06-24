@@ -16,7 +16,7 @@ Managing Partner Request
 | `Document` | `String` | Required | - | String getDocument() | setDocument(String document) |
 | `MotherName` | `String` | Optional | - | String getMotherName() | setMotherName(String motherName) |
 | `Birthdate` | `String` | Required | - | String getBirthdate() | setBirthdate(String birthdate) |
-| `MonthlyIncome` | `int` | Required | - | int getMonthlyIncome() | setMonthlyIncome(int monthlyIncome) |
+| `MonthlyIncome` | `long` | Required | - | long getMonthlyIncome() | setMonthlyIncome(long monthlyIncome) |
 | `ProfessionalOccupation` | `String` | Required | - | String getProfessionalOccupation() | setProfessionalOccupation(String professionalOccupation) |
 | `SelfDeclaredLegalRepresentative` | `boolean` | Required | - | boolean getSelfDeclaredLegalRepresentative() | setSelfDeclaredLegalRepresentative(boolean selfDeclaredLegalRepresentative) |
 | `Address` | [`CreateRegisterInformationAddressRequest`](../../doc/models/create-register-information-address-request.md) | Required | - | CreateRegisterInformationAddressRequest getAddress() | setAddress(CreateRegisterInformationAddressRequest address) |

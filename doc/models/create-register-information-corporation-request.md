@@ -15,7 +15,7 @@
 |  --- | --- | --- | --- | --- | --- |
 | `CompanyName` | `String` | Required | - | String getCompanyName() | setCompanyName(String companyName) |
 | `TradingName` | `String` | Required | - | String getTradingName() | setTradingName(String tradingName) |
-| `AnnualRevenue` | `int` | Required | - | int getAnnualRevenue() | setAnnualRevenue(int annualRevenue) |
+| `AnnualRevenue` | `long` | Required | - | long getAnnualRevenue() | setAnnualRevenue(long annualRevenue) |
 | `CorporationType` | `String` | Optional | - | String getCorporationType() | setCorporationType(String corporationType) |
 | `FoundingDate` | `String` | Optional | - | String getFoundingDate() | setFoundingDate(String foundingDate) |
 | `Cnae` | `String` | Optional | - | String getCnae() | setCnae(String cnae) |
