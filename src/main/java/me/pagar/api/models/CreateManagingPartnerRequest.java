@@ -22,7 +22,7 @@ public class CreateManagingPartnerRequest {
     private String document;
     private OptionalNullable<String> motherName;
     private String birthdate;
-    private int monthlyIncome;
+    private long monthlyIncome;
     private String professionalOccupation;
     private boolean selfDeclaredLegalRepresentative;
     private CreateRegisterInformationAddressRequest address;
@@ -40,7 +40,7 @@ public class CreateManagingPartnerRequest {
      * @param  email  String value for email.
      * @param  document  String value for document.
      * @param  birthdate  String value for birthdate.
-     * @param  monthlyIncome  int value for monthlyIncome.
+     * @param  monthlyIncome  long value for monthlyIncome.
      * @param  professionalOccupation  String value for professionalOccupation.
      * @param  selfDeclaredLegalRepresentative  boolean value for selfDeclaredLegalRepresentative.
      * @param  address  CreateRegisterInformationAddressRequest value for address.
@@ -52,7 +52,7 @@ public class CreateManagingPartnerRequest {
             String email,
             String document,
             String birthdate,
-            int monthlyIncome,
+            long monthlyIncome,
             String professionalOccupation,
             boolean selfDeclaredLegalRepresentative,
             CreateRegisterInformationAddressRequest address,
@@ -76,7 +76,7 @@ public class CreateManagingPartnerRequest {
      * @param  email  String value for email.
      * @param  document  String value for document.
      * @param  birthdate  String value for birthdate.
-     * @param  monthlyIncome  int value for monthlyIncome.
+     * @param  monthlyIncome  long value for monthlyIncome.
      * @param  professionalOccupation  String value for professionalOccupation.
      * @param  selfDeclaredLegalRepresentative  boolean value for selfDeclaredLegalRepresentative.
      * @param  address  CreateRegisterInformationAddressRequest value for address.
@@ -85,7 +85,7 @@ public class CreateManagingPartnerRequest {
      */
 
     protected CreateManagingPartnerRequest(String name, String email, String document,
-            String birthdate, int monthlyIncome, String professionalOccupation,
+            String birthdate, long monthlyIncome, String professionalOccupation,
             boolean selfDeclaredLegalRepresentative,
             CreateRegisterInformationAddressRequest address,
             List<CreateRegisterInformationPhoneRequest> phoneNumbers,
@@ -211,19 +211,19 @@ public class CreateManagingPartnerRequest {
 
     /**
      * Getter for MonthlyIncome.
-     * @return Returns the int
+     * @return Returns the long
      */
     @JsonGetter("monthly_income")
-    public int getMonthlyIncome() {
+    public long getMonthlyIncome() {
         return monthlyIncome;
     }
 
     /**
      * Setter for MonthlyIncome.
-     * @param monthlyIncome Value for int
+     * @param monthlyIncome Value for long
      */
     @JsonSetter("monthly_income")
-    public void setMonthlyIncome(int monthlyIncome) {
+    public void setMonthlyIncome(long monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
 
@@ -333,7 +333,7 @@ public class CreateManagingPartnerRequest {
         private String email;
         private String document;
         private String birthdate;
-        private int monthlyIncome;
+        private long monthlyIncome;
         private String professionalOccupation;
         private boolean selfDeclaredLegalRepresentative;
         private CreateRegisterInformationAddressRequest address;
@@ -352,7 +352,7 @@ public class CreateManagingPartnerRequest {
          * @param  email  String value for email.
          * @param  document  String value for document.
          * @param  birthdate  String value for birthdate.
-         * @param  monthlyIncome  int value for monthlyIncome.
+         * @param  monthlyIncome  long value for monthlyIncome.
          * @param  professionalOccupation  String value for professionalOccupation.
          * @param  selfDeclaredLegalRepresentative  boolean value for
          *         selfDeclaredLegalRepresentative.
@@ -361,7 +361,7 @@ public class CreateManagingPartnerRequest {
          *         phoneNumbers.
          */
         public Builder(String name, String email, String document, String birthdate,
-                int monthlyIncome, String professionalOccupation,
+                long monthlyIncome, String professionalOccupation,
                 boolean selfDeclaredLegalRepresentative,
                 CreateRegisterInformationAddressRequest address,
                 List<CreateRegisterInformationPhoneRequest> phoneNumbers) {
@@ -418,10 +418,10 @@ public class CreateManagingPartnerRequest {
 
         /**
          * Setter for monthlyIncome.
-         * @param  monthlyIncome  int value for monthlyIncome.
+         * @param  monthlyIncome  long value for monthlyIncome.
          * @return Builder
          */
-        public Builder monthlyIncome(int monthlyIncome) {
+        public Builder monthlyIncome(long monthlyIncome) {
             this.monthlyIncome = monthlyIncome;
             return this;
         }

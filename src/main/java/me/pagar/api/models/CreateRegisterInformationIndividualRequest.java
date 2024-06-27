@@ -21,7 +21,7 @@ public class CreateRegisterInformationIndividualRequest
     private String name;
     private OptionalNullable<String> motherName;
     private String birthdate;
-    private int monthlyIncome;
+    private long monthlyIncome;
     private String professionalOccupation;
     private CreateRegisterInformationAddressRequest address;
 
@@ -40,7 +40,7 @@ public class CreateRegisterInformationIndividualRequest
      * @param  phoneNumbers  List of CreateRegisterInformationPhoneRequest value for phoneNumbers.
      * @param  name  String value for name.
      * @param  birthdate  String value for birthdate.
-     * @param  monthlyIncome  int value for monthlyIncome.
+     * @param  monthlyIncome  long value for monthlyIncome.
      * @param  professionalOccupation  String value for professionalOccupation.
      * @param  address  CreateRegisterInformationAddressRequest value for address.
      * @param  siteUrl  String value for siteUrl.
@@ -53,7 +53,7 @@ public class CreateRegisterInformationIndividualRequest
             List<CreateRegisterInformationPhoneRequest> phoneNumbers,
             String name,
             String birthdate,
-            int monthlyIncome,
+            long monthlyIncome,
             String professionalOccupation,
             CreateRegisterInformationAddressRequest address,
             String siteUrl,
@@ -75,7 +75,7 @@ public class CreateRegisterInformationIndividualRequest
      * @param  phoneNumbers  List of CreateRegisterInformationPhoneRequest value for phoneNumbers.
      * @param  name  String value for name.
      * @param  birthdate  String value for birthdate.
-     * @param  monthlyIncome  int value for monthlyIncome.
+     * @param  monthlyIncome  long value for monthlyIncome.
      * @param  professionalOccupation  String value for professionalOccupation.
      * @param  address  CreateRegisterInformationAddressRequest value for address.
      * @param  siteUrl  String value for siteUrl.
@@ -84,7 +84,7 @@ public class CreateRegisterInformationIndividualRequest
 
     protected CreateRegisterInformationIndividualRequest(String email, String document, String type,
             List<CreateRegisterInformationPhoneRequest> phoneNumbers, String name, String birthdate,
-            int monthlyIncome, String professionalOccupation,
+            long monthlyIncome, String professionalOccupation,
             CreateRegisterInformationAddressRequest address, OptionalNullable<String> siteUrl,
             OptionalNullable<String> motherName) {
         super(email, document, type, phoneNumbers, siteUrl);
@@ -169,19 +169,19 @@ public class CreateRegisterInformationIndividualRequest
 
     /**
      * Getter for MonthlyIncome.
-     * @return Returns the int
+     * @return Returns the long
      */
     @JsonGetter("monthly_income")
-    public int getMonthlyIncome() {
+    public long getMonthlyIncome() {
         return monthlyIncome;
     }
 
     /**
      * Setter for MonthlyIncome.
-     * @param monthlyIncome Value for int
+     * @param monthlyIncome Value for long
      */
     @JsonSetter("monthly_income")
-    public void setMonthlyIncome(int monthlyIncome) {
+    public void setMonthlyIncome(long monthlyIncome) {
         this.monthlyIncome = monthlyIncome;
     }
 
@@ -257,7 +257,7 @@ public class CreateRegisterInformationIndividualRequest
         private List<CreateRegisterInformationPhoneRequest> phoneNumbers;
         private String name;
         private String birthdate;
-        private int monthlyIncome;
+        private long monthlyIncome;
         private String professionalOccupation;
         private CreateRegisterInformationAddressRequest address;
         private OptionalNullable<String> siteUrl;
@@ -278,13 +278,13 @@ public class CreateRegisterInformationIndividualRequest
          *         phoneNumbers.
          * @param  name  String value for name.
          * @param  birthdate  String value for birthdate.
-         * @param  monthlyIncome  int value for monthlyIncome.
+         * @param  monthlyIncome  long value for monthlyIncome.
          * @param  professionalOccupation  String value for professionalOccupation.
          * @param  address  CreateRegisterInformationAddressRequest value for address.
          */
         public Builder(String email, String document, String type,
                 List<CreateRegisterInformationPhoneRequest> phoneNumbers, String name,
-                String birthdate, int monthlyIncome, String professionalOccupation,
+                String birthdate, long monthlyIncome, String professionalOccupation,
                 CreateRegisterInformationAddressRequest address) {
             this.email = email;
             this.document = document;
@@ -360,10 +360,10 @@ public class CreateRegisterInformationIndividualRequest
 
         /**
          * Setter for monthlyIncome.
-         * @param  monthlyIncome  int value for monthlyIncome.
+         * @param  monthlyIncome  long value for monthlyIncome.
          * @return Builder
          */
-        public Builder monthlyIncome(int monthlyIncome) {
+        public Builder monthlyIncome(long monthlyIncome) {
             this.monthlyIncome = monthlyIncome;
             return this;
         }

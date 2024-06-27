@@ -16,7 +16,7 @@
 | `Name` | `String` | Required | - | String getName() | setName(String name) |
 | `MotherName` | `String` | Optional | - | String getMotherName() | setMotherName(String motherName) |
 | `Birthdate` | `String` | Required | - | String getBirthdate() | setBirthdate(String birthdate) |
-| `MonthlyIncome` | `int` | Required | - | int getMonthlyIncome() | setMonthlyIncome(int monthlyIncome) |
+| `MonthlyIncome` | `long` | Required | - | long getMonthlyIncome() | setMonthlyIncome(long monthlyIncome) |
 | `ProfessionalOccupation` | `String` | Required | - | String getProfessionalOccupation() | setProfessionalOccupation(String professionalOccupation) |
 | `Address` | [`CreateRegisterInformationAddressRequest`](../../doc/models/create-register-information-address-request.md) | Required | - | CreateRegisterInformationAddressRequest getAddress() | setAddress(CreateRegisterInformationAddressRequest address) |
 
