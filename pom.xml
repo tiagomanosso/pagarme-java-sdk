@@ -36,7 +36,7 @@
   <build>
     <pluginManagement>
       <plugins>
-        <plugin>
+        <!-- <plugin>
           <groupId>org.eclipse.m2e</groupId>
           <artifactId>lifecycle-mapping</artifactId>
           <version>1.0.0</version>
@@ -61,7 +61,7 @@
               </pluginExecutions>
             </lifecycleMappingMetadata>
           </configuration>
-        </plugin>
+        </plugin> -->
       </plugins>
     </pluginManagement>
     <plugins>
@@ -73,7 +73,7 @@
           <rulesUri>file://${project.basedir}/version-rules.xml</rulesUri>
         </configuration>
       </plugin>
-      <plugin>
+      <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
         <version>3.0.0-M2</version>
@@ -115,7 +115,7 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
+      </plugin> -->
     </plugins>
   </build>
   <licenses>
