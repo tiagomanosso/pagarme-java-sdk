@@ -37,6 +37,13 @@
       <version>[0.3, 0.4)</version>
     </dependency>
   </dependencies>
+  <distributionManagement>
+    <repository>
+      <id>parceirando-parceirando-dependencies</id>
+      <name>parceirando-parceirando-dependencies</name>
+      <url>https://parceirando-065190972969.d.codeartifact.us-east-1.amazonaws.com/maven/parceirando-dependencies/</url>
+    </repository>
+  </distributionManagement>
   <build>
     <pluginManagement>
       <plugins>
